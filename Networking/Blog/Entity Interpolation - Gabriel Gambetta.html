@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<!-- saved from url=(0057)https://www.gabrielgambetta.com/entity-interpolation.html -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  
+  <meta name="generator" content="pandoc">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+<title>Entity Interpolation - Gabriel Gambetta</title>
+  <style type="text/css">code{white-space: pre;}</style>
+  <link rel="stylesheet" href="./Entity Interpolation - Gabriel Gambetta_files/style.css">
+  <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+  <![endif]-->
+  <script src="./Entity Interpolation - Gabriel Gambetta_files/all.js.download" async="" crossorigin="anonymous"></script><script id="twitter-wjs" src="./Entity Interpolation - Gabriel Gambetta_files/widgets.js.download"></script><script id="facebook-jssdk" src="./Entity Interpolation - Gabriel Gambetta_files/all.js(1).download"></script><script async="" src="./Entity Interpolation - Gabriel Gambetta_files/analytics.js.download"></script><script src="./Entity Interpolation - Gabriel Gambetta_files/jquery-3.2.1.min.js.download"></script>
+  <!-- Google Analytics -->
+  <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+    ga('create', 'UA-17633478-1', 'auto');
+    ga('send', 'pageview');
+  
+  
+    var __send_ga_event = function(spec, opt_url) {
+      var parts = spec.split("-");
+      var opt_callback = undefined;
+      if (!!opt_url) {
+        //console.log("URL " + opt_url);
+        opt_callback = {
+          'transport': 'beacon',
+          'hitCallback': function(){ document.location = opt_url; }
+        };
+      }
+      //console.log("Event " + spec);
+      ga('send', 'event', parts[0], parts[1], parts[2], opt_callback);
+      return false;
+    }
+  
+    var __add_gg_handlers = function(data_attr, opt_href_prefix) {
+      $("[" + data_attr + "]").each(function(_, link) {
+        var spec = $(link).attr(data_attr);
+        var handler = (function() { 
+          var href = undefined;
+          if (!!opt_href_prefix) {        
+            href = opt_href_prefix + spec;
+            if (!$(link).attr("href")) {
+              $(link).attr("href", href);
+            }
+          } else if (!$(link).attr("href")) {
+            $(link).attr("href", "#");
+          }
+          var save_spec = spec;
+          return function() { return __send_ga_event(save_spec, href); };
+        })()
+        $(link).click(handler);
+      });
+    }
+  
+    var __add_event_tracking = function() {
+      __add_gg_handlers("gg-event");
+      __add_gg_handlers("gg-link", "outbound.php?link=");
+    }
+  
+    $(__add_event_tracking);
+  </script>
+  <!-- End Google Analytics -->
+<script charset="utf-8" src="./Entity Interpolation - Gabriel Gambetta_files/button.e24f3bcdec527b80b9c80e88b62047c3.js.download"></script><style type="text/css" data-fbcssmodules="css:fb.css.basecss:fb.css.dialog css:fb.css.iframewidget">.fb_hidden{position:absolute;top:-10000px;z-index:10001}.fb_reposition{overflow:hidden;position:relative}.fb_invisible{display:none}.fb_reset{background:none;border:0;border-spacing:0;color:#000;cursor:auto;direction:ltr;font-family:"lucida grande", tahoma, verdana, arial, sans-serif;font-size:11px;font-style:normal;font-variant:normal;font-weight:normal;letter-spacing:normal;line-height:1;margin:0;overflow:visible;padding:0;text-align:left;text-decoration:none;text-indent:0;text-shadow:none;text-transform:none;visibility:visible;white-space:normal;word-spacing:normal}.fb_reset>div{overflow:hidden}@keyframes fb_transform{from{opacity:0;transform:scale(.95)}to{opacity:1;transform:scale(1)}}.fb_animate{animation:fb_transform .3s forwards}
+.fb_dialog{background:rgba(82, 82, 82, .7);position:absolute;top:-10000px;z-index:10001}.fb_dialog_advanced{border-radius:8px;padding:10px}.fb_dialog_content{background:#fff;color:#373737}.fb_dialog_close_icon{background:url(https://static.xx.fbcdn.net/rsrc.php/v3/yq/r/IE9JII6Z1Ys.png) no-repeat scroll 0 0 transparent;cursor:pointer;display:block;height:15px;position:absolute;right:18px;top:17px;width:15px}.fb_dialog_mobile .fb_dialog_close_icon{left:5px;right:auto;top:5px}.fb_dialog_padding{background-color:transparent;position:absolute;width:1px;z-index:-1}.fb_dialog_close_icon:hover{background:url(https://static.xx.fbcdn.net/rsrc.php/v3/yq/r/IE9JII6Z1Ys.png) no-repeat scroll 0 -15px transparent}.fb_dialog_close_icon:active{background:url(https://static.xx.fbcdn.net/rsrc.php/v3/yq/r/IE9JII6Z1Ys.png) no-repeat scroll 0 -30px transparent}.fb_dialog_iframe{line-height:0}.fb_dialog_content .dialog_title{background:#6d84b4;border:1px solid #365899;color:#fff;font-size:14px;font-weight:bold;margin:0}.fb_dialog_content .dialog_title>span{background:url(https://static.xx.fbcdn.net/rsrc.php/v3/yd/r/Cou7n-nqK52.gif) no-repeat 5px 50%;float:left;padding:5px 0 7px 26px}body.fb_hidden{height:100%;left:0;margin:0;overflow:visible;position:absolute;top:-10000px;transform:none;width:100%}.fb_dialog.fb_dialog_mobile.loading{background:url(https://static.xx.fbcdn.net/rsrc.php/v3/ya/r/3rhSv5V8j3o.gif) white no-repeat 50% 50%;min-height:100%;min-width:100%;overflow:hidden;position:absolute;top:0;z-index:10001}.fb_dialog.fb_dialog_mobile.loading.centered{background:none;height:auto;min-height:initial;min-width:initial;width:auto}.fb_dialog.fb_dialog_mobile.loading.centered #fb_dialog_loader_spinner{width:100%}.fb_dialog.fb_dialog_mobile.loading.centered .fb_dialog_content{background:none}.loading.centered #fb_dialog_loader_close{clear:both;color:#fff;display:block;font-size:18px;padding-top:20px}#fb-root #fb_dialog_ipad_overlay{background:rgba(0, 0, 0, .4);bottom:0;left:0;min-height:100%;position:absolute;right:0;top:0;width:100%;z-index:10000}#fb-root #fb_dialog_ipad_overlay.hidden{display:none}.fb_dialog.fb_dialog_mobile.loading iframe{visibility:hidden}.fb_dialog_mobile .fb_dialog_iframe{position:sticky;top:0}.fb_dialog_content .dialog_header{background:linear-gradient(from(#738aba), to(#2c4987));border-bottom:1px solid;border-color:#043b87;box-shadow:white 0 1px 1px -1px inset;color:#fff;font:bold 14px Helvetica, sans-serif;text-overflow:ellipsis;text-shadow:rgba(0, 30, 84, .296875) 0 -1px 0;vertical-align:middle;white-space:nowrap}.fb_dialog_content .dialog_header table{height:43px;width:100%}.fb_dialog_content .dialog_header td.header_left{font-size:12px;padding-left:5px;vertical-align:middle;width:60px}.fb_dialog_content .dialog_header td.header_right{font-size:12px;padding-right:5px;vertical-align:middle;width:60px}.fb_dialog_content .touchable_button{background:linear-gradient(from(#4267B2), to(#2a4887));background-clip:padding-box;border:1px solid #29487d;border-radius:3px;display:inline-block;line-height:18px;margin-top:3px;max-width:85px;padding:4px 12px;position:relative}.fb_dialog_content .dialog_header .touchable_button input{background:none;border:none;color:#fff;font:bold 12px Helvetica, sans-serif;margin:2px -12px;padding:2px 6px 3px 6px;text-shadow:rgba(0, 30, 84, .296875) 0 -1px 0}.fb_dialog_content .dialog_header .header_center{color:#fff;font-size:16px;font-weight:bold;line-height:18px;text-align:center;vertical-align:middle}.fb_dialog_content .dialog_content{background:url(https://static.xx.fbcdn.net/rsrc.php/v3/y9/r/jKEcVPZFk-2.gif) no-repeat 50% 50%;border:1px solid #4a4a4a;border-bottom:0;border-top:0;height:150px}.fb_dialog_content .dialog_footer{background:#f5f6f7;border:1px solid #4a4a4a;border-top-color:#ccc;height:40px}#fb_dialog_loader_close{float:left}.fb_dialog.fb_dialog_mobile .fb_dialog_close_button{text-shadow:rgba(0, 30, 84, .296875) 0 -1px 0}.fb_dialog.fb_dialog_mobile .fb_dialog_close_icon{visibility:hidden}#fb_dialog_loader_spinner{animation:rotateSpinner 1.2s linear infinite;background-color:transparent;background-image:url(https://static.xx.fbcdn.net/rsrc.php/v3/yD/r/t-wz8gw1xG1.png);background-position:50% 50%;background-repeat:no-repeat;height:24px;width:24px}@keyframes rotateSpinner{0%{transform:rotate(0deg)}100%{transform:rotate(360deg)}}
+.fb_iframe_widget{display:inline-block;position:relative}.fb_iframe_widget span{display:inline-block;position:relative;text-align:justify}.fb_iframe_widget iframe{position:absolute}.fb_iframe_widget_fluid_desktop,.fb_iframe_widget_fluid_desktop span,.fb_iframe_widget_fluid_desktop iframe{max-width:100%}.fb_iframe_widget_fluid_desktop iframe{min-width:220px;position:relative}.fb_iframe_widget_lift{z-index:1}.fb_iframe_widget_fluid{display:inline}.fb_iframe_widget_fluid span{width:100%}</style></head>
+<body class="vsc-initialized">
+<div class="main">
+<div class="nav">
+<a href="https://www.gabrielgambetta.com/client-server-game-architecture.html">&lt;&lt; Series Start</a>	<a class="homelink" href="https://www.gabrielgambetta.com/index.html">Gabriel Gambetta</a>
+</div>
+<header>
+<h1 class="title">Fast-Paced Multiplayer (Part III): Entity Interpolation</h1>
+</header>
+<p><a href="https://www.gabrielgambetta.com/client-server-game-architecture.html">Client-Server Game Architecture</a> · <a href="https://www.gabrielgambetta.com/client-side-prediction-server-reconciliation.html">Client-Side Prediction and Server Reconciliation</a> · <a href="https://www.gabrielgambetta.com/entity-interpolation.html">Entity Interpolation</a> · <a href="https://www.gabrielgambetta.com/lag-compensation.html">Lag Compensation</a> · <a href="https://www.gabrielgambetta.com/client-side-prediction-live-demo.html">Live Demo</a></p>
+<h2 id="introduction">Introduction</h2>
+<p>In the&nbsp;<a href="https://www.gabrielgambetta.com/client-server-game-architecture.html">first article</a>&nbsp;of the series, we introduced the concept of an&nbsp;<em>authoritative server</em>&nbsp;and its usefulness to prevent client cheats. However, using this technique naively can lead to potentially showstopper issues regarding playability and responsiveness. In the&nbsp;<a href="https://www.gabrielgambetta.com/client-side-prediction-server-reconciliation.html">second article</a>, we proposed&nbsp;<em>client-side prediction</em>&nbsp;as a way to overcome these limitations.</p>
+<p>The net result of these two articles is a set of concepts and techniques that allow a player to control an in-game character in a way that feels exactly like a single-player game, even when connected to an authoritative server through an internet connection with transmission delays.</p>
+<p>In this article, we’ll explore the consequences of having other player-controled characters connected to the same server.</p>
+<h2 id="server-time-step">Server time step</h2>
+<p>In the previous article, the behavior of the server we described was pretty simple – it read client inputs, updated the game state, and sent it back to the client. When more than one client is connected, though, the main server loop is somewhat different.</p>
+<p>In this scenario, several clients may be sending inputs simultaneously, and at a fast pace (as fast as the player can issue commands, be it pressing arrow keys, moving the mouse or clicking the screen). Updating the game world every time inputs are received from each client and then broadcasting the game state would consume too much CPU and bandwidth.</p>
+<p>A better approach is to queue the client inputs as they are received, without any processing. Instead, the game world is updated periodically at low frequency, for example 10 times per second. The delay between every update, 100ms in this case, is called the<em>time step</em>. In every update loop iteration, all the unprocessed client input is applied (possibly in smaller time increments than the time step, to make physics more predictable), and the new game state is broadcast to the clients.</p>
+<p>In summary, the game world updates independent of the presence and amount of client input, at a predictable rate.</p>
+<h2 id="dealing-with-low-frequency-updates">Dealing with low-frequency updates</h2>
+<p>From the point of view of a client, this approach works as smoothly as before – client-side prediction works independently of the update delay, so it clearly also works under predictable, if relatively infrequent, state updates. However, since the game state is broadcast at a low frequency (continuing with the example, every 100ms), the client has very sparse information about the other entities that may be moving throughout the world.</p>
+<p>A first implementation would update the position of other characters when it receives a state update; this immediately leads to very choppy movement, that is, discrete jumps every 100ms instead of smooth movement.</p>
+<figure>
+<img src="./Entity Interpolation - Gabriel Gambetta_files/fpm3-01.png" alt="Client 1 as seen by Client 2."><figcaption>Client 1 as seen by Client 2.</figcaption>
+</figure>
+<p>Depending on the type of game you’re developing there are many ways to deal with this; in general, the more predictable your game entities are, the easier it is to get it right.</p>
+<h2 id="dead-reckoning">Dead reckoning</h2>
+<p>Suppose you’re making a car racing game. A car that goes really fast is pretty predictable – for example, if it’s running at 100 meters per second, a second later it will be roughly 100 meters ahead of where it started.</p>
+<p>Why “roughly”? During that second the car could have accelerated or decelerated a bit, or turned to the right or to the left a bit – the key word here is “a bit”. The maneuverability of a car is such that at high speeds its position at any point in time is highly dependent on its previous position, speed and direction, regardless of what the player actually does. In other words, a racing car can’t do a 180º turn instantly.</p>
+<p>How does this work with a server that sends updates every 100 ms? The client receives authoritative speed and heading for every competing car; for the next 100 ms it won’t receive any new information, but it still needs to show them running. The simplest thing to do is to assume the car’s heading and acceleration will remain constant during that 100 ms, and run the car physics locally with that parameters. Then, 100 ms later, when the server update arrives, the car’s position is corrected.</p>
+<p>The correction can be big or relatively small depending on a lot of factors. If the player does keep the car on a straight line and doesn’t change the car speed, the predicted position will be exactly like the corrected position. On the other hand, if the player crashes against something, the predicted position will be extremely wrong.</p>
+<p>Note that dead reckoning can be applied to low-speed situations – battleships, for example. In fact, the term “dead reckoning” has its origins in marine navigation.</p>
+<h2 id="entity-interpolation">Entity interpolation</h2>
+<p>There are some situations where dead reckoning can’t be applied at all – in particular, all scenarios where the player’s direction and speed can change instantly. For example, in a 3D shooter, players usually run, stop, and turn corners at very high speeds, making dead reckoning essentially useless, as positions and speeds can no longer be predicted from previous data.</p>
+<p>You can’t just update player positions when the server sends authoritative data; you’d get players who teleport short distances every 100 ms, making the game unplayable.</p>
+<p>What you do have is authoritative position data every 100 ms; the trick is how to show the player what happens inbetween. The key to the solution is to show the other players <em>in the past</em> relative to the user’s player.</p>
+<p>Say you receive position data at <strong>t = 1000</strong>. You already had received data at <strong>t = 900</strong>, so you know where the player was at <strong>t = 900</strong> and <strong>t = 1000</strong>. So, from <strong>t = 1000</strong> and <strong>t = 1100</strong>, you show what the other player did from <strong>t = 900</strong> to <strong>t = 1000</strong>. This way you’re always showing the user <em>actual movement data</em>, except you’re showing it 100 ms “late”.</p>
+<figure>
+<img src="./Entity Interpolation - Gabriel Gambetta_files/fpm3-02.png" alt="Client 2 renders Client 1 in the past, interpolating last known positions."><figcaption>Client 2 renders Client 1 “in the past”, interpolating last known positions.</figcaption>
+</figure>
+<p>The position data you use to interpolate from <strong>t = 900</strong> to <strong>t = 1000</strong> depends on the game. Interpolation usually works well enough. If it doesn’t, you can have the server send more detailed movement data with each update – for example, a sequence of straight segments followed by the player, or positions sampled every 10 ms which look better when interpolated (you don’t need to send 10 times more data – since you’re sending deltas for small movements, the format on the wire can be heavily optimized for this particular case).</p>
+<p>Note that using this technique, every player sees a slightly different rendering of the game world, because each player sees itself <em>in the present</em> but sees the other entities <em>in the past</em>. Even for a fast paced game, however, seeing other entities with a 100 ms isn’t generally noticeable.</p>
+<p>There are exceptions – when you need a lot of spatial and temporal accuracy, such as when the player shoots at another player. Since the other players are seen in the past, you’re aiming with a 100 ms delay – that is, you’re shooting where your target was 100 ms ago! We’ll deal with this in the next article.</p>
+<h2 id="summary">Summary</h2>
+<p>In a client-server environment with an authoritative server, infrequent updates and network delay, you must still give players the illusion of continuity and smooth movement. In&nbsp;<a href="https://www.gabrielgambetta.com/client-side-prediction-server-reconciliation.html">part 2 of the series</a>&nbsp;we explored a way to show the user controlled player’s movement in real time using client-side prediction and server reconciliation; this ensures user input has an immediate effect on the local player, removing a delay that would render the game unplayable.</p>
+<p>Other entities are still a problem, however. In this article we explored two ways of dealing with them.</p>
+<p>The first one, <em>dead reckoning</em>, applies to certain kinds of simulations where entity position can be acceptably estimated from previous entity data such as position, speed and acceleration. This approach fails when these conditions aren’t met.</p>
+<p>The second one, <em>entity interpolation</em>, doesn’t predict future positions at all – it uses only real entity data provided by the server, thus showing the other entities slightly delayed in time.</p>
+<p>The net effect is that the user’s player is seen <em>in the present</em> and the other entities are seen <em>in the past</em>. This usually creates an incredibly seamless experience.</p>
+<p>However, if nothing else is done, the illusion breaks down when an event needs high spatial and temporal accuracy, such as shooting at a moving target: the position where Client 2 renders Client 1 doesn’t match the server’s nor Client 1′s position, so headshots become impossible! Since no game is complete without headshots, we’ll deal with this issue in the next article.</p>
+<div class="centered">
+<a href="https://www.gabrielgambetta.com/client-side-prediction-server-reconciliation.html">&lt;&lt; Part II: Client-Side Prediction and Server Reconciliation</a> · <a href="https://www.gabrielgambetta.com/lag-compensation.html"><strong>Part IV: Lag Compensation &gt;&gt;</strong></a>
+</div>
+<div id="signup" class="signup signup_tgl">  <form id="signup_form" action="https://www.gabrielgambetta.com/signup.php" method="GET">
+    <b>Stay in touch!</b> Your email:    <input type="email" id="signup_email" name="email">
+    <input type="submit" id="signup_submit" value="Keep me posted">
+    <input type="hidden" name="a" value="s">
+    <input type="hidden" name="m" value="gamedev">
+    <input type="hidden" name="r" value="fpm3">
+    <input type="hidden" name="l" value="">
+  </form>
+
+  <div id="signup_error" style="display: none; font-size: 75%; color: red; font-weight: bold;">Please enter a valid email address.</div>
+
+  <script>
+    $("#signup_submit").click(function() {
+      var email = $("#signup_email").val();
+      var re = /\S+@\S+\.\S+/; 
+      if (re.test(email)) {
+        $("#signup_error").css("display", "none");
+        $("#signup_submit").prop("disabled", true);
+        $("#signup").load("/signup.php?" + $("#signup_form").serialize());
+      } else {
+        $("#signup_error").css("display", "block");
+        $("#signup_submit").prop("disabled", false);
+      }
+      return false;
+    });
+  </script>
+</div>
+<script>$("#signup").load("/signup.php?m=gamedev&r=fpm3");</script>
+<hr>
+<div class="social">
+
+<!-- Facebook -->
+<div id="fb-root" class=" fb_reset"><div style="position: absolute; top: -10000px; width: 0px; height: 0px;"><div></div></div></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/en_US/all.js#xfbml=1";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+<div class="fb-like fb_iframe_widget" data-send="false" data-layout="button_count" data-width="450" data-show-faces="false" style="width: 150px;" fb-xfbml-state="rendered" fb-iframe-plugin-query="app_id=&amp;container_width=150&amp;href=https%3A%2F%2Fwww.gabrielgambetta.com%2Fentity-interpolation.html&amp;layout=button_count&amp;locale=en_US&amp;sdk=joey&amp;send=false&amp;show_faces=false&amp;width=450"><span style="vertical-align: bottom; width: 69px; height: 20px;"><iframe name="f1cbe95826ac5a8" width="450px" height="1000px" data-testid="fb:like Facebook Social Plugin" title="fb:like Facebook Social Plugin" frameborder="0" allowtransparency="true" allowfullscreen="true" scrolling="no" allow="encrypted-media" src="./Entity Interpolation - Gabriel Gambetta_files/like.html" style="border: none; visibility: visible; width: 69px; height: 20px;" class=""></iframe></span></div>
+
+<!-- Twitter -->
+<iframe id="twitter-widget-0" scrolling="no" frameborder="0" allowtransparency="true" allowfullscreen="true" class="twitter-share-button twitter-share-button-rendered twitter-tweet-button" style="position: static; visibility: visible; width: 60px; height: 20px;" title="Twitter Tweet Button" src="./Entity Interpolation - Gabriel Gambetta_files/tweet_button.2d7d9a6d04538bf11c7b23641e75738c.en.html"></iframe>
+<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+
+</div>
+</div>
+<div class="copyright">© Gabriel Gambetta 2019</div>
+
+
+<iframe scrolling="no" frameborder="0" allowtransparency="true" src="./Entity Interpolation - Gabriel Gambetta_files/widget_iframe.2d7d9a6d04538bf11c7b23641e75738c.html" title="Twitter settings iframe" style="display: none;"></iframe></body></html>

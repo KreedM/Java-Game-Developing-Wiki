@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<!-- saved from url=(0053)https://www.gabrielgambetta.com/lag-compensation.html -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  
+  <meta name="generator" content="pandoc">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+<title>Lag Compensation - Gabriel Gambetta</title>
+  <style type="text/css">code{white-space: pre;}</style>
+  <link rel="stylesheet" href="./Lag Compensation - Gabriel Gambetta_files/style.css">
+  <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+  <![endif]-->
+  <script src="./Lag Compensation - Gabriel Gambetta_files/all.js.download" async="" crossorigin="anonymous"></script><script id="twitter-wjs" src="./Lag Compensation - Gabriel Gambetta_files/widgets.js.download"></script><script id="facebook-jssdk" src="./Lag Compensation - Gabriel Gambetta_files/all.js(1).download"></script><script async="" src="./Lag Compensation - Gabriel Gambetta_files/analytics.js.download"></script><script src="./Lag Compensation - Gabriel Gambetta_files/jquery-3.2.1.min.js.download"></script>
+  <!-- Google Analytics -->
+  <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+    ga('create', 'UA-17633478-1', 'auto');
+    ga('send', 'pageview');
+  
+  
+    var __send_ga_event = function(spec, opt_url) {
+      var parts = spec.split("-");
+      var opt_callback = undefined;
+      if (!!opt_url) {
+        //console.log("URL " + opt_url);
+        opt_callback = {
+          'transport': 'beacon',
+          'hitCallback': function(){ document.location = opt_url; }
+        };
+      }
+      //console.log("Event " + spec);
+      ga('send', 'event', parts[0], parts[1], parts[2], opt_callback);
+      return false;
+    }
+  
+    var __add_gg_handlers = function(data_attr, opt_href_prefix) {
+      $("[" + data_attr + "]").each(function(_, link) {
+        var spec = $(link).attr(data_attr);
+        var handler = (function() { 
+          var href = undefined;
+          if (!!opt_href_prefix) {        
+            href = opt_href_prefix + spec;
+            if (!$(link).attr("href")) {
+              $(link).attr("href", href);
+            }
+          } else if (!$(link).attr("href")) {
+            $(link).attr("href", "#");
+          }
+          var save_spec = spec;
+          return function() { return __send_ga_event(save_spec, href); };
+        })()
+        $(link).click(handler);
+      });
+    }
+  
+    var __add_event_tracking = function() {
+      __add_gg_handlers("gg-event");
+      __add_gg_handlers("gg-link", "outbound.php?link=");
+    }
+  
+    $(__add_event_tracking);
+  </script>
+  <!-- End Google Analytics -->
+<script charset="utf-8" src="./Lag Compensation - Gabriel Gambetta_files/button.e24f3bcdec527b80b9c80e88b62047c3.js.download"></script><style type="text/css" data-fbcssmodules="css:fb.css.basecss:fb.css.dialog css:fb.css.iframewidget">.fb_hidden{position:absolute;top:-10000px;z-index:10001}.fb_reposition{overflow:hidden;position:relative}.fb_invisible{display:none}.fb_reset{background:none;border:0;border-spacing:0;color:#000;cursor:auto;direction:ltr;font-family:"lucida grande", tahoma, verdana, arial, sans-serif;font-size:11px;font-style:normal;font-variant:normal;font-weight:normal;letter-spacing:normal;line-height:1;margin:0;overflow:visible;padding:0;text-align:left;text-decoration:none;text-indent:0;text-shadow:none;text-transform:none;visibility:visible;white-space:normal;word-spacing:normal}.fb_reset>div{overflow:hidden}@keyframes fb_transform{from{opacity:0;transform:scale(.95)}to{opacity:1;transform:scale(1)}}.fb_animate{animation:fb_transform .3s forwards}
+.fb_dialog{background:rgba(82, 82, 82, .7);position:absolute;top:-10000px;z-index:10001}.fb_dialog_advanced{border-radius:8px;padding:10px}.fb_dialog_content{background:#fff;color:#373737}.fb_dialog_close_icon{background:url(https://static.xx.fbcdn.net/rsrc.php/v3/yq/r/IE9JII6Z1Ys.png) no-repeat scroll 0 0 transparent;cursor:pointer;display:block;height:15px;position:absolute;right:18px;top:17px;width:15px}.fb_dialog_mobile .fb_dialog_close_icon{left:5px;right:auto;top:5px}.fb_dialog_padding{background-color:transparent;position:absolute;width:1px;z-index:-1}.fb_dialog_close_icon:hover{background:url(https://static.xx.fbcdn.net/rsrc.php/v3/yq/r/IE9JII6Z1Ys.png) no-repeat scroll 0 -15px transparent}.fb_dialog_close_icon:active{background:url(https://static.xx.fbcdn.net/rsrc.php/v3/yq/r/IE9JII6Z1Ys.png) no-repeat scroll 0 -30px transparent}.fb_dialog_iframe{line-height:0}.fb_dialog_content .dialog_title{background:#6d84b4;border:1px solid #365899;color:#fff;font-size:14px;font-weight:bold;margin:0}.fb_dialog_content .dialog_title>span{background:url(https://static.xx.fbcdn.net/rsrc.php/v3/yd/r/Cou7n-nqK52.gif) no-repeat 5px 50%;float:left;padding:5px 0 7px 26px}body.fb_hidden{height:100%;left:0;margin:0;overflow:visible;position:absolute;top:-10000px;transform:none;width:100%}.fb_dialog.fb_dialog_mobile.loading{background:url(https://static.xx.fbcdn.net/rsrc.php/v3/ya/r/3rhSv5V8j3o.gif) white no-repeat 50% 50%;min-height:100%;min-width:100%;overflow:hidden;position:absolute;top:0;z-index:10001}.fb_dialog.fb_dialog_mobile.loading.centered{background:none;height:auto;min-height:initial;min-width:initial;width:auto}.fb_dialog.fb_dialog_mobile.loading.centered #fb_dialog_loader_spinner{width:100%}.fb_dialog.fb_dialog_mobile.loading.centered .fb_dialog_content{background:none}.loading.centered #fb_dialog_loader_close{clear:both;color:#fff;display:block;font-size:18px;padding-top:20px}#fb-root #fb_dialog_ipad_overlay{background:rgba(0, 0, 0, .4);bottom:0;left:0;min-height:100%;position:absolute;right:0;top:0;width:100%;z-index:10000}#fb-root #fb_dialog_ipad_overlay.hidden{display:none}.fb_dialog.fb_dialog_mobile.loading iframe{visibility:hidden}.fb_dialog_mobile .fb_dialog_iframe{position:sticky;top:0}.fb_dialog_content .dialog_header{background:linear-gradient(from(#738aba), to(#2c4987));border-bottom:1px solid;border-color:#043b87;box-shadow:white 0 1px 1px -1px inset;color:#fff;font:bold 14px Helvetica, sans-serif;text-overflow:ellipsis;text-shadow:rgba(0, 30, 84, .296875) 0 -1px 0;vertical-align:middle;white-space:nowrap}.fb_dialog_content .dialog_header table{height:43px;width:100%}.fb_dialog_content .dialog_header td.header_left{font-size:12px;padding-left:5px;vertical-align:middle;width:60px}.fb_dialog_content .dialog_header td.header_right{font-size:12px;padding-right:5px;vertical-align:middle;width:60px}.fb_dialog_content .touchable_button{background:linear-gradient(from(#4267B2), to(#2a4887));background-clip:padding-box;border:1px solid #29487d;border-radius:3px;display:inline-block;line-height:18px;margin-top:3px;max-width:85px;padding:4px 12px;position:relative}.fb_dialog_content .dialog_header .touchable_button input{background:none;border:none;color:#fff;font:bold 12px Helvetica, sans-serif;margin:2px -12px;padding:2px 6px 3px 6px;text-shadow:rgba(0, 30, 84, .296875) 0 -1px 0}.fb_dialog_content .dialog_header .header_center{color:#fff;font-size:16px;font-weight:bold;line-height:18px;text-align:center;vertical-align:middle}.fb_dialog_content .dialog_content{background:url(https://static.xx.fbcdn.net/rsrc.php/v3/y9/r/jKEcVPZFk-2.gif) no-repeat 50% 50%;border:1px solid #4a4a4a;border-bottom:0;border-top:0;height:150px}.fb_dialog_content .dialog_footer{background:#f5f6f7;border:1px solid #4a4a4a;border-top-color:#ccc;height:40px}#fb_dialog_loader_close{float:left}.fb_dialog.fb_dialog_mobile .fb_dialog_close_button{text-shadow:rgba(0, 30, 84, .296875) 0 -1px 0}.fb_dialog.fb_dialog_mobile .fb_dialog_close_icon{visibility:hidden}#fb_dialog_loader_spinner{animation:rotateSpinner 1.2s linear infinite;background-color:transparent;background-image:url(https://static.xx.fbcdn.net/rsrc.php/v3/yD/r/t-wz8gw1xG1.png);background-position:50% 50%;background-repeat:no-repeat;height:24px;width:24px}@keyframes rotateSpinner{0%{transform:rotate(0deg)}100%{transform:rotate(360deg)}}
+.fb_iframe_widget{display:inline-block;position:relative}.fb_iframe_widget span{display:inline-block;position:relative;text-align:justify}.fb_iframe_widget iframe{position:absolute}.fb_iframe_widget_fluid_desktop,.fb_iframe_widget_fluid_desktop span,.fb_iframe_widget_fluid_desktop iframe{max-width:100%}.fb_iframe_widget_fluid_desktop iframe{min-width:220px;position:relative}.fb_iframe_widget_lift{z-index:1}.fb_iframe_widget_fluid{display:inline}.fb_iframe_widget_fluid span{width:100%}</style></head>
+<body class="vsc-initialized">
+<div class="main">
+<div class="nav">
+<a href="https://www.gabrielgambetta.com/client-server-game-architecture.html">&lt;&lt; Series Start</a>	<a class="homelink" href="https://www.gabrielgambetta.com/index.html">Gabriel Gambetta</a>
+</div>
+<header>
+<h1 class="title">Fast-Paced Multiplayer (Part IV): Lag Compensation</h1>
+</header>
+<p><a href="https://www.gabrielgambetta.com/client-server-game-architecture.html">Client-Server Game Architecture</a> · <a href="https://www.gabrielgambetta.com/client-side-prediction-server-reconciliation.html">Client-Side Prediction and Server Reconciliation</a> · <a href="https://www.gabrielgambetta.com/entity-interpolation.html">Entity Interpolation</a> · <a href="https://www.gabrielgambetta.com/lag-compensation.html">Lag Compensation</a> · <a href="https://www.gabrielgambetta.com/client-side-prediction-live-demo.html">Live Demo</a></p>
+<h2 id="introduction">Introduction</h2>
+<p>The previous three articles explained a client-server game architecture which can be summarized as follows:</p>
+<ul>
+<li><p>Server gets inputs from all the clients, with timestamps</p></li>
+<li><p>Server processes inputs and updates world status</p></li>
+<li><p>Server sends regular world snapshots to all clients</p></li>
+<li><p>Client sends input and simulates their effects locally</p></li>
+<li><p>Client get world updates and</p>
+<ul>
+<li><p>Syncs predicted state to authoritative state</p></li>
+<li><p>Interpolates known past states for other entities</p></li>
+</ul></li>
+</ul>
+<p>From a player’s point of view, this has two important consequences:</p>
+<ul>
+<li><p>Player sees <strong>himself</strong> in the <strong>present</strong></p></li>
+<li><p>Player sees <strong>other entities</strong> in the <strong>past</strong></p></li>
+</ul>
+<p>This situation is generally fine, but it’s quite problematic for very time- and space-sensitive events; for example, shooting your enemy in the head!</p>
+<h2 id="lag-compensation">Lag Compensation</h2>
+<p>So you’re aiming perfectly at the target’s head with your sniper rifle. You shoot - it’s a shot you can’t miss.</p>
+<p>But you miss.</p>
+<p>Why does this happen?</p>
+<p>Because of the client-server architecture explained before, you were aiming at where the enemy’s head was 100ms <em>before</em> you shot - <em>not</em> when you shot!</p>
+<p>In a way, it’s like playing in an universe where the speed of light is really, really slow; you’re aiming at the past position of your enemy, but he’s long gone by the time you squeeze the trigger.</p>
+<p>Fortunately, there’s a relatively simple solution for this, which is also pleasant for <em>most</em> players <em>most</em> of the time (with the one exception discussed below).</p>
+<p>Here’s how it works:</p>
+<ul>
+<li><p>When you shoot, client sends this event to the server with full information: the exact timestamp of your shot, and the exact aim of the weapon.</p></li>
+<li><p><strong>Here’s the crucial step</strong>. Since the server gets all the input with timestamps, it can authoritatively reconstruct the world at any instant in the past. In particular, it can reconstruct the world exactly as it looked like to any client at any point in time.</p></li>
+<li><p>This means the server can know exactly what was on your weapon’s sights the instant you shot. It was the <em>past</em> position of your enemy’s head, but the server knows it was the position of his head in <em>your</em> present.</p></li>
+<li><p>The server processes the shot <em>at that point in time</em>, and updates the clients.</p></li>
+</ul>
+<p>And everyone is happy!</p>
+<p>The server is happy because he’s the server. He’s always happy.</p>
+<p>You’re happy because you were aiming at your enemy’s head, shot, and got a rewarding headshot!</p>
+<p>The enemy may be the only one not entirely happy. If he was standing still when he got shot, it’s his fault, right? If he was moving… wow, you’re a really awesome sniper.</p>
+<p>But what if he was in an open position, got behind a wall, and <em>then</em> got shot, a fraction of a second later, when he thought he was safe?</p>
+<p>Well, that can happen. That’s the tradeoff you make. Because you shoot at him in the past, he may still be shot up to a few milliseconds after he took cover.</p>
+<p>It is somewhat unfair, but it’s the most agreeable solution for everyone involved. It would be much worse to miss an unmissable shot!</p>
+<h2 id="conclusion">Conclusion</h2>
+<p>This ends my series on Fast-paced Multiplayer. This kind of thing is clearly tricky to get right, but with a clear conceptual understanding about what’s going on, it’s not exceedingly difficult.</p>
+<p>Although the audience of these articles were game developers, it found another group of interested readers: gamers! From a gamer point of view it’s also interesting to understand why some things happen the way they happen.</p>
+<h3 id="further-reading">Further Reading</h3>
+<p>As clever as these techniques are, I can’t claim any credit for them; these articles are just an easy to understand guide to some concepts I’ve learned from other sources, including articles and source code, and some experimentation.</p>
+<p>The most relevant articles about this topic are <a href="http://gafferongames.com/networking-for-game-programmers/what-every-programmer-needs-to-know-about-game-networking/">What Every Programmer Needs to Know About Game Networking</a> and <a href="https://developer.valvesoftware.com/wiki/Latency_Compensating_Methods_in_Client/Server_In-game_Protocol_Design_and_Optimization">Latency Compensating Methods in Client/Server In-game Protocol Design and Optimization</a>.</p>
+<div class="centered">
+<a href="https://www.gabrielgambetta.com/entity-interpolation.html">&lt;&lt; Part III: Entity Interpolation</a> · <a href="https://www.gabrielgambetta.com/client-side-prediction-live-demo.html"><strong>Live Demo &gt;&gt;</strong></a>
+</div>
+<div id="signup" class="signup signup_tgl">  <form id="signup_form" action="https://www.gabrielgambetta.com/signup.php" method="GET">
+    <b>Stay in touch!</b> Your email:    <input type="email" id="signup_email" name="email">
+    <input type="submit" id="signup_submit" value="Keep me posted">
+    <input type="hidden" name="a" value="s">
+    <input type="hidden" name="m" value="gamedev">
+    <input type="hidden" name="r" value="fpm4">
+    <input type="hidden" name="l" value="">
+  </form>
+
+  <div id="signup_error" style="display: none; font-size: 75%; color: red; font-weight: bold;">Please enter a valid email address.</div>
+
+  <script>
+    $("#signup_submit").click(function() {
+      var email = $("#signup_email").val();
+      var re = /\S+@\S+\.\S+/; 
+      if (re.test(email)) {
+        $("#signup_error").css("display", "none");
+        $("#signup_submit").prop("disabled", true);
+        $("#signup").load("/signup.php?" + $("#signup_form").serialize());
+      } else {
+        $("#signup_error").css("display", "block");
+        $("#signup_submit").prop("disabled", false);
+      }
+      return false;
+    });
+  </script>
+</div>
+<script>$("#signup").load("/signup.php?m=gamedev&r=fpm4");</script>
+<hr>
+<div class="social">
+
+<!-- Facebook -->
+<div id="fb-root" class=" fb_reset"><div style="position: absolute; top: -10000px; width: 0px; height: 0px;"><div></div></div></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/en_US/all.js#xfbml=1";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+<div class="fb-like fb_iframe_widget" data-send="false" data-layout="button_count" data-width="450" data-show-faces="false" style="width: 150px;" fb-xfbml-state="rendered" fb-iframe-plugin-query="app_id=&amp;container_width=150&amp;href=https%3A%2F%2Fwww.gabrielgambetta.com%2Flag-compensation.html&amp;layout=button_count&amp;locale=en_US&amp;sdk=joey&amp;send=false&amp;show_faces=false&amp;width=450"><span style="vertical-align: bottom; width: 69px; height: 20px;"><iframe name="f37ca90d4c7a28" width="450px" height="1000px" data-testid="fb:like Facebook Social Plugin" title="fb:like Facebook Social Plugin" frameborder="0" allowtransparency="true" allowfullscreen="true" scrolling="no" allow="encrypted-media" src="./Lag Compensation - Gabriel Gambetta_files/like.html" style="border: none; visibility: visible; width: 69px; height: 20px;" class=""></iframe></span></div>
+
+<!-- Twitter -->
+<iframe id="twitter-widget-0" scrolling="no" frameborder="0" allowtransparency="true" allowfullscreen="true" class="twitter-share-button twitter-share-button-rendered twitter-tweet-button" style="position: static; visibility: visible; width: 60px; height: 20px;" title="Twitter Tweet Button" src="./Lag Compensation - Gabriel Gambetta_files/tweet_button.2d7d9a6d04538bf11c7b23641e75738c.en.html"></iframe>
+<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+
+</div>
+</div>
+<div class="copyright">© Gabriel Gambetta 2019</div>
+
+
+<iframe scrolling="no" frameborder="0" allowtransparency="true" src="./Lag Compensation - Gabriel Gambetta_files/widget_iframe.2d7d9a6d04538bf11c7b23641e75738c.html" title="Twitter settings iframe" style="display: none;"></iframe></body></html>

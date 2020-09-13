@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<!-- saved from url=(0054)https://developer.valvesoftware.com/wiki/Interpolation -->
+<html lang="en" dir="ltr" class="client-js"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<title>Interpolation - Valve Developer Community</title>
+<script>document.documentElement.className = document.documentElement.className.replace( /(^|\s)client-nojs(\s|$)/, "$1client-js$2" );</script>
+<script>(window.RLQ=window.RLQ||[]).push(function(){mw.config.set({"wgCanonicalNamespace":"","wgCanonicalSpecialPageName":false,"wgNamespaceNumber":0,"wgPageName":"Interpolation","wgTitle":"Interpolation","wgCurRevisionId":167266,"wgRevisionId":167266,"wgArticleId":22208,"wgIsArticle":true,"wgIsRedirect":false,"wgAction":"view","wgUserName":null,"wgUserGroups":["*"],"wgCategories":["TODO","Networking"],"wgBreakFrames":false,"wgPageContentLanguage":"en","wgPageContentModel":"wikitext","wgSeparatorTransformTable":["",""],"wgDigitTransformTable":["",""],"wgDefaultDateFormat":"dmy","wgMonthNames":["","January","February","March","April","May","June","July","August","September","October","November","December"],"wgMonthNamesShort":["","Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"],"wgRelevantPageName":"Interpolation","wgRelevantArticleId":22208,"wgRequestId":"803bb8a720d5c3253707679f","wgIsProbablyEditable":false,"wgRestrictionEdit":[],"wgRestrictionMove":[],"wgWikiEditorEnabledModules":{"toolbar":true,"dialogs":true,"preview":false,"publish":false},"wgMediaViewerOnClick":true,"wgMediaViewerEnabledByDefault":true,"wgCategoryTreePageCategoryOptions":"{\"mode\":0,\"hideprefix\":20,\"showcount\":true,\"namespaces\":false}"});mw.loader.implement("user.options",function($,jQuery,require,module){mw.user.options.set({"variant":"en"});});mw.loader.implement("user.tokens",function ( $, jQuery, require, module ) {
+mw.user.tokens.set({"editToken":"+\\","patrolToken":"+\\","watchToken":"+\\","csrfToken":"+\\"});/*@nomin*/;
+
+});mw.loader.load(["mediawiki.page.startup","skins.vector.js"]);});</script>
+<link rel="stylesheet" href="./Interpolation - Valve Developer Community_files/load.php">
+<style>
+.mw-collapsible-toggle{float:right;-moz-user-select:none;-webkit-user-select:none;-ms-user-select:none;user-select:none}  .mw-content-ltr .mw-collapsible-toggle,.mw-content-rtl .mw-content-ltr .mw-collapsible-toggle{float:right} .mw-content-rtl .mw-collapsible-toggle,.mw-content-ltr .mw-content-rtl .mw-collapsible-toggle{float:left}.mw-customtoggle,.mw-collapsible-toggle{cursor:pointer} caption .mw-collapsible-toggle,.mw-content-ltr caption .mw-collapsible-toggle,.mw-content-rtl caption .mw-collapsible-toggle,.mw-content-rtl .mw-content-ltr caption .mw-collapsible-toggle,.mw-content-ltr .mw-content-rtl caption .mw-collapsible-toggle{float:none} li .mw-collapsible-toggle,.mw-content-ltr li .mw-collapsible-toggle,.mw-content-rtl li .mw-collapsible-toggle,.mw-content-rtl .mw-content-ltr li .mw-collapsible-toggle,.mw-content-ltr .mw-content-rtl li .mw-collapsible-toggle{float:none} .mw-collapsible-toggle-li{list-style:none}
+.suggestions{overflow:hidden;position:absolute;top:0;left:0;width:0;border:none;z-index:1099;padding:0;margin:-1px 0 0 0}.suggestions-special{position:relative;background-color:white;cursor:pointer;border:solid 1px #aaaaaa;padding:0;margin:0;margin-top:-2px;display:none;padding:0.25em 0.25em;line-height:1.25em}.suggestions-results{background-color:white;cursor:pointer;border:solid 1px #aaaaaa;padding:0;margin:0}.suggestions-result{color:black;margin:0;line-height:1.5em;padding:0.01em 0.25em;text-align:left; overflow:hidden;-o-text-overflow:ellipsis; text-overflow:ellipsis;white-space:nowrap}.suggestions-result-current{background-color:#4C59A6;color:white}.suggestions-special .special-label{color:gray;text-align:left}.suggestions-special .special-query{color:black;font-style:italic;text-align:left}.suggestions-special .special-hover{background-color:silver}.suggestions-result-current .special-label,.suggestions-result-current .special-query{color:white}.highlight{font-weight:bold}
+@media screen {
+	.tochidden,.toctoggle{-moz-user-select:none;-webkit-user-select:none;-ms-user-select:none;user-select:none}.toctoggle{font-size:94%}}
+@media print {
+	#toc.tochidden,.toctoggle{display:none}}
+.postedit-container{margin:0 auto;position:fixed;top:0;height:0;left:50%;z-index:1000;font-size:13px}.postedit-container:hover{cursor:pointer}.postedit{position:relative;top:0.6em;left:-50%;padding:.6em 3.6em .6em 1.1em;line-height:1.5625em;color:#626465;background-color:#f4f4f4;border:1px solid #dcd9d9;text-shadow:0 0.0625em 0 rgba(255,255,255,0.5);border-radius:5px;box-shadow:0 2px 5px 0 #ccc;-webkit-transition:all 0.25s ease-in-out;-moz-transition:all 0.25s ease-in-out;-ms-transition:all 0.25s ease-in-out;-o-transition:all 0.25s ease-in-out;transition:all 0.25s ease-in-out}.skin-monobook .postedit{top:6em !important}.postedit-faded{opacity:0}.postedit-icon{padding-left:41px;  line-height:25px;background-repeat:no-repeat;background-position:8px 50%}.postedit-icon-checkmark{background-image:url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAB9ElEQVR4AZWRA3AYURQArxrVHtW2bdu2bdu2zdi2bdu2bWxs7zeehZaw4f70kbs+zI3e/nWK+RWx3aOFlrL56Sy5SxrruG69hlv6OyK+mz+8KDSXdXembj0ispT7tjs4ZTIbpYBvxGSGKzZTeFrb7W/meN002swFs0U8ttpHTkF2BvCqWQrW35929bTsKm5Zb+SEwWwcY8wAngB9m7Z+d+rIPZ/npdy12M5p47n8dXsCYAf0qPy06eGMdktuDu9Qf+JmKl3SWM91qzVcN9tAbEYkwMaq0tyb1m/To5kP170el/BK8/qa6sJr70ydf+T/Uu5ab+Oo/lS0AkUBpIFWlZ9WPhxpse/PHO7YbOOczjL0vZV2lNxPPtG73dYXM+xvm2znrOl83tidoqCwMBgYXsPFB0on5S6pr+eK5TKuW67lgvaKvF8mL1dtfTL32FHxRdyx3cQpg7m4x9sCXKkTIzA4LDH44zWdzaUf71hv5rTG4uyzcusybxSX7aThbMQ8XgCYAp3rzTTQOiIh9PNlzY3FSuZxrzjme1Y7uGS6kjsWO4jPjM4FVjRZsvD4kO9XtTZzQn82NyzWc0B7AmZh6gA/hOYSGhfw9YbOVnarj+S7800AL2BIsxUAbWNToj7bhBuQmZcOsFdoKUC74rGheCwXmqAIQTc9jQcrADIAAAAASUVORK5CYII=);background-image:url(/w/resources/src/mediawiki.action/images/green-checkmark.png?d94f1)!ie;background-position:left}.postedit-close{position:absolute;padding:0 .8em;right:0;top:0;font-size:1.25em;font-weight:bold;line-height:2.3em;color:black;text-shadow:0 0.0625em 0 white;text-decoration:none;opacity:0.2;filter:alpha(opacity=20)}.postedit-close:hover{color:black;text-decoration:none;opacity:0.4;filter:alpha(opacity=40)}</style><style>
+.suggestions a.mw-searchSuggest-link,.suggestions a.mw-searchSuggest-link:hover,.suggestions a.mw-searchSuggest-link:active,.suggestions a.mw-searchSuggest-link:focus{color:black;text-decoration:none}.suggestions-result-current a.mw-searchSuggest-link,.suggestions-result-current a.mw-searchSuggest-link:hover,.suggestions-result-current a.mw-searchSuggest-link:active,.suggestions-result-current a.mw-searchSuggest-link:focus{color:white}.suggestions a.mw-searchSuggest-link .special-query{ overflow:hidden;-o-text-overflow:ellipsis; text-overflow:ellipsis;white-space:nowrap}</style><meta name="ResourceLoaderDynamicStyles" content="">
+<script async="" src="./Interpolation - Valve Developer Community_files/load(1).php"></script>
+<meta name="generator" content="MediaWiki 1.27.4">
+<link rel="shortcut icon" href="https://developer.valvesoftware.com/favicon.ico">
+<link rel="search" type="application/opensearchdescription+xml" href="https://developer.valvesoftware.com/w/opensearch_desc.php" title="Valve Developer Community (en)">
+<link rel="EditURI" type="application/rsd+xml" href="https://developer.valvesoftware.com/w/api.php?action=rsd">
+<link rel="alternate" type="application/atom+xml" title="Valve Developer Community Atom feed" href="https://developer.valvesoftware.com/w/index.php?title=Special:RecentChanges&amp;feed=atom">
+<script src="./Interpolation - Valve Developer Community_files/load(2).php"></script></head>
+<body class="mediawiki ltr sitedir-ltr ns-0 ns-subject page-Interpolation rootpage-Interpolation skin-vector action-view vsc-initialized">
+		<div id="mw-page-base" class="noprint"></div>
+		<div id="mw-head-base" class="noprint"></div>
+		<div id="content" class="mw-body" role="main">
+			<a id="top"></a>
+
+						<div class="mw-indicators">
+</div>
+			<h1 id="firstHeading" class="firstHeading" lang="en">Interpolation</h1>
+									<div id="bodyContent" class="mw-body-content">
+									<div id="siteSub">From Valve Developer Community</div>
+								<div id="contentSub"></div>
+												<div id="jump-to-nav" class="mw-jump">
+					Jump to:					<a href="https://developer.valvesoftware.com/wiki/Interpolation#mw-head">navigation</a>, 					<a href="https://developer.valvesoftware.com/wiki/Interpolation#p-search">search</a>
+				</div>
+				<div id="mw-content-text" lang="en" dir="ltr" class="mw-content-ltr"><div style="float:right;clear:right;padding:0 1em;background:#262626;"><div id="toc" class="toc"><div id="toctitle"><h2>Contents</h2><span class="toctoggle">&nbsp;[<a href="https://developer.valvesoftware.com/wiki/Interpolation#" id="togglelink">hide</a>]&nbsp;</span></div>
+<ul>
+<li class="toclevel-1 tocsection-1"><a href="https://developer.valvesoftware.com/wiki/Interpolation#Impact_and_management"><span class="tocnumber">1</span> <span class="toctext">Impact and management</span></a></li>
+<li class="toclevel-1 tocsection-2"><a href="https://developer.valvesoftware.com/wiki/Interpolation#Implementation"><span class="tocnumber">2</span> <span class="toctext">Implementation</span></a>
+<ul>
+<li class="toclevel-2 tocsection-3"><a href="https://developer.valvesoftware.com/wiki/Interpolation#Troubleshooting"><span class="tocnumber">2.1</span> <span class="toctext">Troubleshooting</span></a></li>
+</ul>
+</li>
+<li class="toclevel-1 tocsection-4"><a href="https://developer.valvesoftware.com/wiki/Interpolation#See_also"><span class="tocnumber">3</span> <span class="toctext">See also</span></a></li>
+</ul>
+</div>
+</div>
+<p>A multiplayer client will typically need to render three or more frames with each server update it receives (assuming 60fps+ and <a href="https://developer.valvesoftware.com/w/index.php?title=Cl_updaterate&amp;action=edit&amp;redlink=1" class="new" title="Cl updaterate (page does not exist)">cl_updaterate</a> 20).
+</p><p>Source's <b>interpolation system</b> prevents the jittery motion this would ordinarily lead to by buffering server updates then playing them back with the gaps smoothly <a href="http://en.wikipedia.org/wiki/Interpolation" class="extiw" title="w:Interpolation">interpolated</a> between. It can also protect against glitches caused by packet loss.
+</p><p>The server knows how much interpolation each client has, and adjusts <a href="https://developer.valvesoftware.com/wiki/Lag_compensation" title="Lag compensation">lag compensation</a> accordingly.
+</p>
+<h2><span class="mw-headline" id="Impact_and_management">Impact and management</span></h2>
+<p>Interpolation adds artificial latency to a player's view of the game world and as such should be kept to the barest minimum. Unfortunately Valve's games still default to a minimum interpolation delay ("lerp") of 100ms, a value tuned for the era of dial-up modems!
+</p>
+<ul><li> Players should set <code>cl_interp 0</code>, as this will ensure that the lerp is the precise length needed to accommodate the current <a href="https://developer.valvesoftware.com/w/index.php?title=Cl_updaterate&amp;action=edit&amp;redlink=1" class="new" title="Cl updaterate (page does not exist)">server update rate</a>. Raising the update rate will reduce lerp further.</li>
+<li> Modders should consider removing or renaming <code>cl_interp</code> to prevent confusion.</li>
+<li> Server operators can regulate lerp with <code>sv_client_min_interp_ratio</code> and <code>sv_client_max_interp_ratio</code>.</li></ul>
+<p>Players who suffer from packet loss may want to raise cl_interp_ratio to 3 (protects against one dropped packet) or even 4 (protects against two consecutive dropped packets).
+</p>
+<h2><span class="mw-headline" id="Implementation">Implementation</span></h2>
+<p>This simple entity prints an interpolated float every frame.
+</p>
+<div style="max-height:30em;overflow:auto;">
+<p><b>Server:</b>
+</p>
+<div class="mw-highlight mw-content-ltr" dir="ltr"><pre><span class="cp">#include</span> <span class="cpf">"cbase.h"</span><span class="cp"></span>
+
+<span class="k">class</span> <span class="nc">CInterpDemo</span> <span class="o">:</span> <span class="k">public</span> <span class="n">CBaseEntity</span>
+<span class="p">{</span>
+<span class="k">public</span><span class="o">:</span>
+	<span class="n">DECLARE_CLASS</span><span class="p">(</span><span class="n">CInterpDemo</span><span class="p">,</span> <span class="n">CBaseEntity</span><span class="p">);</span>
+	<span class="n">DECLARE_SERVERCLASS</span><span class="p">();</span>
+ 
+	<span class="n">CInterpDemo</span><span class="p">()</span> <span class="p">{</span> <span class="n">m_MyFloat</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="p">}</span>
+
+	<span class="kt">void</span> <span class="n">Spawn</span><span class="p">()</span> <span class="p">{</span> <span class="n">SetNextThink</span><span class="p">(</span><span class="n">gpGlobals</span><span class="o">-&gt;</span><span class="n">curtime</span> <span class="o">+</span> <span class="mf">0.0001</span><span class="p">);</span> <span class="n">BaseClass</span><span class="o">::</span><span class="n">Spawn</span><span class="p">();</span> <span class="p">}</span>
+	<span class="kt">int</span> <span class="n">UpdateTransmitState</span><span class="p">()</span> <span class="p">{</span> <span class="k">return</span> <span class="n">SetTransmitState</span><span class="p">(</span> <span class="n">FL_EDICT_ALWAYS</span> <span class="p">);</span> <span class="p">}</span> 
+	<span class="kt">void</span> <span class="n">Think</span><span class="p">();</span>
+ 
+	<span class="n">CNetworkVar</span><span class="p">(</span><span class="kt">float</span><span class="p">,</span><span class="n">m_MyFloat</span><span class="p">);</span>
+<span class="p">};</span>
+ 
+<span class="n">IMPLEMENT_SERVERCLASS_ST</span><span class="p">(</span><span class="n">CInterpDemo</span><span class="p">,</span> <span class="n">DTInterpDemo</span><span class="p">)</span>
+	<span class="n">SendPropFloat</span><span class="p">(</span> <span class="n">SENDINFO</span><span class="p">(</span><span class="n">m_MyFloat</span><span class="p">)</span> <span class="p">),</span>
+<span class="n">END_SEND_TABLE</span><span class="p">()</span>
+ 
+<span class="n">LINK_ENTITY_TO_CLASS</span><span class="p">(</span> <span class="n">interp_demo</span><span class="p">,</span> <span class="n">CInterpDemo</span> <span class="p">);</span>
+ 
+<span class="kt">void</span> <span class="n">CInterpDemo</span><span class="o">::</span><span class="n">Think</span><span class="p">()</span>
+<span class="p">{</span>
+	<span class="n">m_MyFloat</span> <span class="o">+=</span> <span class="mf">0.1</span><span class="p">;</span>
+
+	<span class="c1">// without this, LATCH_SIMULATION_VAR will never be triggered</span>
+	<span class="n">SetSimulationTime</span><span class="p">(</span> <span class="n">gpGlobals</span><span class="o">-&gt;</span><span class="n">curtime</span> <span class="p">);</span> 
+
+	<span class="n">SetNextThink</span><span class="p">(</span><span class="n">gpGlobals</span><span class="o">-&gt;</span><span class="n">curtime</span> <span class="o">+</span> <span class="mf">0.0001</span><span class="p">);</span>
+	<span class="n">BaseClass</span><span class="o">::</span><span class="n">Think</span><span class="p">();</span>
+<span class="p">}</span>
+</pre></div>
+<p><b>Client:</b>
+</p>
+<div class="mw-highlight mw-content-ltr" dir="ltr"><pre><span class="cp">#include</span> <span class="cpf">"cbase.h"</span><span class="cp"></span>
+
+<span class="k">class</span> <span class="nc">C_InterpDemo</span> <span class="o">:</span> <span class="k">public</span> <span class="n">C_BaseEntity</span>
+<span class="p">{</span>
+<span class="k">public</span><span class="o">:</span>
+	<span class="n">DECLARE_CLASS</span><span class="p">(</span><span class="n">C_InterpDemo</span><span class="p">,</span> <span class="n">C_BaseEntity</span><span class="p">);</span>
+	<span class="n">DECLARE_CLIENTCLASS</span><span class="p">();</span>
+ 
+	<span class="n">C_InterpDemo</span><span class="p">();</span>
+
+	<span class="kt">bool</span> <span class="nf">ShouldInterpolate</span><span class="p">()</span> <span class="p">{</span> <span class="k">return</span> <span class="nb">true</span><span class="p">;</span> <span class="p">}</span> <span class="c1">// ordinarily only entities in PVS are interpolated</span>
+ 
+	<span class="kt">void</span> <span class="nf">PostDataUpdate</span><span class="p">(</span><span class="n">DataUpdateType_t</span> <span class="n">updateType</span><span class="p">);</span>
+ 
+	<span class="kt">void</span> <span class="nf">ClientThink</span><span class="p">();</span>
+ 
+	<span class="kt">float</span> <span class="n">m_MyFloat</span><span class="p">;</span>
+	<span class="kt">char</span><span class="o">*</span> <span class="n">UpdateMsg</span><span class="p">;</span>
+	<span class="n">CInterpolatedVar</span><span class="o">&lt;</span><span class="kt">float</span><span class="o">&gt;</span> <span class="n">m_iv_MyFloat</span><span class="p">;</span>
+<span class="p">};</span>
+ 
+<span class="n">IMPLEMENT_CLIENTCLASS_DT</span><span class="p">(</span><span class="n">C_InterpDemo</span><span class="p">,</span><span class="n">DTInterpDemo</span><span class="p">,</span><span class="n">CInterpDemo</span><span class="p">)</span>
+	<span class="n">RecvPropFloat</span><span class="p">(</span> <span class="n">RECVINFO</span><span class="p">(</span><span class="n">m_MyFloat</span><span class="p">)</span> <span class="p">),</span>
+<span class="n">END_RECV_TABLE</span><span class="p">()</span>
+
+<span class="n">LINK_ENTITY_TO_CLASS</span><span class="p">(</span> <span class="n">interp_demo</span><span class="p">,</span> <span class="n">C_InterpDemo</span> <span class="p">);</span>
+ 
+<span class="n">C_InterpDemo</span><span class="o">::</span><span class="n">C_InterpDemo</span><span class="p">()</span> <span class="o">:</span>
+	<span class="n">m_iv_MyFloat</span><span class="p">(</span><span class="s">"C_InterpDemo::m_iv_MyFloat"</span><span class="p">)</span> <span class="c1">// just a debug name, can be anything unique</span>
+<span class="p">{</span>
+	<span class="c1">// This is a simulation latch, so the variable will only be interpolated</span>
+	<span class="c1">// if the entity is moving or has a new SimulationTime.</span>
+	<span class="n">AddVar</span><span class="p">(</span> <span class="o">&amp;</span><span class="n">m_MyFloat</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">m_iv_MyFloat</span><span class="p">,</span> <span class="n">LATCH_SIMULATION_VAR</span> <span class="p">);</span>
+	<span class="n">UpdateMsg</span> <span class="o">=</span> <span class="s">""</span><span class="p">;</span>
+<span class="p">}</span>
+ 
+<span class="kt">void</span> <span class="n">C_InterpDemo</span><span class="o">::</span><span class="n">PostDataUpdate</span><span class="p">(</span><span class="n">DataUpdateType_t</span> <span class="n">updateType</span><span class="p">)</span>
+<span class="p">{</span>
+	<span class="n">UpdateMsg</span> <span class="o">=</span> <span class="s">" (from server)"</span><span class="p">;</span>
+	<span class="n">SetNextClientThink</span><span class="p">(</span><span class="n">CLIENT_THINK_ALWAYS</span><span class="p">);</span>
+	<span class="n">BaseClass</span><span class="o">::</span><span class="n">PostDataUpdate</span><span class="p">(</span><span class="n">updateType</span><span class="p">);</span>
+<span class="p">}</span>
+ 
+<span class="kt">void</span> <span class="n">C_InterpDemo</span><span class="o">::</span><span class="n">ClientThink</span><span class="p">()</span>
+<span class="p">{</span>
+	<span class="n">Msg</span><span class="p">(</span><span class="s">"Interpolated float: %f%s</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span><span class="n">m_MyFloat</span><span class="p">,</span><span class="n">UpdateMsg</span><span class="p">);</span>
+	<span class="n">UpdateMsg</span> <span class="o">=</span> <span class="s">""</span><span class="p">;</span>
+	<span class="n">SetNextClientThink</span><span class="p">(</span><span class="n">CLIENT_THINK_ALWAYS</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>The important steps are:
+</p>
+<ol><li> Initialise our <code>CInterpolatedVar</code> in the class constructor, giving it a debug name in the process. <strong style="color:#8BC53F">To do:&nbsp;</strong>How to debug?</li>
+<li> Call <code>AddVar()</code> to latch the <code>CInterpolatedVar</code> onto the actual variable.</li>
+<li> Ensure that <code>ShouldInterpolate()</code> returns true when we want it to. (This entity isn't visible so wouldn't normally be interpolated.)</li>
+<li> On the server, call <code>SetSimulationTime()</code>. The simulation latch we chose in <code>AddVar()</code> is triggered by changes to this value or to the origin/angles. You could also choose an animation latch which is triggered by changes to the entity's current animation frame ("<a href="https://developer.valvesoftware.com/wiki/Animating_a_model" title="Animating a model">cycle</a>").</li></ol>
+<h3><span class="mw-headline" id="Troubleshooting">Troubleshooting</span></h3>
+<p>If your variable is not being interpolated:
+</p>
+<ul><li> Check <code>C_BaseEntity::PostDataUpdate()</code>, which is where the interp system kicks in.</li>
+<li> If the interpolated value needs to be passed to other code (e.g. VPhysics positioning), make sure you are doing so in <code><a href="https://developer.valvesoftware.com/wiki/ClientThink()" title="ClientThink()" class="mw-redirect">ClientThink()</a></code> every frame.</li>
+<li> Make sure your entity is in <a href="https://developer.valvesoftware.com/wiki/PVS" title="PVS">PVS</a> on the client.</li></ul>
+<h2><span class="mw-headline" id="See_also">See also</span></h2>
+<ul><li> <a href="https://developer.valvesoftware.com/wiki/Source_Multiplayer_Networking#Entity_interpolation" title="Source Multiplayer Networking">Source Multiplayer Networking#Entity interpolation</a></li>
+<li> <a href="https://developer.valvesoftware.com/wiki/Lag_compensation" title="Lag compensation">Lag compensation</a></li></ul>
+
+<!-- 
+NewPP limit report
+Cached time: 20200910194214
+Cache expiry: 86400
+Dynamic content: false
+CPU time usage: 0.032 seconds
+Real time usage: 0.244 seconds
+Preprocessor visited node count: 48/1000000
+Preprocessor generated node count: 127/1000000
+Post‐expand include size: 180/2097152 bytes
+Template argument size: 26/2097152 bytes
+Highest expansion depth: 3/40
+Expensive parser function count: 0/100
+-->
+
+<!-- 
+Transclusion expansion time report (%,ms,calls,template)
+100.00%  227.062      1 - -total
+  2.01%    4.556      1 - Template:Todo
+  0.68%    1.553      1 - Template:Toc-right
+-->
+
+<!-- Saved in parser cache with key developerwiki-mw_:pcache:idhash:22208-0!*!0!!en!*!* and timestamp 20200910194214 and revision id 167266
+ -->
+</div>					<div class="printfooter">
+						Retrieved from "<a dir="ltr" href="https://developer.valvesoftware.com/w/index.php?title=Interpolation&amp;oldid=167266">https://developer.valvesoftware.com/w/index.php?title=Interpolation&amp;oldid=167266</a>"					</div>
+				<div id="catlinks" class="catlinks" data-mw="interface"><div id="mw-normal-catlinks" class="mw-normal-catlinks"><a href="https://developer.valvesoftware.com/wiki/Special:Categories" title="Special:Categories">Category</a>: <ul><li><a href="https://developer.valvesoftware.com/wiki/Category:Networking" title="Category:Networking">Networking</a></li></ul></div><div id="mw-hidden-catlinks" class="mw-hidden-catlinks mw-hidden-cats-hidden">Hidden category: <ul><li><a href="https://developer.valvesoftware.com/wiki/Category:TODO" title="Category:TODO">TODO</a></li></ul></div></div>				<div class="visualClear"></div>
+							</div>
+		</div>
+		<div id="mw-navigation">
+			<h2>Navigation menu</h2>
+
+			<div id="mw-head">
+									<div id="p-personal" role="navigation" class="" aria-labelledby="p-personal-label">
+						<h3 id="p-personal-label">Personal tools</h3>
+						<ul>
+							<li id="pt-createaccount"><a href="https://developer.valvesoftware.com/w/index.php?title=Special:CreateAccount&amp;returnto=Interpolation" title="You are encouraged to create an account and log in; however, it is not mandatory">Create account</a></li><li id="pt-login"><a href="https://developer.valvesoftware.com/w/index.php?title=Special:UserLogin&amp;returnto=Interpolation" title="You are encouraged to log in; however, it is not mandatory [alt-shift-o]" accesskey="o">Log in</a></li>						</ul>
+					</div>
+									<div id="left-navigation">
+										<div id="p-namespaces" role="navigation" class="vectorTabs" aria-labelledby="p-namespaces-label">
+						<h3 id="p-namespaces-label">Namespaces</h3>
+						<ul>
+															<li id="ca-nstab-main" class="selected"><span><a href="https://developer.valvesoftware.com/wiki/Interpolation" title="View the content page [alt-shift-c]" accesskey="c">Page</a></span></li>
+															<li id="ca-talk" class="new"><span><a href="https://developer.valvesoftware.com/w/index.php?title=Talk:Interpolation&amp;action=edit&amp;redlink=1" title="Discussion about the content page [alt-shift-t]" accesskey="t" rel="discussion">Discussion</a></span></li>
+													</ul>
+					</div>
+										<div id="p-variants" role="navigation" class="vectorMenu emptyPortlet" aria-labelledby="p-variants-label">
+												<h3 id="p-variants-label" tabindex="0">
+							<span>Variants</span><a href="https://developer.valvesoftware.com/wiki/Interpolation#" tabindex="-1"></a>
+						</h3>
+
+						<div class="menu">
+							<ul>
+															</ul>
+						</div>
+					</div>
+									</div>
+				<div id="right-navigation">
+										<div id="p-views" role="navigation" class="vectorTabs" aria-labelledby="p-views-label">
+						<h3 id="p-views-label">Views</h3>
+						<ul>
+															<li id="ca-view" class="selected"><span><a href="https://developer.valvesoftware.com/wiki/Interpolation">Read</a></span></li>
+															<li id="ca-viewsource"><span><a href="https://developer.valvesoftware.com/w/index.php?title=Interpolation&amp;action=edit" title="This page is protected.
+You can view its source [alt-shift-e]" accesskey="e">View source</a></span></li>
+															<li id="ca-history" class="collapsible"><span><a href="https://developer.valvesoftware.com/w/index.php?title=Interpolation&amp;action=history" title="Past revisions of this page [alt-shift-h]" accesskey="h">View history</a></span></li>
+													</ul>
+					</div>
+										<div id="p-cactions" role="navigation" class="vectorMenu emptyPortlet" aria-labelledby="p-cactions-label" style="">
+						<h3 id="p-cactions-label" tabindex="0"><span>More</span><a href="https://developer.valvesoftware.com/wiki/Interpolation#" tabindex="-1"></a></h3>
+
+						<div class="menu">
+							<ul>
+															</ul>
+						</div>
+					</div>
+										<div id="p-search" role="search">
+						<h3>
+							<label for="searchInput">Search</label>
+						</h3>
+
+						<form action="https://developer.valvesoftware.com/w/index.php" id="searchform">
+							<div id="simpleSearch">
+							<input type="search" name="search" placeholder="Search" title="Search Valve Developer Community [alt-shift-f]" accesskey="f" id="searchInput" tabindex="1" autocomplete="off"><input type="hidden" value="Special:Search" name="title"><input type="submit" name="go" value="Go" title="Go to a page with this exact name if it exists" id="searchButton" class="searchButton">							</div>
+						</form>
+					</div>
+									</div>
+			</div>
+			<div id="mw-panel">
+				<div id="p-logo" role="banner"><a class="mw-wiki-logo" href="https://developer.valvesoftware.com/wiki/Main_Page" title="Visit the main page"></a></div>
+						<div class="portal" role="navigation" id="p-navigation" aria-labelledby="p-navigation-label">
+			<h3 id="p-navigation-label">Navigation</h3>
+
+			<div class="body">
+									<ul>
+						<li id="n-mainpage"><a href="https://developer.valvesoftware.com/wiki/Main_Page" title="Visit the main page [alt-shift-z]" accesskey="z">Main Page</a></li><li id="n-Source-SDK-index"><a href="https://developer.valvesoftware.com/wiki/SDK_Docs">Source SDK index</a></li><li id="n-Dota-2-Tools"><a href="https://developer.valvesoftware.com/wiki/Dota_2_Workshop_Tools">Dota 2 Tools</a></li><li id="n-Half-Life:Alyx-Tools"><a href="https://developer.valvesoftware.com/wiki/Half-Life:_Alyx_Workshop_Tools">Half-Life:Alyx Tools</a></li><li id="n-SteamVR-Tools"><a href="https://developer.valvesoftware.com/wiki/SteamVR/Environments">SteamVR Tools</a></li><li id="n-recentchanges"><a href="https://developer.valvesoftware.com/wiki/Special:RecentChanges" title="A list of recent changes in the wiki [alt-shift-r]" accesskey="r">Recent changes</a></li><li id="n-randompage"><a href="https://developer.valvesoftware.com/wiki/Special:Random" title="Load a random page [alt-shift-x]" accesskey="x">Random page</a></li>					</ul>
+							</div>
+		</div>
+			<div class="portal" role="navigation" id="p-Support" aria-labelledby="p-Support-label">
+			<h3 id="p-Support-label">Support</h3>
+
+			<div class="body">
+									<ul>
+						<li id="n-Getting-help"><a href="https://developer.valvesoftware.com/wiki/Help:Contents">Getting help</a></li><li id="n-Source-SDK-FAQ"><a href="https://developer.valvesoftware.com/wiki/Category:Source_SDK_FAQ">Source SDK FAQ</a></li><li id="n-Level-Design-FAQ"><a href="https://developer.valvesoftware.com/wiki/Category:Level_Design_FAQ">Level Design FAQ</a></li><li id="n-SDK-Help-Forums"><a href="http://forums.steampowered.com/forums/forumdisplay.php?f=191" rel="nofollow">SDK Help Forums</a></li>					</ul>
+							</div>
+		</div>
+			<div class="portal" role="navigation" id="p-Steam_Community" aria-labelledby="p-Steam_Community-label">
+			<h3 id="p-Steam_Community-label">Steam Community</h3>
+
+			<div class="body">
+									<ul>
+						<li id="n-Source-SDK-Hub"><a href="http://steamcommunity.com/app/211" rel="nofollow">Source SDK Hub</a></li><li id="n-Steam-Games"><a href="http://www.steampowered.com/" rel="nofollow">Steam Games</a></li>					</ul>
+							</div>
+		</div>
+			<div class="portal" role="navigation" id="p-tb" aria-labelledby="p-tb-label">
+			<h3 id="p-tb-label">Tools</h3>
+
+			<div class="body">
+									<ul>
+						<li id="t-whatlinkshere"><a href="https://developer.valvesoftware.com/wiki/Special:WhatLinksHere/Interpolation" title="A list of all wiki pages that link here [alt-shift-j]" accesskey="j">What links here</a></li><li id="t-recentchangeslinked"><a href="https://developer.valvesoftware.com/wiki/Special:RecentChangesLinked/Interpolation" title="Recent changes in pages linked from this page [alt-shift-k]" accesskey="k">Related changes</a></li><li id="t-specialpages"><a href="https://developer.valvesoftware.com/wiki/Special:SpecialPages" title="A list of all special pages [alt-shift-q]" accesskey="q">Special pages</a></li><li id="t-print"><a href="https://developer.valvesoftware.com/w/index.php?title=Interpolation&amp;printable=yes" rel="alternate" title="Printable version of this page [alt-shift-p]" accesskey="p">Printable version</a></li><li id="t-permalink"><a href="https://developer.valvesoftware.com/w/index.php?title=Interpolation&amp;oldid=167266" title="Permanent link to this revision of the page">Permanent link</a></li><li id="t-info"><a href="https://developer.valvesoftware.com/w/index.php?title=Interpolation&amp;action=info" title="More information about this page">Page information</a></li>					</ul>
+							</div>
+		</div>
+				</div>
+		</div>
+		<div id="footer" role="contentinfo">
+							<ul id="footer-info">
+											<li id="footer-info-lastmod"> This page was last modified on 25 April 2012, at 08:22.</li>
+									</ul>
+							<ul id="footer-places">
+											<li id="footer-places-about"><a href="https://developer.valvesoftware.com/wiki/Valve_Developer_Community:About" title="Valve Developer Community:About">About Valve Developer Community</a></li>
+											<li id="footer-places-disclaimer"><a href="https://developer.valvesoftware.com/wiki/Valve_Developer_Community:Terms_of_use" title="Valve Developer Community:Terms of use">Terms of Use</a></li>
+											<li id="footer-places-legalnotices"><a href="https://developer.valvesoftware.com/wiki/Valve_Developer_Community:Third_Party_Legal_Notices" title="Valve Developer Community:Third Party Legal Notices">Third Party Legal Notices</a></li>
+									</ul>
+										<ul id="footer-icons" class="noprint">
+											<li id="footer-poweredbyico">
+							<a href="https://www.mediawiki.org/"><img src="./Interpolation - Valve Developer Community_files/poweredby_mediawiki_88x31.png" alt="Powered by MediaWiki" srcset="/w/resources/assets/poweredby_mediawiki_132x47.png 1.5x, /w/resources/assets/poweredby_mediawiki_176x62.png 2x" width="88" height="31"></a>						</li>
+									</ul>
+						<div style="clear:both"></div>
+		</div>
+		<script>(window.RLQ=window.RLQ||[]).push(function(){mw.loader.state({"user":"ready","user.groups":"ready"});mw.loader.load(["mediawiki.toc","mediawiki.action.view.postEdit","site","mediawiki.user","mediawiki.hidpi","mediawiki.page.ready","mediawiki.searchSuggest"]);});</script><script>(window.RLQ=window.RLQ||[]).push(function(){mw.config.set({"wgBackendResponseTime":333});});</script>
+	
+
+<div class="suggestions" style="display: none; font-size: 13px;"><div class="suggestions-results"></div><div class="suggestions-special"></div></div></body></html>

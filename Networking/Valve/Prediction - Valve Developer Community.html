@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<!-- saved from url=(0051)https://developer.valvesoftware.com/wiki/Prediction -->
+<html lang="en" dir="ltr" class="client-js"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<title>Prediction - Valve Developer Community</title>
+<script>document.documentElement.className = document.documentElement.className.replace( /(^|\s)client-nojs(\s|$)/, "$1client-js$2" );</script>
+<script>(window.RLQ=window.RLQ||[]).push(function(){mw.config.set({"wgCanonicalNamespace":"","wgCanonicalSpecialPageName":false,"wgNamespaceNumber":0,"wgPageName":"Prediction","wgTitle":"Prediction","wgCurRevisionId":145263,"wgRevisionId":145263,"wgArticleId":1418,"wgIsArticle":true,"wgIsRedirect":false,"wgAction":"view","wgUserName":null,"wgUserGroups":["*"],"wgCategories":["TODO","CONFIRM","Networking"],"wgBreakFrames":false,"wgPageContentLanguage":"en","wgPageContentModel":"wikitext","wgSeparatorTransformTable":["",""],"wgDigitTransformTable":["",""],"wgDefaultDateFormat":"dmy","wgMonthNames":["","January","February","March","April","May","June","July","August","September","October","November","December"],"wgMonthNamesShort":["","Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"],"wgRelevantPageName":"Prediction","wgRelevantArticleId":1418,"wgRequestId":"d92f6992ec9eae17c8b8512d","wgIsProbablyEditable":false,"wgRestrictionEdit":[],"wgRestrictionMove":[],"wgWikiEditorEnabledModules":{"toolbar":true,"dialogs":true,"preview":false,"publish":false},"wgMediaViewerOnClick":true,"wgMediaViewerEnabledByDefault":true,"wgCategoryTreePageCategoryOptions":"{\"mode\":0,\"hideprefix\":20,\"showcount\":true,\"namespaces\":false}"});mw.loader.implement("user.options",function($,jQuery,require,module){mw.user.options.set({"variant":"en"});});mw.loader.implement("user.tokens",function ( $, jQuery, require, module ) {
+mw.user.tokens.set({"editToken":"+\\","patrolToken":"+\\","watchToken":"+\\","csrfToken":"+\\"});/*@nomin*/;
+
+});mw.loader.load(["mediawiki.page.startup","mmv.head","skins.vector.js"]);});</script>
+<link rel="stylesheet" href="./Prediction - Valve Developer Community_files/load.php">
+<style>
+.mw-collapsible-toggle{float:right;-moz-user-select:none;-webkit-user-select:none;-ms-user-select:none;user-select:none}  .mw-content-ltr .mw-collapsible-toggle,.mw-content-rtl .mw-content-ltr .mw-collapsible-toggle{float:right} .mw-content-rtl .mw-collapsible-toggle,.mw-content-ltr .mw-content-rtl .mw-collapsible-toggle{float:left}.mw-customtoggle,.mw-collapsible-toggle{cursor:pointer} caption .mw-collapsible-toggle,.mw-content-ltr caption .mw-collapsible-toggle,.mw-content-rtl caption .mw-collapsible-toggle,.mw-content-rtl .mw-content-ltr caption .mw-collapsible-toggle,.mw-content-ltr .mw-content-rtl caption .mw-collapsible-toggle{float:none} li .mw-collapsible-toggle,.mw-content-ltr li .mw-collapsible-toggle,.mw-content-rtl li .mw-collapsible-toggle,.mw-content-rtl .mw-content-ltr li .mw-collapsible-toggle,.mw-content-ltr .mw-content-rtl li .mw-collapsible-toggle{float:none} .mw-collapsible-toggle-li{list-style:none}
+.suggestions{overflow:hidden;position:absolute;top:0;left:0;width:0;border:none;z-index:1099;padding:0;margin:-1px 0 0 0}.suggestions-special{position:relative;background-color:white;cursor:pointer;border:solid 1px #aaaaaa;padding:0;margin:0;margin-top:-2px;display:none;padding:0.25em 0.25em;line-height:1.25em}.suggestions-results{background-color:white;cursor:pointer;border:solid 1px #aaaaaa;padding:0;margin:0}.suggestions-result{color:black;margin:0;line-height:1.5em;padding:0.01em 0.25em;text-align:left; overflow:hidden;-o-text-overflow:ellipsis; text-overflow:ellipsis;white-space:nowrap}.suggestions-result-current{background-color:#4C59A6;color:white}.suggestions-special .special-label{color:gray;text-align:left}.suggestions-special .special-query{color:black;font-style:italic;text-align:left}.suggestions-special .special-hover{background-color:silver}.suggestions-result-current .special-label,.suggestions-result-current .special-query{color:white}.highlight{font-weight:bold}
+@media screen {
+	.tochidden,.toctoggle{-moz-user-select:none;-webkit-user-select:none;-ms-user-select:none;user-select:none}.toctoggle{font-size:94%}}
+@media print {
+	#toc.tochidden,.toctoggle{display:none}}
+.postedit-container{margin:0 auto;position:fixed;top:0;height:0;left:50%;z-index:1000;font-size:13px}.postedit-container:hover{cursor:pointer}.postedit{position:relative;top:0.6em;left:-50%;padding:.6em 3.6em .6em 1.1em;line-height:1.5625em;color:#626465;background-color:#f4f4f4;border:1px solid #dcd9d9;text-shadow:0 0.0625em 0 rgba(255,255,255,0.5);border-radius:5px;box-shadow:0 2px 5px 0 #ccc;-webkit-transition:all 0.25s ease-in-out;-moz-transition:all 0.25s ease-in-out;-ms-transition:all 0.25s ease-in-out;-o-transition:all 0.25s ease-in-out;transition:all 0.25s ease-in-out}.skin-monobook .postedit{top:6em !important}.postedit-faded{opacity:0}.postedit-icon{padding-left:41px;  line-height:25px;background-repeat:no-repeat;background-position:8px 50%}.postedit-icon-checkmark{background-image:url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAB9ElEQVR4AZWRA3AYURQArxrVHtW2bdu2bdu2zdi2bdu2bWxs7zeehZaw4f70kbs+zI3e/nWK+RWx3aOFlrL56Sy5SxrruG69hlv6OyK+mz+8KDSXdXembj0ispT7tjs4ZTIbpYBvxGSGKzZTeFrb7W/meN002swFs0U8ttpHTkF2BvCqWQrW35929bTsKm5Zb+SEwWwcY8wAngB9m7Z+d+rIPZ/npdy12M5p47n8dXsCYAf0qPy06eGMdktuDu9Qf+JmKl3SWM91qzVcN9tAbEYkwMaq0tyb1m/To5kP170el/BK8/qa6sJr70ydf+T/Uu5ab+Oo/lS0AkUBpIFWlZ9WPhxpse/PHO7YbOOczjL0vZV2lNxPPtG73dYXM+xvm2znrOl83tidoqCwMBgYXsPFB0on5S6pr+eK5TKuW67lgvaKvF8mL1dtfTL32FHxRdyx3cQpg7m4x9sCXKkTIzA4LDH44zWdzaUf71hv5rTG4uyzcusybxSX7aThbMQ8XgCYAp3rzTTQOiIh9PNlzY3FSuZxrzjme1Y7uGS6kjsWO4jPjM4FVjRZsvD4kO9XtTZzQn82NyzWc0B7AmZh6gA/hOYSGhfw9YbOVnarj+S7800AL2BIsxUAbWNToj7bhBuQmZcOsFdoKUC74rGheCwXmqAIQTc9jQcrADIAAAAASUVORK5CYII=);background-image:url(/w/resources/src/mediawiki.action/images/green-checkmark.png?d94f1)!ie;background-position:left}.postedit-close{position:absolute;padding:0 .8em;right:0;top:0;font-size:1.25em;font-weight:bold;line-height:2.3em;color:black;text-shadow:0 0.0625em 0 white;text-decoration:none;opacity:0.2;filter:alpha(opacity=20)}.postedit-close:hover{color:black;text-decoration:none;opacity:0.4;filter:alpha(opacity=40)}
+.mw-ui-button{font-family:inherit;font-size:1em;display:inline-block;min-width:4em;max-width:28.75em;padding:.5em 1em;margin:0;border-radius:2px;-webkit-box-sizing:border-box;-moz-box-sizing:border-box;box-sizing:border-box;-webkit-appearance:none;*display:inline;zoom:1;vertical-align:middle;background:#ffffff;color:#555555;border:1px solid #cccccc;text-align:center;font-weight:bold;cursor:pointer}.mw-ui-button:hover{background-color:#cccccc}.mw-ui-button:focus{border-color:#ffffff;box-shadow:0 0 0 1px #cccccc;outline:none}.mw-ui-button:focus::-moz-focus-inner{border-color:transparent}.mw-ui-button:active,.mw-ui-button.is-on,.mw-ui-button.mw-ui-checked{background:#777777;box-shadow:none}.mw-ui-button:hover,.mw-ui-button:active,.mw-ui-button:visited{color:#555555}.mw-ui-button:focus{background-color:#cccccc}.mw-ui-button:disabled{color:#cccccc}.mw-ui-button:disabled:hover,.mw-ui-button:disabled:active{background:#ffffff;box-shadow:none}.mw-ui-button:disabled{text-shadow:none;cursor:default}.mw-ui-button.mw-ui-big{font-size:1.3em}.mw-ui-button.mw-ui-block{display:block;width:100%;margin-left:auto;margin-right:auto}.mw-ui-button.mw-ui-progressive,.mw-ui-button.mw-ui-primary{background:#347bff;color:#fff;border:1px solid #347bff;text-shadow:0 1px rgba(0,0,0,0.1)}.mw-ui-button.mw-ui-progressive:hover,.mw-ui-button.mw-ui-primary:hover{background-color:#2962cc}.mw-ui-button.mw-ui-progressive:focus,.mw-ui-button.mw-ui-primary:focus{border-color:#ffffff;box-shadow:0 0 0 1px #2962cc;outline:none}.mw-ui-button.mw-ui-progressive:focus::-moz-focus-inner,.mw-ui-button.mw-ui-primary:focus::-moz-focus-inner{border-color:transparent}.mw-ui-button.mw-ui-progressive:active,.mw-ui-button.mw-ui-primary:active,.mw-ui-button.mw-ui-progressive.is-on,.mw-ui-button.mw-ui-primary.is-on,.mw-ui-button.mw-ui-progressive.mw-ui-checked,.mw-ui-button.mw-ui-primary.mw-ui-checked{background:#2962cc;box-shadow:none}.mw-ui-button.mw-ui-progressive:disabled,.mw-ui-button.mw-ui-primary:disabled{background:#dddddd;border-color:#dddddd}.mw-ui-button.mw-ui-progressive:disabled:hover,.mw-ui-button.mw-ui-primary:disabled:hover,.mw-ui-button.mw-ui-progressive:disabled:active,.mw-ui-button.mw-ui-primary:disabled:active,.mw-ui-button.mw-ui-progressive:disabled.mw-ui-checked,.mw-ui-button.mw-ui-primary:disabled.mw-ui-checked{box-shadow:none}.mw-ui-button.mw-ui-progressive.mw-ui-quiet,.mw-ui-button.mw-ui-primary.mw-ui-quiet{color:#555555}.mw-ui-button.mw-ui-progressive.mw-ui-quiet:hover,.mw-ui-button.mw-ui-primary.mw-ui-quiet:hover,.mw-ui-button.mw-ui-progressive.mw-ui-quiet:focus,.mw-ui-button.mw-ui-primary.mw-ui-quiet:focus{background:transparent;color:#347bff}.mw-ui-button.mw-ui-progressive.mw-ui-quiet:active,.mw-ui-button.mw-ui-primary.mw-ui-quiet:active,.mw-ui-button.mw-ui-progressive.mw-ui-quiet.mw-ui-checked,.mw-ui-button.mw-ui-primary.mw-ui-quiet.mw-ui-checked{color:#2962cc}.mw-ui-button.mw-ui-progressive.mw-ui-quiet:disabled,.mw-ui-button.mw-ui-primary.mw-ui-quiet:disabled{color:#cccccc}.mw-ui-button.mw-ui-constructive{background:#347bff;color:#fff;border:1px solid #347bff;text-shadow:0 1px rgba(0,0,0,0.1)}.mw-ui-button.mw-ui-constructive:hover{background-color:#2962cc}.mw-ui-button.mw-ui-constructive:focus{border-color:#ffffff;box-shadow:0 0 0 1px #2962cc;outline:none}.mw-ui-button.mw-ui-constructive:focus::-moz-focus-inner{border-color:transparent}.mw-ui-button.mw-ui-constructive:active,.mw-ui-button.mw-ui-constructive.is-on,.mw-ui-button.mw-ui-constructive.mw-ui-checked{background:#2962cc;box-shadow:none}.mw-ui-button.mw-ui-constructive:disabled{background:#dddddd;border-color:#dddddd}.mw-ui-button.mw-ui-constructive:disabled:hover,.mw-ui-button.mw-ui-constructive:disabled:active,.mw-ui-button.mw-ui-constructive:disabled.mw-ui-checked{box-shadow:none}.mw-ui-button.mw-ui-constructive.mw-ui-quiet{color:#555555}.mw-ui-button.mw-ui-constructive.mw-ui-quiet:hover,.mw-ui-button.mw-ui-constructive.mw-ui-quiet:focus{background:transparent;color:#347bff}.mw-ui-button.mw-ui-constructive.mw-ui-quiet:active,.mw-ui-button.mw-ui-constructive.mw-ui-quiet.mw-ui-checked{color:#2962cc}.mw-ui-button.mw-ui-constructive.mw-ui-quiet:disabled{color:#cccccc}.mw-ui-button.mw-ui-destructive{background:#d11d13;color:#fff;border:1px solid #d11d13;text-shadow:0 1px rgba(0,0,0,0.1)}.mw-ui-button.mw-ui-destructive:hover{background-color:#a7170f}.mw-ui-button.mw-ui-destructive:focus{border-color:#ffffff;box-shadow:0 0 0 1px #a7170f;outline:none}.mw-ui-button.mw-ui-destructive:focus::-moz-focus-inner{border-color:transparent}.mw-ui-button.mw-ui-destructive:active,.mw-ui-button.mw-ui-destructive.is-on,.mw-ui-button.mw-ui-destructive.mw-ui-checked{background:#a7170f;box-shadow:none}.mw-ui-button.mw-ui-destructive:disabled{background:#dddddd;border-color:#dddddd}.mw-ui-button.mw-ui-destructive:disabled:hover,.mw-ui-button.mw-ui-destructive:disabled:active,.mw-ui-button.mw-ui-destructive:disabled.mw-ui-checked{box-shadow:none}.mw-ui-button.mw-ui-destructive.mw-ui-quiet{color:#555555}.mw-ui-button.mw-ui-destructive.mw-ui-quiet:hover,.mw-ui-button.mw-ui-destructive.mw-ui-quiet:focus{background:transparent;color:#d11d13}.mw-ui-button.mw-ui-destructive.mw-ui-quiet:active,.mw-ui-button.mw-ui-destructive.mw-ui-quiet.mw-ui-checked{color:#a7170f}.mw-ui-button.mw-ui-destructive.mw-ui-quiet:disabled{color:#cccccc}.mw-ui-button.mw-ui-quiet{background:transparent;border:0;text-shadow:none;color:#555555}.mw-ui-button.mw-ui-quiet:hover,.mw-ui-button.mw-ui-quiet:focus{background:transparent;color:#555555}.mw-ui-button.mw-ui-quiet:active,.mw-ui-button.mw-ui-quiet.mw-ui-checked{color:#777777}.mw-ui-button.mw-ui-quiet:disabled{color:#cccccc}.mw-ui-button.mw-ui-quiet:hover,.mw-ui-button.mw-ui-quiet:focus{box-shadow:none}.mw-ui-button.mw-ui-quiet:active,.mw-ui-button.mw-ui-quiet:disabled{background:transparent}a.mw-ui-button{text-decoration:none;line-height:normal}a.mw-ui-button:hover,a.mw-ui-button:focus{text-decoration:none}.mw-ui-button-group > *{min-width:48px;border-radius:0;float:left}.mw-ui-button-group > *:first-child{border-top-left-radius:2px;border-bottom-left-radius:2px}.mw-ui-button-group > *:not( :first-child ){border-left:0}.mw-ui-button-group > *:last-child{border-top-right-radius:2px;border-bottom-right-radius:2px}.mw-ui-button-group .is-on .button{cursor:default}
+.mw-ui-icon{position:relative;min-height:1.5em;min-width:1.5em}.mw-ui-icon.mw-ui-icon-element{text-indent:-999px;overflow:hidden;width:3.5em;min-width:3.5em;max-width:3.5em}.mw-ui-icon.mw-ui-icon-element:before{left:0;right:0;position:absolute;margin:0 1em}.mw-ui-icon.mw-ui-icon-before:before,.mw-ui-icon.mw-ui-icon-element:before{background-position:50% 50%;background-repeat:no-repeat;background-size:100% auto;float:left;display:block;min-height:1.5em;content:''}.mw-ui-icon.mw-ui-icon-before:before{position:relative;width:1.5em;margin-right:1em}</style><style>
+.suggestions a.mw-searchSuggest-link,.suggestions a.mw-searchSuggest-link:hover,.suggestions a.mw-searchSuggest-link:active,.suggestions a.mw-searchSuggest-link:focus{color:black;text-decoration:none}.suggestions-result-current a.mw-searchSuggest-link,.suggestions-result-current a.mw-searchSuggest-link:hover,.suggestions-result-current a.mw-searchSuggest-link:active,.suggestions-result-current a.mw-searchSuggest-link:focus{color:white}.suggestions a.mw-searchSuggest-link .special-query{ overflow:hidden;-o-text-overflow:ellipsis; text-overflow:ellipsis;white-space:nowrap}
+.mw-mmv-overlay{position:fixed;top:0px;left:0px;right:0px;bottom:0px;z-index:1000;background-color:#000000}body.mw-mmv-lightbox-open{overflow-y:auto}body.mw-mmv-lightbox-open #mw-page-base,body.mw-mmv-lightbox-open #mw-head-base,body.mw-mmv-lightbox-open #mw-navigation,body.mw-mmv-lightbox-open #content,body.mw-mmv-lightbox-open #footer,body.mw-mmv-lightbox-open #globalWrapper{ display:none}body.mw-mmv-lightbox-open > *{ display:none}body.mw-mmv-lightbox-open > .mw-mmv-overlay,body.mw-mmv-lightbox-open > .mw-mmv-wrapper{display:block}.mw-mmv-filepage-buttons{margin-top:5px}.mw-mmv-filepage-buttons .mw-mmv-view-expanded,.mw-mmv-filepage-buttons .mw-mmv-view-config{display:block;line-height:inherit}.mw-mmv-filepage-buttons .mw-mmv-view-expanded.mw-ui-icon:before{background-image:url(data:image/svg+xml,%3C%3Fxml%20version%3D%221.0%22%20encoding%3D%22UTF-8%22%20standalone%3D%22no%22%3F%3E%0A%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201024%20768%22%3E%0A%20%20%20%20%3Cg%20fill%3D%22%23777%22%3E%0A%20%20%20%20%20%20%20%20%3Cpath%20d%3D%22M851.2%2071.6L690.7%20232.1l-40.1-40.3-9.6%20164.8%20164.8-9.3-40.3-40.4L926%20146.4l58.5%2058.5L997.6%200%20792.7%2013.1%22%2F%3E%0A%20%20%20%20%20%20%20%20%3Cpath%20d%3D%22M769.6%2089.3H611.9l70.9%2070.8%207.9%207.5m-47.1%20234.6l-51.2%203%203-51.2%209.4-164.4%205.8-100.3H26.4V768h883.1V387l-100.9%205.8-165%209.4zM813.9%20678H113.6l207.2-270.2%2031.5-12.9L548%20599.8l105.9-63.2%20159.8%20140.8.2.6zm95.6-291.9V228l-79.1%2078.9%207.8%207.9%22%2F%3E%0A%20%20%20%20%3C%2Fg%3E%0A%3C%2Fsvg%3E%0A);background-image:url(/w/extensions/MultimediaViewer/resources/mmv/img/expand.svg?b714e)!ie}.mw-mmv-filepage-buttons .mw-mmv-view-config.mw-ui-icon:before{background-image:url(data:image/svg+xml,%3C%3Fxml%20version%3D%221.0%22%20encoding%3D%22UTF-8%22%20standalone%3D%22no%22%3F%3E%0A%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201024%20768%22%3E%0A%20%20%20%20%3Cpath%20d%3D%22M897%20454.6V313.4L810.4%20299c-6.4-23.3-16-45.7-27.3-65.8l50.5-71.4-99.4-100.2-71.4%2050.5c-20.9-11.2-42.5-20.9-65.8-27.3L582.6-1H441.4L427%2085.6c-23.3%206.4-45.7%2016-65.8%2027.3l-71.4-50.5-100.3%2099.5%2050.5%2071.4c-11.2%2020.9-20.9%2042.5-27.3%2066.6L127%20313.4v141.2l85.8%2014.4c6.4%2023.3%2016%2045.7%2027.3%2066.6L189.6%20607l99.5%2099.5%2071.4-50.5c20.9%2011.2%2042.5%2020.9%2066.6%2027.3l14.4%2085.8h141.2l14.4-86.6c23.3-6.4%2045.7-16%2065.8-27.3l71.4%2050.5%2099.5-99.5-50.5-71.4c11.2-20.9%2020.9-42.5%2027.3-66.6l86.4-13.6zm-385%2077c-81.8%200-147.6-66.6-147.6-147.6%200-81.8%2066.6-147.6%20147.6-147.6S659.6%20302.2%20659.6%20384%20593.8%20531.6%20512%20531.6z%22%20fill%3D%22%23777%22%2F%3E%0A%3C%2Fsvg%3E%0A);background-image:url(/w/extensions/MultimediaViewer/resources/mmv/img/gear_gray.svg?330ae)!ie;opacity:0.75}.mw-mmv-filepage-buttons .mw-mmv-view-config.mw-ui-icon:before:hover{opacity:1}</style><meta name="ResourceLoaderDynamicStyles" content="">
+<script async="" src="./Prediction - Valve Developer Community_files/load(1).php"></script>
+<meta name="generator" content="MediaWiki 1.27.4">
+<link rel="shortcut icon" href="https://developer.valvesoftware.com/favicon.ico">
+<link rel="search" type="application/opensearchdescription+xml" href="https://developer.valvesoftware.com/w/opensearch_desc.php" title="Valve Developer Community (en)">
+<link rel="EditURI" type="application/rsd+xml" href="https://developer.valvesoftware.com/w/api.php?action=rsd">
+<link rel="alternate" type="application/atom+xml" title="Valve Developer Community Atom feed" href="https://developer.valvesoftware.com/w/index.php?title=Special:RecentChanges&amp;feed=atom">
+<script src="./Prediction - Valve Developer Community_files/load(2).php"></script></head>
+<body class="mediawiki ltr sitedir-ltr ns-0 ns-subject page-Prediction rootpage-Prediction skin-vector action-view vsc-initialized">
+		<div id="mw-page-base" class="noprint"></div>
+		<div id="mw-head-base" class="noprint"></div>
+		<div id="content" class="mw-body" role="main">
+			<a id="top"></a>
+
+						<div class="mw-indicators">
+</div>
+			<h1 id="firstHeading" class="firstHeading" lang="en">Prediction</h1>
+									<div id="bodyContent" class="mw-body-content">
+									<div id="siteSub">From Valve Developer Community</div>
+								<div id="contentSub"></div>
+												<div id="jump-to-nav" class="mw-jump">
+					Jump to:					<a href="https://developer.valvesoftware.com/wiki/Prediction#mw-head">navigation</a>, 					<a href="https://developer.valvesoftware.com/wiki/Prediction#p-search">search</a>
+				</div>
+				<div id="mw-content-text" lang="en" dir="ltr" class="mw-content-ltr"><div style="position:relative;top:-32px;margin-bottom: -40px;float:right;text-align:right;padding:2px;line-height:11px;background:#262626;border:1px solid #65635F;border-bottom:0;">             <a href="https://developer.valvesoftware.com/wiki/Working_With_Prediction:ru" title="Working With Prediction:ru"><img alt="Русский" src="./Prediction - Valve Developer Community_files/Ru.png" width="16" height="11" data-file-width="16" data-file-height="11"></a>         </div>
+<div style="float:right;clear:right;padding:0 1em;background:#262626;"><div id="toc" class="toc"><div id="toctitle"><h2>Contents</h2><span class="toctoggle">&nbsp;[<a href="https://developer.valvesoftware.com/wiki/Prediction#" id="togglelink">hide</a>]&nbsp;</span></div>
+<ul>
+<li class="toclevel-1 tocsection-1"><a href="https://developer.valvesoftware.com/wiki/Prediction#Implementation"><span class="tocnumber">1</span> <span class="toctext">Implementation</span></a>
+<ul>
+<li class="toclevel-2 tocsection-2"><a href="https://developer.valvesoftware.com/wiki/Prediction#Prediction_tables"><span class="tocnumber">1.1</span> <span class="toctext">Prediction tables</span></a>
+<ul>
+<li class="toclevel-3 tocsection-3"><a href="https://developer.valvesoftware.com/wiki/Prediction#Example"><span class="tocnumber">1.1.1</span> <span class="toctext">Example</span></a></li>
+</ul>
+</li>
+<li class="toclevel-2 tocsection-4"><a href="https://developer.valvesoftware.com/wiki/Prediction#Predicting_entity_creation"><span class="tocnumber">1.2</span> <span class="toctext">Predicting entity creation</span></a></li>
+</ul>
+</li>
+<li class="toclevel-1 tocsection-5"><a href="https://developer.valvesoftware.com/wiki/Prediction#Tools_and_tricks"><span class="tocnumber">2</span> <span class="toctext">Tools and tricks</span></a>
+<ul>
+<li class="toclevel-2 tocsection-6"><a href="https://developer.valvesoftware.com/wiki/Prediction#IsFirstTimePredicted.28.29"><span class="tocnumber">2.1</span> <span class="toctext">IsFirstTimePredicted()</span></a></li>
+<li class="toclevel-2 tocsection-7"><a href="https://developer.valvesoftware.com/wiki/Prediction#SharedRandom.28.29"><span class="tocnumber">2.2</span> <span class="toctext">SharedRandom()</span></a></li>
+<li class="toclevel-2 tocsection-8"><a href="https://developer.valvesoftware.com/wiki/Prediction#CDisablePredictionFiltering"><span class="tocnumber">2.3</span> <span class="toctext">CDisablePredictionFiltering</span></a></li>
+<li class="toclevel-2 tocsection-9"><a href="https://developer.valvesoftware.com/wiki/Prediction#Suppressing_network_data"><span class="tocnumber">2.4</span> <span class="toctext">Suppressing network data</span></a></li>
+</ul>
+</li>
+<li class="toclevel-1 tocsection-10"><a href="https://developer.valvesoftware.com/wiki/Prediction#Sample"><span class="tocnumber">3</span> <span class="toctext">Sample</span></a></li>
+<li class="toclevel-1 tocsection-11"><a href="https://developer.valvesoftware.com/wiki/Prediction#Troubleshooting"><span class="tocnumber">4</span> <span class="toctext">Troubleshooting</span></a></li>
+<li class="toclevel-1 tocsection-12"><a href="https://developer.valvesoftware.com/wiki/Prediction#See_also"><span class="tocnumber">5</span> <span class="toctext">See also</span></a></li>
+</ul>
+</div>
+</div>
+<p><b>Prediction</b> is the notion of the client predicting the effects of the local player's actions without waiting for the server to confirm them. An entity's predicted state is tested against server commands as they arrive until either a match or a mis-match is detected.
+</p><p>In the vast majority of cases the client's prediction is confirmed by the server and it continues happily as if there was no latency. If there is a mis-match, which is rare if the prediction code is written correctly, then the client goes back and re-simulates all of the commands it ran with bad data. Depending on the severity of the error this can cause a noticeable hitch in the player's position and state, and possibly the state of the world too.
+</p><p>Prediction is closely linked to <a href="https://developer.valvesoftware.com/wiki/Lag_compensation" title="Lag compensation">lag compensation</a>, but is separate from <a href="https://developer.valvesoftware.com/wiki/Interpolation" title="Interpolation">interpolation</a>. It only exists on the client.
+</p><p><strong style="margin-left:1em; color:#D31B1B;display:table-cell;white-space:nowrap;"><img alt="" src="./Prediction - Valve Developer Community_files/Warning.png" width="10" height="12" data-file-width="10" data-file-height="12"> Warning:&nbsp;</strong><span style="display:table-cell;">Don't under any circumstances be tempted into thinking "these two values won't ever go out of sync". There is <i>always</i> the possibility of packet loss!</span>
+</p>
+<div title="Information" style="margin:0.4em 1em 0.5em;"><strong style="color:#EDEDED;display:table-cell;text-align:right;white-space:nowrap;padding-right:0.3em;"><img alt="" src="./Prediction - Valve Developer Community_files/Note.png" width="10" height="13" data-file-width="10" data-file-height="13"> Note:</strong><span style="display:table-cell;">Because only <a href="https://developer.valvesoftware.com/wiki/CBasePlayer" title="CBasePlayer">players</a> are lag compensated, attempts to hit other entities (not least NPCs) do not benefit from prediction - you still have to lead your aim by latency. If this is an issue, consider <a href="https://developer.valvesoftware.com/wiki/NPC_Lag_Compensation" title="NPC Lag Compensation">lag compensating your NPCs</a>. (In <a href="https://developer.valvesoftware.com/wiki/Left_4_Dead_2" title="Left 4 Dead 2">Left 4 Dead 2</a>, <a href="https://developer.valvesoftware.com/wiki/Prop_physics" title="Prop physics">prop_physics</a> can be selectively lag compensated.)</span></div>
+<h2><span class="mw-headline" id="Implementation">Implementation</span></h2>
+<p>To predict an entity:
+</p>
+<ol><li> It should be <b>manipulable by the local player</b>. Otherwise, what is the point in predicting it?</li>
+<li> The functions that are to be predicted must <b>exist and be identical on both the client and server</b>. This is achieved by making them <a href="https://developer.valvesoftware.com/w/index.php?title=Shared_code&amp;action=edit&amp;redlink=1" class="new" title="Shared code (page does not exist)">shared code</a>.</li>
+<li> The entity must make the call <b><code>SetPredictionEligible(true)</code></b>, preferably in its constructor.</li>
+<li> It must have a <b><code>bool ShouldPredict()</code></b> function on the client. Check if the local player is holding this entity and so forth here. <div title="Information" style="margin:0.4em 1em 0.5em;"><strong style="color:#EDEDED;display:table-cell;text-align:right;white-space:nowrap;padding-right:0.3em;"><img alt="" src="./Prediction - Valve Developer Community_files/Note.png" width="10" height="13" data-file-width="10" data-file-height="13"> Note:</strong><span style="display:table-cell;">Weapons must also implement <code>bool IsPredicted()</code>, again on the client. It should return <code>true</code> all the time.</span></div></li>
+<li> Any variables that must be synchronised between the client and server must be both <a href="https://developer.valvesoftware.com/wiki/Networking_Entities" title="Networking Entities">networked</a> and present in the entity's prediction table.</li></ol>
+<h3><span class="mw-headline" id="Prediction_tables">Prediction tables</span></h3>
+<p>All client-side variables modified by predicted player input must be added to a prediction table. There are three behaviours you can choose between:
+</p>
+<dl><dt> <code>FTYPEDESC_INSENDTABLE</code></dt>
+<dd> This is a networked variable. The client's predicted value will be tested against received server values, and if the two go out of synch a prediction error will be created.</dd>
+<dt> <code>FTYPEDESC_NOERRORCHECK</code></dt>
+<dd> This is a predicted value that can go out of synch without generating a prediction error. It may or may not be networked.</dd>
+<dt> <code>FTYPEDESC_PRIVATE</code></dt>
+<dd> This isn't predicted or networked at all, but is still registered so that it can inspected with <code>cl_pdump</code>. <div title="Information" style="margin:0.4em 1em 0.5em;"><strong style="color:#EDEDED;display:table-cell;text-align:right;white-space:nowrap;padding-right:0.3em;"><img alt="" src="./Prediction - Valve Developer Community_files/Note.png" width="10" height="13" data-file-width="10" data-file-height="13"> Note:</strong><span style="display:table-cell;">This type of variable won't be saved/restored when the prediction system winds time back to test against a new server command. If a predicted function increments it, the increment will be applied over and over again on the client as each new command is tested.</span></div></dd></dl>
+<p>These behaviours are implemented with the <b><code>DEFINE_PRED_FIELD()</code></b> and <b><code>DEFINE_PRED_FIELD_TOL()</code></b> macros. The latter allows you to specify a tolerance within which an int or float is allowed to differ without generating prediction errors. This is mainly intended for use when a value has been rounded prior to transmission: floats are often trimmed to 1ms resolution, for instance (the #define <code>TD_MSECTOLERANCE</code> exists especially for this situation - otherwise, you should pass a numeric value).
+</p><p>Be cautious when extrapolating from a rounded figure in these circumstances. Small differences in the transmitted value can lead to large changes in the results of your calculations!
+</p><p><strong style="color:#8BC53F">To do:&nbsp;</strong><code>DEFINE_PRED_TYPEDESCRIPTION</code>
+</p>
+<h4><span class="mw-headline" id="Example">Example</span></h4>
+<div class="mw-highlight mw-content-ltr" dir="ltr"><pre><span class="cp">#ifdef CLIENT_DLL</span>
+<span class="n">BEGIN_PREDICTION_DATA</span><span class="p">(</span> <span class="n">CBaseCombatWeapon</span> <span class="p">)</span>
+	<span class="n">DEFINE_PRED_FIELD</span><span class="p">(</span> <span class="n">m_nNextThinkTick</span><span class="p">,</span> <span class="n">FIELD_INTEGER</span><span class="p">,</span> <span class="n">FTYPEDESC_INSENDTABLE</span> <span class="p">),</span>
+	<span class="n">DEFINE_PRED_FIELD</span><span class="p">(</span> <span class="n">m_hOwner</span><span class="p">,</span> <span class="n">FIELD_EHANDLE</span><span class="p">,</span> <span class="n">FTYPEDESC_INSENDTABLE</span> <span class="p">),</span>
+	<span class="n">DEFINE_PRED_FIELD_TOL</span><span class="p">(</span> <span class="n">m_flNextPrimaryAttack</span><span class="p">,</span> <span class="n">FIELD_FLOAT</span><span class="p">,</span> <span class="n">FTYPEDESC_INSENDTABLE</span><span class="p">,</span> <span class="n">TD_MSECTOLERANCE</span> <span class="p">),</span>	
+<span class="n">END_PREDICTION_DATA</span><span class="p">()</span>
+<span class="cp">#endif</span>
+</pre></div>
+<h3><span class="mw-headline" id="Predicting_entity_creation">Predicting entity creation</span></h3>
+<p>The standard prediction system can maintain an existing entity's state, but it does not help with creating new entities. <code><a rel="nofollow" class="external text" href="http://www.mail-archive.com/hlcoders@list.valvesoftware.com/msg09429.html">CreatePredictedEntityByName()</a></code> does. It creates a new entity on the client and swaps it for the real one when it arrives from the server. Needless to say, you should call it from <a href="https://developer.valvesoftware.com/w/index.php?title=Shared_code&amp;action=edit&amp;redlink=1" class="new" title="Shared code (page does not exist)">shared code</a>.
+</p>
+<div class="mw-highlight mw-content-ltr" dir="ltr"><pre><span class="n">CBaseEntity</span><span class="o">::</span><span class="n">CreatePredictedEntityByName</span><span class="p">(</span> <span class="kt">char</span><span class="o">*</span> <span class="n">classname</span><span class="p">,</span> <span class="kt">char</span><span class="o">*</span> <span class="n">class_file</span><span class="p">,</span> <span class="kt">int</span> <span class="n">line</span><span class="p">,</span> <span class="kt">bool</span> <span class="n">persist</span> <span class="o">=</span> <span class="nb">false</span> <span class="p">)</span>
+</pre></div>
+Yes, you really do enter in the name of the file in which the class is declared, called <code>module</code> in the actual code, and its line number (<div style="margin:0.4em 1em 0.5em;"><strong style="color:#8BC53F;display:table-cell;text-align:right;white-space:nowrap;padding-right:0.3em;"><img alt="" src="./Prediction - Valve Developer Community_files/Confirm.png" width="10" height="13" data-file-width="10" data-file-height="13"> Confirm:</strong><span style="display:table-cell;">which means that the entity must have a shared class declaration</span></div>). They appear to be used to generate a fingerprint for the entity. <code>persist</code> causes the entity to be tested during reprediction.
+<p>If the predicted entity contains data that was not sent to the server, you should copy it into the real entity in <code>C_BaseEntity::OnPredictedEntityRemove()</code>.
+</p>
+<h2><span class="mw-headline" id="Tools_and_tricks">Tools and tricks</span></h2>
+<h3><span class="mw-headline" id="IsFirstTimePredicted.28.29">IsFirstTimePredicted()</span></h3>
+<p>Testing <code>prediction-&gt;IsFirstTimePredicted()</code> ensures that code is only executed when the client first predicts an action, and not when it checks against subsequent server updates. You must <code>#include "prediction.h"</code> to access it.
+</p>
+<h3><span class="mw-headline" id="SharedRandom.28.29">SharedRandom()</span></h3>
+<p>Use this function for random numbers. The seed it uses is based on the usercmd number, making the result identical on client and server.
+</p>
+<h3><span class="mw-headline" id="CDisablePredictionFiltering">CDisablePredictionFiltering</span></h3>
+<p><strong style="color:#8BC53F">To do</strong>
+</p>
+<h3><span class="mw-headline" id="Suppressing_network_data">Suppressing network data</span></h3>
+<p>Non-critical events like weapon effects can be done entirely on the client. Suppressing that data is a good idea as it results in reduced bandwidth usage.
+</p><p><code><a href="https://developer.valvesoftware.com/wiki/IPredictionSystem" title="IPredictionSystem">IPredictionSystem</a>::SuppressHostEvents()</code> is meant for this. When it is called, all network data to the given player is halted. Sending NULL again will turn transmission back on. For example:
+</p>
+<div class="mw-highlight mw-content-ltr" dir="ltr"><pre><span class="k">if</span> <span class="p">(</span> <span class="n">pPlayer</span><span class="o">-&gt;</span><span class="n">IsPredictingWeapons</span><span class="p">()</span> <span class="p">)</span>
+	<span class="n">IPredictionSystem</span><span class="o">::</span><span class="n">SuppressHostEvents</span><span class="p">(</span> <span class="n">pPlayer</span> <span class="p">);</span>
+
+<span class="n">pWeapon</span><span class="o">-&gt;</span><span class="n">CreateEffects</span><span class="p">();</span>
+
+<span class="n">IPredictionSystem</span><span class="o">::</span><span class="n">SuppressHostEvents</span><span class="p">(</span> <span class="nb">NULL</span> <span class="p">);</span>
+</pre></div>
+<p>Note that after doing the above you will need to write code somewhere else that makes the suppressed player's client generate the effects itself.
+</p>
+<h2><span class="mw-headline" id="Sample">Sample</span></h2>
+<p><a href="https://developer.valvesoftware.com/wiki/Prediction/Sample_weapon" title="Prediction/Sample weapon">Here is a simple weapon that prints prediction information to the console.</a> Use its rapid secondary fire with net_fakelag 200 (or above) to see how the engine handles multiple predicted shots.
+</p>
+<div title="Information" style="margin:0.4em 1em 0.5em;"><strong style="color:#EDEDED;display:table-cell;text-align:right;white-space:nowrap;padding-right:0.3em;"><img alt="" src="./Prediction - Valve Developer Community_files/Note.png" width="10" height="13" data-file-width="10" data-file-height="13"> Note:</strong><span style="display:table-cell;">The gun will appear jittery when lagged unless your player entity is creating a predicted viewmodel.</span></div>
+<h2><span class="mw-headline" id="Troubleshooting">Troubleshooting</span></h2>
+<p>If you add functionality to weapons and forget to follow the steps above, then an entity may jerk around or animate strangely. You can use <code><a href="https://developer.valvesoftware.com/wiki/Cl_predictionlist" title="Cl predictionlist">cl_predictionlist</a></code> and <code><a href="https://developer.valvesoftware.com/wiki/Cl_pdump" title="Cl pdump">cl_pdump</a></code> to debug this. Changing <code><a href="https://developer.valvesoftware.com/w/index.php?title=Cl_pred_optimize&amp;action=edit&amp;redlink=1" class="new" title="Cl pred optimize (page does not exist)">cl_pred_optimize</a></code> can also help sometimes.
+</p><p>Now let's say you see a variable that turns red in the <code>cl_pdump</code> panel from time to time. Now you know that somehow the client is producing a different value for this variable than the server is. This can usually be traced down to one of the following problems:
+</p>
+<ol><li> The client is not running some code that the server is running. This would be the case if you had an <code>#ifdef GAME_DLL</code> or an <code>#ifndef CLIENT_DLL</code> around a piece of code that could affect the value of the variable that's turning red.</li>
+<li> Another variable that can wind up affecting the value of the red variable is not being transmitted via the data table. In this case, the client's value for that variable would always be wrong (since the server never transmitted it).</li>
+<li> It's also possible that you just forgot to add in the appropriate tolerance using the <code>DEFINE_PRED_FIELD_TOL</code> macro. For example, if you're transmitting a floating point variable with a value range of 0.0 - 255.0, and you only give it 4 bits of precision, then you're going to need a tolerance of about 17.0, or else the prediction system will think the variable's value is wrong when it is actually just different because the variable was compressed into 4 bits before sending it to the client.</li></ol>
+<p>Tracking down prediction problems is usually a matter of walking through any code that can affect the values that are turning red, and noticing which other variables affect their values. It can be tedious at first, but once you get the hang of it, you can track down prediction problems quickly.
+</p>
+<h2><span class="mw-headline" id="See_also">See also</span></h2>
+<ul><li> <a href="https://developer.valvesoftware.com/wiki/Source_Multiplayer_Networking#Input_prediction" title="Source Multiplayer Networking">Source Multiplayer Networking#Input prediction</a></li>
+<li> <a href="https://developer.valvesoftware.com/wiki/Lag_compensation" title="Lag compensation">Lag compensation</a></li>
+<li> <a href="https://developer.valvesoftware.com/wiki/Interpolation" title="Interpolation">Interpolation</a></li></ul>
+
+<!-- 
+NewPP limit report
+Cached time: 20200910114837
+Cache expiry: 86400
+Dynamic content: false
+CPU time usage: 0.084 seconds
+Real time usage: 0.407 seconds
+Preprocessor visited node count: 212/1000000
+Preprocessor generated node count: 976/1000000
+Post‐expand include size: 3454/2097152 bytes
+Template argument size: 1244/2097152 bytes
+Highest expansion depth: 3/40
+Expensive parser function count: 0/100
+-->
+
+<!-- 
+Transclusion expansion time report (%,ms,calls,template)
+100.00%  353.204      1 - -total
+  2.43%    8.596      1 - Template:Otherlang2
+  1.88%    6.637      1 - Template:Confirm
+  0.68%    2.400      4 - Template:Note
+  0.66%    2.340      2 - Template:Todo
+  0.49%    1.727      1 - Template:Warning
+  0.43%    1.509      1 - Template:Toc-right
+-->
+
+<!-- Saved in parser cache with key developerwiki-mw_:pcache:idhash:1418-0!*!0!!en!5!* and timestamp 20200910114837 and revision id 145263
+ -->
+</div>					<div class="printfooter">
+						Retrieved from "<a dir="ltr" href="https://developer.valvesoftware.com/w/index.php?title=Prediction&amp;oldid=145263">https://developer.valvesoftware.com/w/index.php?title=Prediction&amp;oldid=145263</a>"					</div>
+				<div id="catlinks" class="catlinks" data-mw="interface"><div id="mw-normal-catlinks" class="mw-normal-catlinks"><a href="https://developer.valvesoftware.com/wiki/Special:Categories" title="Special:Categories">Category</a>: <ul><li><a href="https://developer.valvesoftware.com/wiki/Category:Networking" title="Category:Networking">Networking</a></li></ul></div><div id="mw-hidden-catlinks" class="mw-hidden-catlinks mw-hidden-cats-hidden">Hidden categories: <ul><li><a href="https://developer.valvesoftware.com/wiki/Category:TODO" title="Category:TODO">TODO</a></li><li><a href="https://developer.valvesoftware.com/wiki/Category:CONFIRM" title="Category:CONFIRM">CONFIRM</a></li></ul></div></div>				<div class="visualClear"></div>
+							</div>
+		</div>
+		<div id="mw-navigation">
+			<h2>Navigation menu</h2>
+
+			<div id="mw-head">
+									<div id="p-personal" role="navigation" class="" aria-labelledby="p-personal-label">
+						<h3 id="p-personal-label">Personal tools</h3>
+						<ul>
+							<li id="pt-createaccount"><a href="https://developer.valvesoftware.com/w/index.php?title=Special:CreateAccount&amp;returnto=Prediction" title="You are encouraged to create an account and log in; however, it is not mandatory">Create account</a></li><li id="pt-login"><a href="https://developer.valvesoftware.com/w/index.php?title=Special:UserLogin&amp;returnto=Prediction" title="You are encouraged to log in; however, it is not mandatory [alt-shift-o]" accesskey="o">Log in</a></li>						</ul>
+					</div>
+									<div id="left-navigation">
+										<div id="p-namespaces" role="navigation" class="vectorTabs" aria-labelledby="p-namespaces-label">
+						<h3 id="p-namespaces-label">Namespaces</h3>
+						<ul>
+															<li id="ca-nstab-main" class="selected"><span><a href="https://developer.valvesoftware.com/wiki/Prediction" title="View the content page [alt-shift-c]" accesskey="c">Page</a></span></li>
+															<li id="ca-talk" class="new"><span><a href="https://developer.valvesoftware.com/w/index.php?title=Talk:Prediction&amp;action=edit&amp;redlink=1" title="Discussion about the content page [alt-shift-t]" accesskey="t" rel="discussion">Discussion</a></span></li>
+													</ul>
+					</div>
+										<div id="p-variants" role="navigation" class="vectorMenu emptyPortlet" aria-labelledby="p-variants-label">
+												<h3 id="p-variants-label" tabindex="0">
+							<span>Variants</span><a href="https://developer.valvesoftware.com/wiki/Prediction#" tabindex="-1"></a>
+						</h3>
+
+						<div class="menu">
+							<ul>
+															</ul>
+						</div>
+					</div>
+									</div>
+				<div id="right-navigation">
+										<div id="p-views" role="navigation" class="vectorTabs" aria-labelledby="p-views-label">
+						<h3 id="p-views-label">Views</h3>
+						<ul>
+															<li id="ca-view" class="selected"><span><a href="https://developer.valvesoftware.com/wiki/Prediction">Read</a></span></li>
+															<li id="ca-viewsource"><span><a href="https://developer.valvesoftware.com/w/index.php?title=Prediction&amp;action=edit" title="This page is protected.
+You can view its source [alt-shift-e]" accesskey="e">View source</a></span></li>
+															<li id="ca-history" class="collapsible"><span><a href="https://developer.valvesoftware.com/w/index.php?title=Prediction&amp;action=history" title="Past revisions of this page [alt-shift-h]" accesskey="h">View history</a></span></li>
+													</ul>
+					</div>
+										<div id="p-cactions" role="navigation" class="vectorMenu emptyPortlet" aria-labelledby="p-cactions-label" style="">
+						<h3 id="p-cactions-label" tabindex="0"><span>More</span><a href="https://developer.valvesoftware.com/wiki/Prediction#" tabindex="-1"></a></h3>
+
+						<div class="menu">
+							<ul>
+															</ul>
+						</div>
+					</div>
+										<div id="p-search" role="search">
+						<h3>
+							<label for="searchInput">Search</label>
+						</h3>
+
+						<form action="https://developer.valvesoftware.com/w/index.php" id="searchform">
+							<div id="simpleSearch">
+							<input type="search" name="search" placeholder="Search" title="Search Valve Developer Community [alt-shift-f]" accesskey="f" id="searchInput" tabindex="1" autocomplete="off"><input type="hidden" value="Special:Search" name="title"><input type="submit" name="go" value="Go" title="Go to a page with this exact name if it exists" id="searchButton" class="searchButton">							</div>
+						</form>
+					</div>
+									</div>
+			</div>
+			<div id="mw-panel">
+				<div id="p-logo" role="banner"><a class="mw-wiki-logo" href="https://developer.valvesoftware.com/wiki/Main_Page" title="Visit the main page"></a></div>
+						<div class="portal" role="navigation" id="p-navigation" aria-labelledby="p-navigation-label">
+			<h3 id="p-navigation-label">Navigation</h3>
+
+			<div class="body">
+									<ul>
+						<li id="n-mainpage"><a href="https://developer.valvesoftware.com/wiki/Main_Page" title="Visit the main page [alt-shift-z]" accesskey="z">Main Page</a></li><li id="n-Source-SDK-index"><a href="https://developer.valvesoftware.com/wiki/SDK_Docs">Source SDK index</a></li><li id="n-Dota-2-Tools"><a href="https://developer.valvesoftware.com/wiki/Dota_2_Workshop_Tools">Dota 2 Tools</a></li><li id="n-Half-Life:Alyx-Tools"><a href="https://developer.valvesoftware.com/wiki/Half-Life:_Alyx_Workshop_Tools">Half-Life:Alyx Tools</a></li><li id="n-SteamVR-Tools"><a href="https://developer.valvesoftware.com/wiki/SteamVR/Environments">SteamVR Tools</a></li><li id="n-recentchanges"><a href="https://developer.valvesoftware.com/wiki/Special:RecentChanges" title="A list of recent changes in the wiki [alt-shift-r]" accesskey="r">Recent changes</a></li><li id="n-randompage"><a href="https://developer.valvesoftware.com/wiki/Special:Random" title="Load a random page [alt-shift-x]" accesskey="x">Random page</a></li>					</ul>
+							</div>
+		</div>
+			<div class="portal" role="navigation" id="p-Support" aria-labelledby="p-Support-label">
+			<h3 id="p-Support-label">Support</h3>
+
+			<div class="body">
+									<ul>
+						<li id="n-Getting-help"><a href="https://developer.valvesoftware.com/wiki/Help:Contents">Getting help</a></li><li id="n-Source-SDK-FAQ"><a href="https://developer.valvesoftware.com/wiki/Category:Source_SDK_FAQ">Source SDK FAQ</a></li><li id="n-Level-Design-FAQ"><a href="https://developer.valvesoftware.com/wiki/Category:Level_Design_FAQ">Level Design FAQ</a></li><li id="n-SDK-Help-Forums"><a href="http://forums.steampowered.com/forums/forumdisplay.php?f=191" rel="nofollow">SDK Help Forums</a></li>					</ul>
+							</div>
+		</div>
+			<div class="portal" role="navigation" id="p-Steam_Community" aria-labelledby="p-Steam_Community-label">
+			<h3 id="p-Steam_Community-label">Steam Community</h3>
+
+			<div class="body">
+									<ul>
+						<li id="n-Source-SDK-Hub"><a href="http://steamcommunity.com/app/211" rel="nofollow">Source SDK Hub</a></li><li id="n-Steam-Games"><a href="http://www.steampowered.com/" rel="nofollow">Steam Games</a></li>					</ul>
+							</div>
+		</div>
+			<div class="portal" role="navigation" id="p-tb" aria-labelledby="p-tb-label">
+			<h3 id="p-tb-label">Tools</h3>
+
+			<div class="body">
+									<ul>
+						<li id="t-whatlinkshere"><a href="https://developer.valvesoftware.com/wiki/Special:WhatLinksHere/Prediction" title="A list of all wiki pages that link here [alt-shift-j]" accesskey="j">What links here</a></li><li id="t-recentchangeslinked"><a href="https://developer.valvesoftware.com/wiki/Special:RecentChangesLinked/Prediction" title="Recent changes in pages linked from this page [alt-shift-k]" accesskey="k">Related changes</a></li><li id="t-specialpages"><a href="https://developer.valvesoftware.com/wiki/Special:SpecialPages" title="A list of all special pages [alt-shift-q]" accesskey="q">Special pages</a></li><li id="t-print"><a href="https://developer.valvesoftware.com/w/index.php?title=Prediction&amp;printable=yes" rel="alternate" title="Printable version of this page [alt-shift-p]" accesskey="p">Printable version</a></li><li id="t-permalink"><a href="https://developer.valvesoftware.com/w/index.php?title=Prediction&amp;oldid=145263" title="Permanent link to this revision of the page">Permanent link</a></li><li id="t-info"><a href="https://developer.valvesoftware.com/w/index.php?title=Prediction&amp;action=info" title="More information about this page">Page information</a></li>					</ul>
+							</div>
+		</div>
+				</div>
+		</div>
+		<div id="footer" role="contentinfo">
+							<ul id="footer-info">
+											<li id="footer-info-lastmod"> This page was last modified on 6 March 2011, at 17:33.</li>
+									</ul>
+							<ul id="footer-places">
+											<li id="footer-places-about"><a href="https://developer.valvesoftware.com/wiki/Valve_Developer_Community:About" title="Valve Developer Community:About">About Valve Developer Community</a></li>
+											<li id="footer-places-disclaimer"><a href="https://developer.valvesoftware.com/wiki/Valve_Developer_Community:Terms_of_use" title="Valve Developer Community:Terms of use">Terms of Use</a></li>
+											<li id="footer-places-legalnotices"><a href="https://developer.valvesoftware.com/wiki/Valve_Developer_Community:Third_Party_Legal_Notices" title="Valve Developer Community:Third Party Legal Notices">Third Party Legal Notices</a></li>
+									</ul>
+										<ul id="footer-icons" class="noprint">
+											<li id="footer-poweredbyico">
+							<a href="https://www.mediawiki.org/"><img src="./Prediction - Valve Developer Community_files/poweredby_mediawiki_88x31.png" alt="Powered by MediaWiki" srcset="/w/resources/assets/poweredby_mediawiki_132x47.png 1.5x, /w/resources/assets/poweredby_mediawiki_176x62.png 2x" width="88" height="31"></a>						</li>
+									</ul>
+						<div style="clear:both"></div>
+		</div>
+		<script>(window.RLQ=window.RLQ||[]).push(function(){mw.loader.state({"user":"ready","user.groups":"ready"});mw.loader.load(["mediawiki.toc","mediawiki.action.view.postEdit","site","mediawiki.user","mediawiki.hidpi","mediawiki.page.ready","mediawiki.searchSuggest","mmv.bootstrap.autostart"]);});</script><script>(window.RLQ=window.RLQ||[]).push(function(){mw.config.set({"wgBackendResponseTime":71});});</script>
+	
+
+<div class="suggestions" style="display: none; font-size: 13px;"><div class="suggestions-results"></div><div class="suggestions-special"></div></div></body></html>

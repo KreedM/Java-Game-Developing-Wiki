@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<!-- saved from url=(0070)http://www.roguebasin.com/index.php?title=Basic_BSP_Dungeon_generation -->
+<html lang="en" dir="ltr" class="client-js"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Basic BSP Dungeon generation - RogueBasin</title>
+
+<meta name="generator" content="MediaWiki 1.19.9">
+<link rel="shortcut icon" href="http://www.roguebasin.com/favicon.ico">
+<link rel="search" type="application/opensearchdescription+xml" href="http://www.roguebasin.com/opensearch_desc.php" title="RogueBasin (en)">
+<link rel="EditURI" type="application/rsd+xml" href="http://www.roguebasin.com/api.php?action=rsd">
+<link rel="alternate" type="application/atom+xml" title="RogueBasin Atom feed" href="http://www.roguebasin.com/index.php?title=Special:RecentChanges&amp;feed=atom">
+<link rel="stylesheet" href="./Basic BSP Dungeon generation - RogueBasin_files/load.php">
+<!--[if IE 6]><link rel="stylesheet" href="/skins/monobook/IE60Fixes.css?303" media="screen" /><![endif]-->
+<!--[if IE 7]><link rel="stylesheet" href="/skins/monobook/IE70Fixes.css?303" media="screen" /><![endif]--><style type="text/css" media="all">.js-messagebox{margin:1em 5%;padding:0.5em 2.5%;border:1px solid #ccc;background-color:#fcfcfc;font-size:0.8em}.js-messagebox .js-messagebox-group{margin:1px;padding:0.5em 2.5%;border-bottom:1px solid #ddd}.js-messagebox .js-messagebox-group:last-child{border-bottom:thin none transparent}
+
+/* cache key: 133099-basin:resourceloader:filter:minify-css:7:8b08bdc91c52a9ffba396dccfb5b473c */
+
+
+.mw-collapsible-toggle{float:right} li .mw-collapsible-toggle{float:none} .mw-collapsible-toggle-li{list-style:none}
+
+/* cache key: 133099-basin:resourceloader:filter:minify-css:7:4250852ed2349a0d4d0fc6509a3e7d4c */
+</style><meta name="ResourceLoaderDynamicStyles" content="">
+<link rel="stylesheet" href="./Basic BSP Dungeon generation - RogueBasin_files/load(1).php">
+<style>a:lang(ar),a:lang(ckb),a:lang(fa),a:lang(kk-arab),a:lang(mzn),a:lang(ps),a:lang(ur){text-decoration:none}a.new,#quickbar a.new{color:#ba0000}
+
+/* cache key: 133099-basin:resourceloader:filter:minify-css:7:c88e2bcd56513749bec09a7e29cb3ffa */
+</style>
+
+<script src="./Basic BSP Dungeon generation - RogueBasin_files/load(2).php"></script><script src="./Basic BSP Dungeon generation - RogueBasin_files/load(3).php"></script>
+<script>if(window.mw){
+mw.config.set({"wgCanonicalNamespace":"","wgCanonicalSpecialPageName":false,"wgNamespaceNumber":0,"wgPageName":"Basic_BSP_Dungeon_generation","wgTitle":"Basic BSP Dungeon generation","wgCurRevisionId":46532,"wgArticleId":3013,"wgIsArticle":true,"wgAction":"view","wgUserName":null,"wgUserGroups":["*"],"wgCategories":["Developing"],"wgBreakFrames":false,"wgPageContentLanguage":"en","wgSeparatorTransformTable":["",""],"wgDigitTransformTable":["",""],"wgRelevantPageName":"Basic_BSP_Dungeon_generation","wgRestrictionEdit":[],"wgRestrictionMove":[]});
+}</script><script>if(window.mw){
+mw.loader.implement("user.options",function($){mw.user.options.set({"ccmeonemails":0,"cols":80,"date":"default","diffonly":0,"disablemail":0,"disablesuggest":0,"editfont":"default","editondblclick":0,"editsection":1,"editsectiononrightclick":0,"enotifminoredits":0,"enotifrevealaddr":0,"enotifusertalkpages":1,"enotifwatchlistpages":0,"extendwatchlist":0,"externaldiff":0,"externaleditor":0,"fancysig":0,"forceeditsummary":0,"gender":"unknown","hideminor":0,"hidepatrolled":0,"highlightbroken":1,"imagesize":2,"justify":0,"math":1,"minordefault":0,"newpageshidepatrolled":0,"nocache":0,"noconvertlink":0,"norollbackdiff":0,"numberheadings":0,"previewonfirst":0,"previewontop":1,"quickbar":5,"rcdays":7,"rclimit":50,"rememberpassword":0,"rows":25,"searchlimit":20,"showhiddencats":0,"showjumplinks":1,"shownumberswatching":1,"showtoc":1,"showtoolbar":1,"skin":"monobook","stubthreshold":0,"thumbsize":2,"underline":2,"uselivepreview":0,"usenewrc":0,"watchcreations":0,"watchdefault":0,"watchdeletion":
+0,"watchlistdays":3,"watchlisthideanons":0,"watchlisthidebots":0,"watchlisthideliu":0,"watchlisthideminor":0,"watchlisthideown":0,"watchlisthidepatrolled":0,"watchmoves":0,"wllimit":250,"variant":"en","language":"en","searchNs0":true,"searchNs1":false,"searchNs2":false,"searchNs3":false,"searchNs4":false,"searchNs5":false,"searchNs6":false,"searchNs7":false,"searchNs8":false,"searchNs9":false,"searchNs10":false,"searchNs11":false,"searchNs12":false,"searchNs13":false,"searchNs14":false,"searchNs15":false});;},{},{});mw.loader.implement("user.tokens",function($){mw.user.tokens.set({"editToken":"+\\","watchToken":false});;},{},{});
+
+/* cache key: 133099-basin:resourceloader:filter:minify-js:7:74a832f2292f1f4d40d425d223444e78 */
+}</script>
+<script>if(window.mw){
+mw.loader.load(["mediawiki.page.startup","mediawiki.legacy.wikibits","mediawiki.legacy.ajax"]);
+}</script><script type="text/javascript" src="./Basic BSP Dungeon generation - RogueBasin_files/load(4).php"></script>
+</head>
+<body class="mediawiki ltr sitedir-ltr ns-0 ns-subject page-Basic_BSP_Dungeon_generation skin-monobook action-view">
+<div id="globalWrapper">
+<div id="column-content"><div id="content"><div id="mw-js-message" class="js-messagebox" style="display: none;"></div>
+	<a id="top"></a>
+	<div id="siteNotice"><div id="localNotice" lang="en" dir="ltr"></div></div>
+	<h1 id="firstHeading" class="firstHeading"><span dir="auto">Basic BSP Dungeon generation</span></h1>
+	<div id="bodyContent" class="mw-body">
+		<div id="siteSub">From RogueBasin</div>
+		<div id="contentSub"></div>
+		<div id="jump-to-nav" class="mw-jump">Jump to: <a href="http://www.roguebasin.com/index.php?title=Basic_BSP_Dungeon_generation#column-one">navigation</a>, <a href="http://www.roguebasin.com/index.php?title=Basic_BSP_Dungeon_generation#searchInput">search</a></div>
+		<!-- start content -->
+<div id="mw-content-text" lang="en" dir="ltr" class="mw-content-ltr"><table id="toc" class="toc"><tbody><tr><td><div id="toctitle"><h2>Contents</h2><span class="toctoggle">&nbsp;[<a href="http://www.roguebasin.com/index.php?title=Basic_BSP_Dungeon_generation#" class="internal" id="togglelink">hide</a>]&nbsp;</span></div>
+<ul>
+<li class="toclevel-1 tocsection-1"><a href="http://www.roguebasin.com/index.php?title=Basic_BSP_Dungeon_generation#A_simple_method_to_generate_a_basic_dungeon_using_a_bsp_tree"><span class="tocnumber">1</span> <span class="toctext">A simple method to generate a basic dungeon using a bsp tree</span></a>
+<ul>
+<li class="toclevel-2 tocsection-2"><a href="http://www.roguebasin.com/index.php?title=Basic_BSP_Dungeon_generation#Building_the_BSP"><span class="tocnumber">1.1</span> <span class="toctext">Building the BSP</span></a></li>
+<li class="toclevel-2 tocsection-3"><a href="http://www.roguebasin.com/index.php?title=Basic_BSP_Dungeon_generation#Building_the_dungeon"><span class="tocnumber">1.2</span> <span class="toctext">Building the dungeon</span></a></li>
+</ul>
+</li>
+<li class="toclevel-1 tocsection-4"><a href="http://www.roguebasin.com/index.php?title=Basic_BSP_Dungeon_generation#Video_Explanation"><span class="tocnumber">2</span> <span class="toctext">Video Explanation</span></a></li>
+</ul>
+</td></tr></tbody></table>
+<h2> <span class="mw-headline" id="A_simple_method_to_generate_a_basic_dungeon_using_a_bsp_tree"> A simple method to generate a basic dungeon using a bsp tree </span></h2>
+<h3> <span class="mw-headline" id="Building_the_BSP"> Building the BSP </span></h3>
+<p>We start with a rectangular dungeon filled with wall cells. We are going to split this dungeon recursively until each sub-dungeon has approximately the size of a room. The dungeon splitting uses this operation&nbsp;:
+</p>
+<ul><li> choose a random direction&nbsp;: horizontal or vertical splitting 
+</li><li> choose a random position (x for vertical, y for horizontal)
+</li><li> split the dungeon into two sub-dungeons
+</li></ul>
+<p><img src="./Basic BSP Dungeon generation - RogueBasin_files/dungeon_bsp1.png" alt="dungeon_bsp1.png">
+The first splitting iteration.
+</p><p>Now we have two sub-dungeons A and B. We can apply the same operation to both of them&nbsp;:
+</p><p><img src="./Basic BSP Dungeon generation - RogueBasin_files/dungeon_bsp2.png" alt="dungeon_bsp2.png">
+The second splitting iteration
+</p><p>When choosing the splitting position, we have to take care not to be too close to the dungeon border. We must be able to place a room inside each generated sub-dungeon. We repeat until the lowest sub-dungeons have approximately the size of the rooms we want to generate. 
+</p><p><img src="./Basic BSP Dungeon generation - RogueBasin_files/dungeon_bsp3.png" alt="dungeon_bsp3.png">
+After 4 splitting iterations 
+</p><p>Different rules on the splitting position can result in homogeneous sub-dungeons (position between 0.45 and 0.55) or heterogeneous ones (position between 0.1 and 0.9). We can also choose to use a deeper recursion level on some parts of the dungeon so that we get smaller rooms there.
+</p>
+<h3> <span class="mw-headline" id="Building_the_dungeon"> Building the dungeon </span></h3>
+<p>Now we create a room with random size in each leaf of the tree. Of course, the room must be contained inside the corresponding sub-dungeon. Thanks to the BSP tree, we can't have two overlapping rooms.
+</p><p><img src="./Basic BSP Dungeon generation - RogueBasin_files/dungeon_bsp4.png" alt="dungeon_bsp4.png">
+Rooms in the tree leafs 
+</p><p>To build corridors, we loop through all the leafs of the tree, connecting each leaf to its sister. If the two rooms have face-to-face walls, we can use a straight corridor. Else we have to use a Z shaped corridor.
+</p><p><img src="./Basic BSP Dungeon generation - RogueBasin_files/dungeon_bsp5.png" alt="dungeon_bsp5.png">
+Connecting the level 4 sub-dungeons 
+</p><p>Now we get up one level in the tree and repeat the process for the parent sub-regions. Now, we can connect two sub-regions with a link either between two rooms, or a corridor and a room or two corridors.
+</p><p><img src="./Basic BSP Dungeon generation - RogueBasin_files/dungeon_bsp6.png" alt="dungeon_bsp6.png">
+Connecting the level 3 sub-dungeons
+</p><p>We repeat the process until we have connected the first two sub-dungeons A and B&nbsp;:
+</p><p><img src="./Basic BSP Dungeon generation - RogueBasin_files/dungeon_bsp7.png" alt="dungeon_bsp7.png">
+If we allow some rooms to fill the whole leaf, we can even have less boring dungeons.
+</p>
+<h2> <span class="mw-headline" id="Video_Explanation"> Video Explanation </span></h2>
+<p><a rel="nofollow" class="external text" href="http://www.youtube.com/watch?v=S5y3ES4Rvkk">Binary Trees</a> by <a rel="nofollow" class="external text" href="http://www.youtube.com/channel/UCVtiyi-I-bc12ddVouNBNfQ">Richard Fleming Jr</a>
+</p><p><a rel="nofollow" class="external text" href="http://www.youtube.com/watch?v=UFrF2-U_VTs">Procedural Dungeon Generation: Part 1</a> by <a rel="nofollow" class="external text" href="http://www.youtube.com/channel/UCp19G1Eo1vX4NWTaMxerawg">LearnToMod</a>
+</p>
+<!-- 
+NewPP limit report
+Preprocessor node count: 14/1000000
+Post‐expand include size: 0/2097152 bytes
+Template argument size: 0/2097152 bytes
+Expensive parser function count: 0/100
+-->
+
+<!-- Saved in parser cache with key 133099-basin:pcache:idhash:3013-0!*!*!!en!*!* and timestamp 20200911183108 -->
+</div><div class="printfooter">
+Retrieved from "<a href="http://www.roguebasin.com/index.php?title=Basic_BSP_Dungeon_generation&amp;oldid=46532">http://www.roguebasin.com/index.php?title=Basic_BSP_Dungeon_generation&amp;oldid=46532</a>"</div>
+		<div id="catlinks" class="catlinks"><div id="mw-normal-catlinks" class="mw-normal-catlinks"><a href="http://www.roguebasin.com/index.php?title=Special:Categories" title="Special:Categories">Category</a>: <ul><li><a href="http://www.roguebasin.com/index.php?title=Category:Developing" title="Category:Developing">Developing</a></li></ul></div></div>		<!-- end content -->
+				<div class="visualClear"></div>
+	</div>
+</div></div>
+<div id="column-one">
+	<div id="p-cactions" class="portlet">
+		<h5>Views</h5>
+		<div class="pBody">
+			<ul>
+				<li id="ca-nstab-main" class="selected"><a href="http://www.roguebasin.com/index.php?title=Basic_BSP_Dungeon_generation" primary="1" context="subject" title="View the content page [alt-shift-c]" accesskey="c">Page</a></li>
+				<li id="ca-talk"><a href="http://www.roguebasin.com/index.php?title=Talk:Basic_BSP_Dungeon_generation" primary="1" context="talk" title="Discussion about the content page [alt-shift-t]" accesskey="t">Discussion</a></li>
+				<li id="ca-viewsource"><a href="http://www.roguebasin.com/index.php?title=Basic_BSP_Dungeon_generation&amp;action=edit" primary="1" title="This page is protected.
+You can view its source [alt-shift-e]" accesskey="e">View source</a></li>
+				<li id="ca-history"><a href="http://www.roguebasin.com/index.php?title=Basic_BSP_Dungeon_generation&amp;action=history" rel="archives" title="Past revisions of this page [alt-shift-h]" accesskey="h">History</a></li>
+			</ul>
+		</div>
+	</div>
+	<div class="portlet" id="p-personal">
+		<h5>Personal tools</h5>
+		<div class="pBody">
+			<ul>
+				<li id="pt-login"><a href="http://www.roguebasin.com/index.php?title=Special:UserLogin&amp;returnto=Basic+BSP+Dungeon+generation" title="You are encouraged to log in; however, it is not mandatory [alt-shift-o]" accesskey="o">Log in / create account</a></li>
+			</ul>
+		</div>
+	</div>
+	<div class="portlet" id="p-logo">
+<a href="http://www.roguebasin.com/index.php?title=Main_Page" style="background-image: url(/skins/roguebasin/RogueBasin_logo.png);" title="Visit the main page"></a>
+	</div>
+	<div class="generated-sidebar portlet" id="p-navigation">
+		<h5>Navigation</h5>
+		<div class="pBody">
+			<ul>
+				<li id="n-mainpage"><a href="http://www.roguebasin.com/index.php?title=Main_Page" title="Visit the main page [alt-shift-z]" accesskey="z">Main Page</a></li>
+				<li id="n-portal"><a href="http://www.roguebasin.com/index.php?title=RogueBasin:Community_portal" title="About the project, what you can do, where to find things">Community portal</a></li>
+				<li id="n-recentchanges"><a href="http://www.roguebasin.com/index.php?title=Special:RecentChanges" title="A list of recent changes in the wiki [alt-shift-r]" accesskey="r">Recent changes</a></li>
+				<li id="n-randompage"><a href="http://www.roguebasin.com/index.php?title=Special:Random" title="Load a random page [alt-shift-x]" accesskey="x">Random page</a></li>
+				<li id="n-help"><a href="http://www.roguebasin.com/index.php?title=Help" title="The place to find out">Help</a></li>
+			</ul>
+		</div>
+	</div>
+	<div id="p-search" class="portlet">
+		<h5><label for="searchInput">Search</label></h5>
+		<div id="searchBody" class="pBody">
+			<form action="http://www.roguebasin.com/index.php" id="searchform">
+				<input type="hidden" name="title" value="Special:Search">
+				<input type="search" name="search" title="Search RogueBasin [alt-shift-f]" accesskey="f" id="searchInput">
+				<input type="submit" name="go" value="Go" title="Go to a page with this exact name if exists" id="searchGoButton" class="searchButton">&nbsp;
+				<input type="submit" name="fulltext" value="Search" title="Search the pages for this text" id="mw-searchButton" class="searchButton">
+			</form>
+		</div>
+	</div>
+	<div class="portlet" id="p-tb">
+		<h5>Tools</h5>
+		<div class="pBody">
+			<ul>
+				<li id="t-whatlinkshere"><a href="http://www.roguebasin.com/index.php?title=Special:WhatLinksHere/Basic_BSP_Dungeon_generation" title="A list of all wiki pages that link here [alt-shift-j]" accesskey="j">What links here</a></li>
+				<li id="t-recentchangeslinked"><a href="http://www.roguebasin.com/index.php?title=Special:RecentChangesLinked/Basic_BSP_Dungeon_generation" title="Recent changes in pages linked from this page [alt-shift-k]" accesskey="k">Related changes</a></li>
+				<li id="t-specialpages"><a href="http://www.roguebasin.com/index.php?title=Special:SpecialPages" title="A list of all special pages [alt-shift-q]" accesskey="q">Special pages</a></li>
+				<li><a href="http://www.roguebasin.com/index.php?title=Basic_BSP_Dungeon_generation&amp;printable=yes" rel="alternate">Printable version</a></li>
+				<li id="t-permalink"><a href="http://www.roguebasin.com/index.php?title=Basic_BSP_Dungeon_generation&amp;oldid=46532" title="Permanent link to this revision of the page">Permanent link</a></li>
+			</ul>
+		</div>
+	</div>
+</div><!-- end of the left (by default at least) column -->
+<div class="visualClear"></div>
+<div id="footer">
+	<div id="f-poweredbyico">
+		<a href="http://www.mediawiki.org/"><img src="./Basic BSP Dungeon generation - RogueBasin_files/poweredby_mediawiki_88x31.png" alt="Powered by MediaWiki" width="88" height="31"></a>
+	</div>
+	<ul id="f-list">
+		<li id="lastmod"> This page was last modified on 19 December 2017, at 23:32.</li>
+		<li id="viewcount">This page has been accessed 203,354 times.</li>
+		<li id="privacy"><a href="http://www.roguebasin.com/index.php?title=RogueBasin:Privacy_policy" title="RogueBasin:Privacy policy">Privacy policy</a></li>
+		<li id="about"><a href="http://www.roguebasin.com/index.php?title=RogueBasin:About" title="RogueBasin:About">About RogueBasin</a></li>
+		<li id="disclaimer"><a href="http://www.roguebasin.com/index.php?title=RogueBasin:General_disclaimer" title="RogueBasin:General disclaimer">Disclaimers</a></li>
+	</ul>
+</div>
+</div>
+<script>if(window.mw){
+mw.loader.load(["mediawiki.user","mediawiki.page.ready"], null, true);
+}</script><script src="./Basic BSP Dungeon generation - RogueBasin_files/load(5).php" type="text/javascript"></script>
+<script src="./Basic BSP Dungeon generation - RogueBasin_files/load(6).php"></script>
+<!-- Served in 0.505 secs. --></body></html>

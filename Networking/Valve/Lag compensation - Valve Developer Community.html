@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<!-- saved from url=(0057)https://developer.valvesoftware.com/wiki/Lag_compensation -->
+<html lang="en" dir="ltr" class="client-js"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<title>Lag compensation - Valve Developer Community</title>
+<script>document.documentElement.className = document.documentElement.className.replace( /(^|\s)client-nojs(\s|$)/, "$1client-js$2" );</script>
+<script>(window.RLQ=window.RLQ||[]).push(function(){mw.config.set({"wgCanonicalNamespace":"","wgCanonicalSpecialPageName":false,"wgNamespaceNumber":0,"wgPageName":"Lag_compensation","wgTitle":"Lag compensation","wgCurRevisionId":216503,"wgRevisionId":216503,"wgArticleId":15017,"wgIsArticle":true,"wgIsRedirect":false,"wgAction":"view","wgUserName":null,"wgUserGroups":["*"],"wgCategories":["TODO","Networking"],"wgBreakFrames":false,"wgPageContentLanguage":"en","wgPageContentModel":"wikitext","wgSeparatorTransformTable":["",""],"wgDigitTransformTable":["",""],"wgDefaultDateFormat":"dmy","wgMonthNames":["","January","February","March","April","May","June","July","August","September","October","November","December"],"wgMonthNamesShort":["","Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"],"wgRelevantPageName":"Lag_compensation","wgRelevantArticleId":15017,"wgRequestId":"5a03bedc7a8d09b401d520d3","wgIsProbablyEditable":false,"wgRestrictionEdit":[],"wgRestrictionMove":[],"wgWikiEditorEnabledModules":{"toolbar":true,"dialogs":true,"preview":false,"publish":false},"wgMediaViewerOnClick":true,"wgMediaViewerEnabledByDefault":true,"wgCategoryTreePageCategoryOptions":"{\"mode\":0,\"hideprefix\":20,\"showcount\":true,\"namespaces\":false}"});mw.loader.implement("user.options",function($,jQuery,require,module){mw.user.options.set({"variant":"en"});});mw.loader.implement("user.tokens",function ( $, jQuery, require, module ) {
+mw.user.tokens.set({"editToken":"+\\","patrolToken":"+\\","watchToken":"+\\","csrfToken":"+\\"});/*@nomin*/;
+
+});mw.loader.load(["mediawiki.page.startup","mmv.head","skins.vector.js"]);});</script>
+<link rel="stylesheet" href="./Lag compensation - Valve Developer Community_files/load.php">
+<style>
+.mw-collapsible-toggle{float:right;-moz-user-select:none;-webkit-user-select:none;-ms-user-select:none;user-select:none}  .mw-content-ltr .mw-collapsible-toggle,.mw-content-rtl .mw-content-ltr .mw-collapsible-toggle{float:right} .mw-content-rtl .mw-collapsible-toggle,.mw-content-ltr .mw-content-rtl .mw-collapsible-toggle{float:left}.mw-customtoggle,.mw-collapsible-toggle{cursor:pointer} caption .mw-collapsible-toggle,.mw-content-ltr caption .mw-collapsible-toggle,.mw-content-rtl caption .mw-collapsible-toggle,.mw-content-rtl .mw-content-ltr caption .mw-collapsible-toggle,.mw-content-ltr .mw-content-rtl caption .mw-collapsible-toggle{float:none} li .mw-collapsible-toggle,.mw-content-ltr li .mw-collapsible-toggle,.mw-content-rtl li .mw-collapsible-toggle,.mw-content-rtl .mw-content-ltr li .mw-collapsible-toggle,.mw-content-ltr .mw-content-rtl li .mw-collapsible-toggle{float:none} .mw-collapsible-toggle-li{list-style:none}
+.suggestions{overflow:hidden;position:absolute;top:0;left:0;width:0;border:none;z-index:1099;padding:0;margin:-1px 0 0 0}.suggestions-special{position:relative;background-color:white;cursor:pointer;border:solid 1px #aaaaaa;padding:0;margin:0;margin-top:-2px;display:none;padding:0.25em 0.25em;line-height:1.25em}.suggestions-results{background-color:white;cursor:pointer;border:solid 1px #aaaaaa;padding:0;margin:0}.suggestions-result{color:black;margin:0;line-height:1.5em;padding:0.01em 0.25em;text-align:left; overflow:hidden;-o-text-overflow:ellipsis; text-overflow:ellipsis;white-space:nowrap}.suggestions-result-current{background-color:#4C59A6;color:white}.suggestions-special .special-label{color:gray;text-align:left}.suggestions-special .special-query{color:black;font-style:italic;text-align:left}.suggestions-special .special-hover{background-color:silver}.suggestions-result-current .special-label,.suggestions-result-current .special-query{color:white}.highlight{font-weight:bold}
+@media screen {
+	.tochidden,.toctoggle{-moz-user-select:none;-webkit-user-select:none;-ms-user-select:none;user-select:none}.toctoggle{font-size:94%}}
+@media print {
+	#toc.tochidden,.toctoggle{display:none}}
+.postedit-container{margin:0 auto;position:fixed;top:0;height:0;left:50%;z-index:1000;font-size:13px}.postedit-container:hover{cursor:pointer}.postedit{position:relative;top:0.6em;left:-50%;padding:.6em 3.6em .6em 1.1em;line-height:1.5625em;color:#626465;background-color:#f4f4f4;border:1px solid #dcd9d9;text-shadow:0 0.0625em 0 rgba(255,255,255,0.5);border-radius:5px;box-shadow:0 2px 5px 0 #ccc;-webkit-transition:all 0.25s ease-in-out;-moz-transition:all 0.25s ease-in-out;-ms-transition:all 0.25s ease-in-out;-o-transition:all 0.25s ease-in-out;transition:all 0.25s ease-in-out}.skin-monobook .postedit{top:6em !important}.postedit-faded{opacity:0}.postedit-icon{padding-left:41px;  line-height:25px;background-repeat:no-repeat;background-position:8px 50%}.postedit-icon-checkmark{background-image:url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAB9ElEQVR4AZWRA3AYURQArxrVHtW2bdu2bdu2zdi2bdu2bWxs7zeehZaw4f70kbs+zI3e/nWK+RWx3aOFlrL56Sy5SxrruG69hlv6OyK+mz+8KDSXdXembj0ispT7tjs4ZTIbpYBvxGSGKzZTeFrb7W/meN002swFs0U8ttpHTkF2BvCqWQrW35929bTsKm5Zb+SEwWwcY8wAngB9m7Z+d+rIPZ/npdy12M5p47n8dXsCYAf0qPy06eGMdktuDu9Qf+JmKl3SWM91qzVcN9tAbEYkwMaq0tyb1m/To5kP170el/BK8/qa6sJr70ydf+T/Uu5ab+Oo/lS0AkUBpIFWlZ9WPhxpse/PHO7YbOOczjL0vZV2lNxPPtG73dYXM+xvm2znrOl83tidoqCwMBgYXsPFB0on5S6pr+eK5TKuW67lgvaKvF8mL1dtfTL32FHxRdyx3cQpg7m4x9sCXKkTIzA4LDH44zWdzaUf71hv5rTG4uyzcusybxSX7aThbMQ8XgCYAp3rzTTQOiIh9PNlzY3FSuZxrzjme1Y7uGS6kjsWO4jPjM4FVjRZsvD4kO9XtTZzQn82NyzWc0B7AmZh6gA/hOYSGhfw9YbOVnarj+S7800AL2BIsxUAbWNToj7bhBuQmZcOsFdoKUC74rGheCwXmqAIQTc9jQcrADIAAAAASUVORK5CYII=);background-image:url(/w/resources/src/mediawiki.action/images/green-checkmark.png?d94f1)!ie;background-position:left}.postedit-close{position:absolute;padding:0 .8em;right:0;top:0;font-size:1.25em;font-weight:bold;line-height:2.3em;color:black;text-shadow:0 0.0625em 0 white;text-decoration:none;opacity:0.2;filter:alpha(opacity=20)}.postedit-close:hover{color:black;text-decoration:none;opacity:0.4;filter:alpha(opacity=40)}
+.mw-ui-button{font-family:inherit;font-size:1em;display:inline-block;min-width:4em;max-width:28.75em;padding:.5em 1em;margin:0;border-radius:2px;-webkit-box-sizing:border-box;-moz-box-sizing:border-box;box-sizing:border-box;-webkit-appearance:none;*display:inline;zoom:1;vertical-align:middle;background:#ffffff;color:#555555;border:1px solid #cccccc;text-align:center;font-weight:bold;cursor:pointer}.mw-ui-button:hover{background-color:#cccccc}.mw-ui-button:focus{border-color:#ffffff;box-shadow:0 0 0 1px #cccccc;outline:none}.mw-ui-button:focus::-moz-focus-inner{border-color:transparent}.mw-ui-button:active,.mw-ui-button.is-on,.mw-ui-button.mw-ui-checked{background:#777777;box-shadow:none}.mw-ui-button:hover,.mw-ui-button:active,.mw-ui-button:visited{color:#555555}.mw-ui-button:focus{background-color:#cccccc}.mw-ui-button:disabled{color:#cccccc}.mw-ui-button:disabled:hover,.mw-ui-button:disabled:active{background:#ffffff;box-shadow:none}.mw-ui-button:disabled{text-shadow:none;cursor:default}.mw-ui-button.mw-ui-big{font-size:1.3em}.mw-ui-button.mw-ui-block{display:block;width:100%;margin-left:auto;margin-right:auto}.mw-ui-button.mw-ui-progressive,.mw-ui-button.mw-ui-primary{background:#347bff;color:#fff;border:1px solid #347bff;text-shadow:0 1px rgba(0,0,0,0.1)}.mw-ui-button.mw-ui-progressive:hover,.mw-ui-button.mw-ui-primary:hover{background-color:#2962cc}.mw-ui-button.mw-ui-progressive:focus,.mw-ui-button.mw-ui-primary:focus{border-color:#ffffff;box-shadow:0 0 0 1px #2962cc;outline:none}.mw-ui-button.mw-ui-progressive:focus::-moz-focus-inner,.mw-ui-button.mw-ui-primary:focus::-moz-focus-inner{border-color:transparent}.mw-ui-button.mw-ui-progressive:active,.mw-ui-button.mw-ui-primary:active,.mw-ui-button.mw-ui-progressive.is-on,.mw-ui-button.mw-ui-primary.is-on,.mw-ui-button.mw-ui-progressive.mw-ui-checked,.mw-ui-button.mw-ui-primary.mw-ui-checked{background:#2962cc;box-shadow:none}.mw-ui-button.mw-ui-progressive:disabled,.mw-ui-button.mw-ui-primary:disabled{background:#dddddd;border-color:#dddddd}.mw-ui-button.mw-ui-progressive:disabled:hover,.mw-ui-button.mw-ui-primary:disabled:hover,.mw-ui-button.mw-ui-progressive:disabled:active,.mw-ui-button.mw-ui-primary:disabled:active,.mw-ui-button.mw-ui-progressive:disabled.mw-ui-checked,.mw-ui-button.mw-ui-primary:disabled.mw-ui-checked{box-shadow:none}.mw-ui-button.mw-ui-progressive.mw-ui-quiet,.mw-ui-button.mw-ui-primary.mw-ui-quiet{color:#555555}.mw-ui-button.mw-ui-progressive.mw-ui-quiet:hover,.mw-ui-button.mw-ui-primary.mw-ui-quiet:hover,.mw-ui-button.mw-ui-progressive.mw-ui-quiet:focus,.mw-ui-button.mw-ui-primary.mw-ui-quiet:focus{background:transparent;color:#347bff}.mw-ui-button.mw-ui-progressive.mw-ui-quiet:active,.mw-ui-button.mw-ui-primary.mw-ui-quiet:active,.mw-ui-button.mw-ui-progressive.mw-ui-quiet.mw-ui-checked,.mw-ui-button.mw-ui-primary.mw-ui-quiet.mw-ui-checked{color:#2962cc}.mw-ui-button.mw-ui-progressive.mw-ui-quiet:disabled,.mw-ui-button.mw-ui-primary.mw-ui-quiet:disabled{color:#cccccc}.mw-ui-button.mw-ui-constructive{background:#347bff;color:#fff;border:1px solid #347bff;text-shadow:0 1px rgba(0,0,0,0.1)}.mw-ui-button.mw-ui-constructive:hover{background-color:#2962cc}.mw-ui-button.mw-ui-constructive:focus{border-color:#ffffff;box-shadow:0 0 0 1px #2962cc;outline:none}.mw-ui-button.mw-ui-constructive:focus::-moz-focus-inner{border-color:transparent}.mw-ui-button.mw-ui-constructive:active,.mw-ui-button.mw-ui-constructive.is-on,.mw-ui-button.mw-ui-constructive.mw-ui-checked{background:#2962cc;box-shadow:none}.mw-ui-button.mw-ui-constructive:disabled{background:#dddddd;border-color:#dddddd}.mw-ui-button.mw-ui-constructive:disabled:hover,.mw-ui-button.mw-ui-constructive:disabled:active,.mw-ui-button.mw-ui-constructive:disabled.mw-ui-checked{box-shadow:none}.mw-ui-button.mw-ui-constructive.mw-ui-quiet{color:#555555}.mw-ui-button.mw-ui-constructive.mw-ui-quiet:hover,.mw-ui-button.mw-ui-constructive.mw-ui-quiet:focus{background:transparent;color:#347bff}.mw-ui-button.mw-ui-constructive.mw-ui-quiet:active,.mw-ui-button.mw-ui-constructive.mw-ui-quiet.mw-ui-checked{color:#2962cc}.mw-ui-button.mw-ui-constructive.mw-ui-quiet:disabled{color:#cccccc}.mw-ui-button.mw-ui-destructive{background:#d11d13;color:#fff;border:1px solid #d11d13;text-shadow:0 1px rgba(0,0,0,0.1)}.mw-ui-button.mw-ui-destructive:hover{background-color:#a7170f}.mw-ui-button.mw-ui-destructive:focus{border-color:#ffffff;box-shadow:0 0 0 1px #a7170f;outline:none}.mw-ui-button.mw-ui-destructive:focus::-moz-focus-inner{border-color:transparent}.mw-ui-button.mw-ui-destructive:active,.mw-ui-button.mw-ui-destructive.is-on,.mw-ui-button.mw-ui-destructive.mw-ui-checked{background:#a7170f;box-shadow:none}.mw-ui-button.mw-ui-destructive:disabled{background:#dddddd;border-color:#dddddd}.mw-ui-button.mw-ui-destructive:disabled:hover,.mw-ui-button.mw-ui-destructive:disabled:active,.mw-ui-button.mw-ui-destructive:disabled.mw-ui-checked{box-shadow:none}.mw-ui-button.mw-ui-destructive.mw-ui-quiet{color:#555555}.mw-ui-button.mw-ui-destructive.mw-ui-quiet:hover,.mw-ui-button.mw-ui-destructive.mw-ui-quiet:focus{background:transparent;color:#d11d13}.mw-ui-button.mw-ui-destructive.mw-ui-quiet:active,.mw-ui-button.mw-ui-destructive.mw-ui-quiet.mw-ui-checked{color:#a7170f}.mw-ui-button.mw-ui-destructive.mw-ui-quiet:disabled{color:#cccccc}.mw-ui-button.mw-ui-quiet{background:transparent;border:0;text-shadow:none;color:#555555}.mw-ui-button.mw-ui-quiet:hover,.mw-ui-button.mw-ui-quiet:focus{background:transparent;color:#555555}.mw-ui-button.mw-ui-quiet:active,.mw-ui-button.mw-ui-quiet.mw-ui-checked{color:#777777}.mw-ui-button.mw-ui-quiet:disabled{color:#cccccc}.mw-ui-button.mw-ui-quiet:hover,.mw-ui-button.mw-ui-quiet:focus{box-shadow:none}.mw-ui-button.mw-ui-quiet:active,.mw-ui-button.mw-ui-quiet:disabled{background:transparent}a.mw-ui-button{text-decoration:none;line-height:normal}a.mw-ui-button:hover,a.mw-ui-button:focus{text-decoration:none}.mw-ui-button-group > *{min-width:48px;border-radius:0;float:left}.mw-ui-button-group > *:first-child{border-top-left-radius:2px;border-bottom-left-radius:2px}.mw-ui-button-group > *:not( :first-child ){border-left:0}.mw-ui-button-group > *:last-child{border-top-right-radius:2px;border-bottom-right-radius:2px}.mw-ui-button-group .is-on .button{cursor:default}
+.mw-ui-icon{position:relative;min-height:1.5em;min-width:1.5em}.mw-ui-icon.mw-ui-icon-element{text-indent:-999px;overflow:hidden;width:3.5em;min-width:3.5em;max-width:3.5em}.mw-ui-icon.mw-ui-icon-element:before{left:0;right:0;position:absolute;margin:0 1em}.mw-ui-icon.mw-ui-icon-before:before,.mw-ui-icon.mw-ui-icon-element:before{background-position:50% 50%;background-repeat:no-repeat;background-size:100% auto;float:left;display:block;min-height:1.5em;content:''}.mw-ui-icon.mw-ui-icon-before:before{position:relative;width:1.5em;margin-right:1em}</style><style>
+.suggestions a.mw-searchSuggest-link,.suggestions a.mw-searchSuggest-link:hover,.suggestions a.mw-searchSuggest-link:active,.suggestions a.mw-searchSuggest-link:focus{color:black;text-decoration:none}.suggestions-result-current a.mw-searchSuggest-link,.suggestions-result-current a.mw-searchSuggest-link:hover,.suggestions-result-current a.mw-searchSuggest-link:active,.suggestions-result-current a.mw-searchSuggest-link:focus{color:white}.suggestions a.mw-searchSuggest-link .special-query{ overflow:hidden;-o-text-overflow:ellipsis; text-overflow:ellipsis;white-space:nowrap}
+.mw-mmv-overlay{position:fixed;top:0px;left:0px;right:0px;bottom:0px;z-index:1000;background-color:#000000}body.mw-mmv-lightbox-open{overflow-y:auto}body.mw-mmv-lightbox-open #mw-page-base,body.mw-mmv-lightbox-open #mw-head-base,body.mw-mmv-lightbox-open #mw-navigation,body.mw-mmv-lightbox-open #content,body.mw-mmv-lightbox-open #footer,body.mw-mmv-lightbox-open #globalWrapper{ display:none}body.mw-mmv-lightbox-open > *{ display:none}body.mw-mmv-lightbox-open > .mw-mmv-overlay,body.mw-mmv-lightbox-open > .mw-mmv-wrapper{display:block}.mw-mmv-filepage-buttons{margin-top:5px}.mw-mmv-filepage-buttons .mw-mmv-view-expanded,.mw-mmv-filepage-buttons .mw-mmv-view-config{display:block;line-height:inherit}.mw-mmv-filepage-buttons .mw-mmv-view-expanded.mw-ui-icon:before{background-image:url(data:image/svg+xml,%3C%3Fxml%20version%3D%221.0%22%20encoding%3D%22UTF-8%22%20standalone%3D%22no%22%3F%3E%0A%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201024%20768%22%3E%0A%20%20%20%20%3Cg%20fill%3D%22%23777%22%3E%0A%20%20%20%20%20%20%20%20%3Cpath%20d%3D%22M851.2%2071.6L690.7%20232.1l-40.1-40.3-9.6%20164.8%20164.8-9.3-40.3-40.4L926%20146.4l58.5%2058.5L997.6%200%20792.7%2013.1%22%2F%3E%0A%20%20%20%20%20%20%20%20%3Cpath%20d%3D%22M769.6%2089.3H611.9l70.9%2070.8%207.9%207.5m-47.1%20234.6l-51.2%203%203-51.2%209.4-164.4%205.8-100.3H26.4V768h883.1V387l-100.9%205.8-165%209.4zM813.9%20678H113.6l207.2-270.2%2031.5-12.9L548%20599.8l105.9-63.2%20159.8%20140.8.2.6zm95.6-291.9V228l-79.1%2078.9%207.8%207.9%22%2F%3E%0A%20%20%20%20%3C%2Fg%3E%0A%3C%2Fsvg%3E%0A);background-image:url(/w/extensions/MultimediaViewer/resources/mmv/img/expand.svg?b714e)!ie}.mw-mmv-filepage-buttons .mw-mmv-view-config.mw-ui-icon:before{background-image:url(data:image/svg+xml,%3C%3Fxml%20version%3D%221.0%22%20encoding%3D%22UTF-8%22%20standalone%3D%22no%22%3F%3E%0A%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201024%20768%22%3E%0A%20%20%20%20%3Cpath%20d%3D%22M897%20454.6V313.4L810.4%20299c-6.4-23.3-16-45.7-27.3-65.8l50.5-71.4-99.4-100.2-71.4%2050.5c-20.9-11.2-42.5-20.9-65.8-27.3L582.6-1H441.4L427%2085.6c-23.3%206.4-45.7%2016-65.8%2027.3l-71.4-50.5-100.3%2099.5%2050.5%2071.4c-11.2%2020.9-20.9%2042.5-27.3%2066.6L127%20313.4v141.2l85.8%2014.4c6.4%2023.3%2016%2045.7%2027.3%2066.6L189.6%20607l99.5%2099.5%2071.4-50.5c20.9%2011.2%2042.5%2020.9%2066.6%2027.3l14.4%2085.8h141.2l14.4-86.6c23.3-6.4%2045.7-16%2065.8-27.3l71.4%2050.5%2099.5-99.5-50.5-71.4c11.2-20.9%2020.9-42.5%2027.3-66.6l86.4-13.6zm-385%2077c-81.8%200-147.6-66.6-147.6-147.6%200-81.8%2066.6-147.6%20147.6-147.6S659.6%20302.2%20659.6%20384%20593.8%20531.6%20512%20531.6z%22%20fill%3D%22%23777%22%2F%3E%0A%3C%2Fsvg%3E%0A);background-image:url(/w/extensions/MultimediaViewer/resources/mmv/img/gear_gray.svg?330ae)!ie;opacity:0.75}.mw-mmv-filepage-buttons .mw-mmv-view-config.mw-ui-icon:before:hover{opacity:1}</style><meta name="ResourceLoaderDynamicStyles" content="">
+<script async="" src="./Lag compensation - Valve Developer Community_files/load(1).php"></script>
+<meta name="generator" content="MediaWiki 1.27.4">
+<link rel="shortcut icon" href="https://developer.valvesoftware.com/favicon.ico">
+<link rel="search" type="application/opensearchdescription+xml" href="https://developer.valvesoftware.com/w/opensearch_desc.php" title="Valve Developer Community (en)">
+<link rel="EditURI" type="application/rsd+xml" href="https://developer.valvesoftware.com/w/api.php?action=rsd">
+<link rel="alternate" type="application/atom+xml" title="Valve Developer Community Atom feed" href="https://developer.valvesoftware.com/w/index.php?title=Special:RecentChanges&amp;feed=atom">
+<script src="./Lag compensation - Valve Developer Community_files/load(2).php"></script></head>
+<body class="mediawiki ltr sitedir-ltr ns-0 ns-subject page-Lag_compensation rootpage-Lag_compensation skin-vector action-view vsc-initialized">
+		<div id="mw-page-base" class="noprint"></div>
+		<div id="mw-head-base" class="noprint"></div>
+		<div id="content" class="mw-body" role="main">
+			<a id="top"></a>
+
+						<div class="mw-indicators">
+</div>
+			<h1 id="firstHeading" class="firstHeading" lang="en">Lag compensation</h1>
+									<div id="bodyContent" class="mw-body-content">
+									<div id="siteSub">From Valve Developer Community</div>
+								<div id="contentSub"></div>
+												<div id="jump-to-nav" class="mw-jump">
+					Jump to:					<a href="https://developer.valvesoftware.com/wiki/Lag_compensation#mw-head">navigation</a>, 					<a href="https://developer.valvesoftware.com/wiki/Lag_compensation#p-search">search</a>
+				</div>
+				<div id="mw-content-text" lang="en" dir="ltr" class="mw-content-ltr"><dl><dd> <i>You may be looking for <a href="https://developer.valvesoftware.com/wiki/Latency_Compensating_Methods_in_Client/Server_In-game_Protocol_Design_and_Optimization" title="Latency Compensating Methods in Client/Server In-game Protocol Design and Optimization">Yahn Bernier's 2001 paper on game engine networking</a>.</i></dd></dl>
+<div class="thumb tright"><div class="thumbinner" style="width:302px;"><a href="https://developer.valvesoftware.com/wiki/File:Lag_compensation.jpg" class="image"><img alt="" src="./Lag compensation - Valve Developer Community_files/300px-Lag_compensation.jpg" width="300" height="162" class="thumbimage" srcset="/w/images/thumb/c/ca/Lag_compensation.jpg/450px-Lag_compensation.jpg 1.5x, /w/images/thumb/c/ca/Lag_compensation.jpg/600px-Lag_compensation.jpg 2x" data-file-width="690" data-file-height="372"></a>  <div class="thumbcaption"><div class="magnify"><a href="https://developer.valvesoftware.com/wiki/File:Lag_compensation.jpg" class="internal" title="Enlarge"></a></div>Historic client hitboxes (red) versus rewound server hitboxes (blue).</div></div></div>
+<p><b>Lag compensation</b> is the notion of the server using a player's latency to rewind time when processing a <a href="https://developer.valvesoftware.com/wiki/Usercmd" title="Usercmd">usercmd</a>, in order to see what the player saw when the command was sent. In combination with <a href="https://developer.valvesoftware.com/wiki/Prediction" title="Prediction">prediction</a>, lag compensation can help to combat network latency to the point of almost eliminating it from the perspective of an attacker. For a more detailed explanation see the <a href="https://developer.valvesoftware.com/wiki/Source_Multiplayer_Networking#Lag_compensation" title="Source Multiplayer Networking">Source Multiplayer Networking</a> article.
+</p><p>By default only players are rewound, and one second of location/animation history is kept.
+</p>
+<div title="Information" style="margin:0.4em 1em 0.5em;"><strong style="color:#EDEDED;display:table-cell;text-align:right;white-space:nowrap;padding-right:0.3em;"><img alt="" src="./Lag compensation - Valve Developer Community_files/Note.png" width="10" height="13" data-file-width="10" data-file-height="13"> Note:</strong><span style="display:table-cell;"><code><a href="https://developer.valvesoftware.com/wiki/CBasePlayer" title="CBasePlayer">CBasePlayer</a></code> does not use lag compensation; it must be implemented by a derived class. Valve's networked player classes do this already.</span></div>
+<div style="margin:0.4em 1em 0.5em;"><strong style="display:table-cell;text-align:right;white-space:nowrap;padding-right:0.3em;"><img alt="" src="./Lag compensation - Valve Developer Community_files/Tip.png" width="10" height="13" data-file-width="10" data-file-height="13"> Tip:</strong><span style="display:table-cell;">Since <a href="https://developer.valvesoftware.com/wiki/Left_4_Dead_2" title="Left 4 Dead 2"><img alt="&lt;Left 4 Dead 2&gt;" src="./Lag compensation - Valve Developer Community_files/L4D2-16px.png" width="16" height="16" data-file-width="16" data-file-height="16"></a>, <i>all</i> entities can be lag compensated using the <code>LagCompensate</code> <b><a href="https://developer.valvesoftware.com/wiki/This_Feature_is_Not_Available_by_Default" title="This Feature is Not Available by Default" class="mw-redirect">!FGD</a></b> keyvalue. Use this sparingly!</span></div>
+<div id="toc" class="toc"><div id="toctitle"><h2>Contents</h2><span class="toctoggle">&nbsp;[<a href="https://developer.valvesoftware.com/wiki/Lag_compensation#" id="togglelink">hide</a>]&nbsp;</span></div>
+<ul>
+<li class="toclevel-1 tocsection-1"><a href="https://developer.valvesoftware.com/wiki/Lag_compensation#Configuration"><span class="tocnumber">1</span> <span class="toctext">Configuration</span></a></li>
+<li class="toclevel-1 tocsection-2"><a href="https://developer.valvesoftware.com/wiki/Lag_compensation#Invocation"><span class="tocnumber">2</span> <span class="toctext">Invocation</span></a></li>
+<li class="toclevel-1 tocsection-3"><a href="https://developer.valvesoftware.com/wiki/Lag_compensation#Lag_Compensation_Type"><span class="tocnumber">3</span> <span class="toctext">Lag Compensation Type</span></a></li>
+<li class="toclevel-1 tocsection-4"><a href="https://developer.valvesoftware.com/wiki/Lag_compensation#Implementation"><span class="tocnumber">4</span> <span class="toctext">Implementation</span></a></li>
+<li class="toclevel-1 tocsection-5"><a href="https://developer.valvesoftware.com/wiki/Lag_compensation#See_also"><span class="tocnumber">5</span> <span class="toctext">See also</span></a></li>
+</ul>
+</div>
+
+<h2><span class="mw-headline" id="Configuration">Configuration</span></h2>
+<dl><dt> <code>cl_lagcompensation</code> <code>&lt;<a href="https://developer.valvesoftware.com/wiki/Boolean" title="Boolean">boolean</a>&gt;</code></dt>
+<dd> Allows clients to tell the server that they don't want their own commands lag compensated. This is <i>not</i> a cheat.</dd>
+<dt> <code>cl_lagcomp_errorcheck</code> <code>&lt;<a href="https://developer.valvesoftware.com/wiki/Integer" title="Integer">integer</a>&gt;</code></dt>
+<dd> Deprecated? In theory displays error information for the given player index, in practice is not referenced anywhere.</dd>
+<dt> <code>sv_lagcompensationforcerestore</code> <code>&lt;<a href="https://developer.valvesoftware.com/wiki/Boolean" title="Boolean">boolean</a>&gt;</code></dt>
+<dd> Cheat. Disabling this causes the game to check if each entity can still occupy its rewind position in the current, un-rewound world. If it can't, it is rewound to the last valid position instead of the desired one. <strong style="color:#8BC53F">To do:&nbsp;</strong>Why would anyone want that to happen?</dd>
+<dt> <code>sv_showlagcompensation</code> <code>&lt;<a href="https://developer.valvesoftware.com/wiki/Boolean" title="Boolean">boolean</a>&gt;</code></dt>
+<dd> Cheat. Displays rewound <a href="https://developer.valvesoftware.com/wiki/Hitbox" title="Hitbox">hitboxes</a> whenever a player is lag compensated. This fills the role of the old <code>sv_showhitboxes</code> command, only without the confusion caused by the hitboxes also being shown when compensation is not in effect.</dd></dl>
+<p>Developer server builds (those compiled with <code>ALLOW_DEVELOPMENT_CVARS</code>) have some extra commands:
+</p>
+<dl><dt> <code>sv_unlag</code> <code>&lt;<a href="https://developer.valvesoftware.com/wiki/Boolean" title="Boolean">boolean</a>&gt;</code></dt>
+<dd> Enable/disable lag compensation entirely.</dd>
+<dt> <code>sv_maxunlag</code> <code>&lt;<a href="https://developer.valvesoftware.com/wiki/Float" title="Float">float</a>&gt;</code></dt>
+<dd> Number of seconds to store player positions for. Default (and maximum) is 1.</dd></dl>
+<h2><span class="mw-headline" id="Invocation">Invocation</span></h2>
+<p>Simply wrap whatever code you want lag compensated within two calls to the <code>lagcompensation</code> object:
+</p>
+<div class="mw-highlight mw-content-ltr" dir="ltr"><pre><span class="cp">#ifdef GAME_DLL</span>
+
+<span class="cp">#include</span> <span class="cpf">"..\server\ilagcompensationmanager.h"</span><span class="cp"></span>
+
+<span class="kt">void</span> <span class="n">CMyPlayer</span><span class="o">::</span><span class="n">FireBullets</span> <span class="p">(</span> <span class="k">const</span> <span class="n">FireBulletsInfo_t</span> <span class="o">&amp;</span><span class="n">info</span> <span class="p">)</span>
+<span class="p">{</span>
+	<span class="c1">// Source 2007</span>
+	<span class="n">lagcompensation</span><span class="o">-&gt;</span><span class="n">StartLagCompensation</span><span class="p">(</span> <span class="k">this</span><span class="p">,</span> <span class="k">this</span><span class="o">-&gt;</span><span class="n">GetCurrentCommand</span><span class="p">()</span> <span class="p">);</span>
+
+	<span class="c1">// Alien Swarm and later (see also sub-section below)</span>
+	<span class="n">lagcompensation</span><span class="o">-&gt;</span><span class="n">StartLagCompensation</span><span class="p">(</span> <span class="k">this</span><span class="p">,</span> <span class="n">LAG_COMPENSATE_HITBOXES</span> <span class="p">);</span>
+
+	<span class="n">BaseClass</span><span class="o">::</span><span class="n">FireBullets</span><span class="p">(</span><span class="n">info</span><span class="p">);</span>
+
+	<span class="n">lagcompensation</span><span class="o">-&gt;</span><span class="n">FinishLagCompensation</span><span class="p">(</span> <span class="k">this</span> <span class="p">);</span>
+<span class="p">}</span>
+<span class="cp">#endif</span>
+</pre></div>
+<p>Time will be wound back on the call to <code>StartLagCompensation()</code>, and wound forward again on the call to <code>FinishLagCompensation()</code>.
+</p>
+<h2><span class="mw-headline" id="Lag_Compensation_Type">Lag Compensation Type</span></h2>
+<p>Starting with Alien Swarm, you can optimise lag compensation with these settings:
+</p>
+<dl><dt> <code>LAG_COMPENSATE_BOUNDS</code></dt>
+<dd> Rewind entities' locations only, skipping animations.</dd>
+<dt> <code>LAG_COMPENSATE_HITBOXES</code></dt>
+<dd> Rewind both locations and <a href="https://developer.valvesoftware.com/wiki/Hitbox" title="Hitbox">hitboxes</a>. This is the standard setting.</dd>
+<dt> <code>LAG_COMPENSATE_HITBOXES_ALONG_RAY</code></dt>
+<dd> Rewind hitboxes if an entity is hit by a ray defined by the "weaponPos" <code>StartLagCompensation()</code> overload. Otherwise rewind bounds only.</dd></dl>
+<p>These setting chosen applies to <i>all</i> entities affected by the rewind.
+</p>
+<h2><span class="mw-headline" id="Implementation">Implementation</span></h2>
+<p><strong style="color:#8BC53F">To do:&nbsp;</strong>Supporting lag compensation on new entities.
+</p>
+<h2><span class="mw-headline" id="See_also">See also</span></h2>
+<ul><li> <a href="https://developer.valvesoftware.com/wiki/Source_Multiplayer_Networking#Lag_compensation" title="Source Multiplayer Networking">Source Multiplayer Networking#Lag compensation</a></li>
+<li> <a href="https://developer.valvesoftware.com/wiki/NPC_Lag_Compensation" title="NPC Lag Compensation">NPC Lag Compensation</a></li>
+<li> <a href="https://developer.valvesoftware.com/wiki/Prediction" title="Prediction">Prediction</a></li>
+<li> <a href="https://developer.valvesoftware.com/wiki/Interpolation" title="Interpolation">Interpolation</a></li></ul>
+
+<!-- 
+NewPP limit report
+Cached time: 20200909201722
+Cache expiry: 86400
+Dynamic content: false
+CPU time usage: 0.072 seconds
+Real time usage: 0.179 seconds
+Preprocessor visited node count: 358/1000000
+Preprocessor generated node count: 1017/1000000
+Post‐expand include size: 3811/2097152 bytes
+Template argument size: 2573/2097152 bytes
+Highest expansion depth: 6/40
+Expensive parser function count: 0/100
+-->
+
+<!-- 
+Transclusion expansion time report (%,ms,calls,template)
+100.00%  141.846      1 - -total
+ 18.01%   25.542      6 - Template:IO
+  4.32%    6.121      6 - Template:KV_Type
+  3.64%    5.162      1 - Template:Tip
+  1.72%    2.433      2 - Template:Todo
+  1.30%    1.841      1 - Template:Note
+  1.09%    1.546      1 - Template:L4d2
+  1.06%    1.499      1 - Template:Not_in_FGD
+-->
+
+<!-- Saved in parser cache with key developerwiki-mw_:pcache:idhash:15017-0!*!0!!en!5!* and timestamp 20200909201722 and revision id 216503
+ -->
+</div>					<div class="printfooter">
+						Retrieved from "<a dir="ltr" href="https://developer.valvesoftware.com/w/index.php?title=Lag_compensation&amp;oldid=216503">https://developer.valvesoftware.com/w/index.php?title=Lag_compensation&amp;oldid=216503</a>"					</div>
+				<div id="catlinks" class="catlinks" data-mw="interface"><div id="mw-normal-catlinks" class="mw-normal-catlinks"><a href="https://developer.valvesoftware.com/wiki/Special:Categories" title="Special:Categories">Category</a>: <ul><li><a href="https://developer.valvesoftware.com/wiki/Category:Networking" title="Category:Networking">Networking</a></li></ul></div><div id="mw-hidden-catlinks" class="mw-hidden-catlinks mw-hidden-cats-hidden">Hidden category: <ul><li><a href="https://developer.valvesoftware.com/wiki/Category:TODO" title="Category:TODO">TODO</a></li></ul></div></div>				<div class="visualClear"></div>
+							</div>
+		</div>
+		<div id="mw-navigation">
+			<h2>Navigation menu</h2>
+
+			<div id="mw-head">
+									<div id="p-personal" role="navigation" class="" aria-labelledby="p-personal-label">
+						<h3 id="p-personal-label">Personal tools</h3>
+						<ul>
+							<li id="pt-createaccount"><a href="https://developer.valvesoftware.com/w/index.php?title=Special:CreateAccount&amp;returnto=Lag+compensation" title="You are encouraged to create an account and log in; however, it is not mandatory">Create account</a></li><li id="pt-login"><a href="https://developer.valvesoftware.com/w/index.php?title=Special:UserLogin&amp;returnto=Lag+compensation" title="You are encouraged to log in; however, it is not mandatory [alt-shift-o]" accesskey="o">Log in</a></li>						</ul>
+					</div>
+									<div id="left-navigation">
+										<div id="p-namespaces" role="navigation" class="vectorTabs" aria-labelledby="p-namespaces-label">
+						<h3 id="p-namespaces-label">Namespaces</h3>
+						<ul>
+															<li id="ca-nstab-main" class="selected"><span><a href="https://developer.valvesoftware.com/wiki/Lag_compensation" title="View the content page [alt-shift-c]" accesskey="c">Page</a></span></li>
+															<li id="ca-talk" class="new"><span><a href="https://developer.valvesoftware.com/w/index.php?title=Talk:Lag_compensation&amp;action=edit&amp;redlink=1" title="Discussion about the content page [alt-shift-t]" accesskey="t" rel="discussion">Discussion</a></span></li>
+													</ul>
+					</div>
+										<div id="p-variants" role="navigation" class="vectorMenu emptyPortlet" aria-labelledby="p-variants-label">
+												<h3 id="p-variants-label" tabindex="0">
+							<span>Variants</span><a href="https://developer.valvesoftware.com/wiki/Lag_compensation#" tabindex="-1"></a>
+						</h3>
+
+						<div class="menu">
+							<ul>
+															</ul>
+						</div>
+					</div>
+									</div>
+				<div id="right-navigation">
+										<div id="p-views" role="navigation" class="vectorTabs" aria-labelledby="p-views-label">
+						<h3 id="p-views-label">Views</h3>
+						<ul>
+															<li id="ca-view" class="selected"><span><a href="https://developer.valvesoftware.com/wiki/Lag_compensation">Read</a></span></li>
+															<li id="ca-viewsource"><span><a href="https://developer.valvesoftware.com/w/index.php?title=Lag_compensation&amp;action=edit" title="This page is protected.
+You can view its source [alt-shift-e]" accesskey="e">View source</a></span></li>
+															<li id="ca-history" class="collapsible"><span><a href="https://developer.valvesoftware.com/w/index.php?title=Lag_compensation&amp;action=history" title="Past revisions of this page [alt-shift-h]" accesskey="h">View history</a></span></li>
+													</ul>
+					</div>
+										<div id="p-cactions" role="navigation" class="vectorMenu emptyPortlet" aria-labelledby="p-cactions-label" style="">
+						<h3 id="p-cactions-label" tabindex="0"><span>More</span><a href="https://developer.valvesoftware.com/wiki/Lag_compensation#" tabindex="-1"></a></h3>
+
+						<div class="menu">
+							<ul>
+															</ul>
+						</div>
+					</div>
+										<div id="p-search" role="search">
+						<h3>
+							<label for="searchInput">Search</label>
+						</h3>
+
+						<form action="https://developer.valvesoftware.com/w/index.php" id="searchform">
+							<div id="simpleSearch">
+							<input type="search" name="search" placeholder="Search" title="Search Valve Developer Community [alt-shift-f]" accesskey="f" id="searchInput" tabindex="1" autocomplete="off"><input type="hidden" value="Special:Search" name="title"><input type="submit" name="go" value="Go" title="Go to a page with this exact name if it exists" id="searchButton" class="searchButton">							</div>
+						</form>
+					</div>
+									</div>
+			</div>
+			<div id="mw-panel">
+				<div id="p-logo" role="banner"><a class="mw-wiki-logo" href="https://developer.valvesoftware.com/wiki/Main_Page" title="Visit the main page"></a></div>
+						<div class="portal" role="navigation" id="p-navigation" aria-labelledby="p-navigation-label">
+			<h3 id="p-navigation-label">Navigation</h3>
+
+			<div class="body">
+									<ul>
+						<li id="n-mainpage"><a href="https://developer.valvesoftware.com/wiki/Main_Page" title="Visit the main page [alt-shift-z]" accesskey="z">Main Page</a></li><li id="n-Source-SDK-index"><a href="https://developer.valvesoftware.com/wiki/SDK_Docs">Source SDK index</a></li><li id="n-Dota-2-Tools"><a href="https://developer.valvesoftware.com/wiki/Dota_2_Workshop_Tools">Dota 2 Tools</a></li><li id="n-Half-Life:Alyx-Tools"><a href="https://developer.valvesoftware.com/wiki/Half-Life:_Alyx_Workshop_Tools">Half-Life:Alyx Tools</a></li><li id="n-SteamVR-Tools"><a href="https://developer.valvesoftware.com/wiki/SteamVR/Environments">SteamVR Tools</a></li><li id="n-recentchanges"><a href="https://developer.valvesoftware.com/wiki/Special:RecentChanges" title="A list of recent changes in the wiki [alt-shift-r]" accesskey="r">Recent changes</a></li><li id="n-randompage"><a href="https://developer.valvesoftware.com/wiki/Special:Random" title="Load a random page [alt-shift-x]" accesskey="x">Random page</a></li>					</ul>
+							</div>
+		</div>
+			<div class="portal" role="navigation" id="p-Support" aria-labelledby="p-Support-label">
+			<h3 id="p-Support-label">Support</h3>
+
+			<div class="body">
+									<ul>
+						<li id="n-Getting-help"><a href="https://developer.valvesoftware.com/wiki/Help:Contents">Getting help</a></li><li id="n-Source-SDK-FAQ"><a href="https://developer.valvesoftware.com/wiki/Category:Source_SDK_FAQ">Source SDK FAQ</a></li><li id="n-Level-Design-FAQ"><a href="https://developer.valvesoftware.com/wiki/Category:Level_Design_FAQ">Level Design FAQ</a></li><li id="n-SDK-Help-Forums"><a href="http://forums.steampowered.com/forums/forumdisplay.php?f=191" rel="nofollow">SDK Help Forums</a></li>					</ul>
+							</div>
+		</div>
+			<div class="portal" role="navigation" id="p-Steam_Community" aria-labelledby="p-Steam_Community-label">
+			<h3 id="p-Steam_Community-label">Steam Community</h3>
+
+			<div class="body">
+									<ul>
+						<li id="n-Source-SDK-Hub"><a href="http://steamcommunity.com/app/211" rel="nofollow">Source SDK Hub</a></li><li id="n-Steam-Games"><a href="http://www.steampowered.com/" rel="nofollow">Steam Games</a></li>					</ul>
+							</div>
+		</div>
+			<div class="portal" role="navigation" id="p-tb" aria-labelledby="p-tb-label">
+			<h3 id="p-tb-label">Tools</h3>
+
+			<div class="body">
+									<ul>
+						<li id="t-whatlinkshere"><a href="https://developer.valvesoftware.com/wiki/Special:WhatLinksHere/Lag_compensation" title="A list of all wiki pages that link here [alt-shift-j]" accesskey="j">What links here</a></li><li id="t-recentchangeslinked"><a href="https://developer.valvesoftware.com/wiki/Special:RecentChangesLinked/Lag_compensation" title="Recent changes in pages linked from this page [alt-shift-k]" accesskey="k">Related changes</a></li><li id="t-specialpages"><a href="https://developer.valvesoftware.com/wiki/Special:SpecialPages" title="A list of all special pages [alt-shift-q]" accesskey="q">Special pages</a></li><li id="t-print"><a href="https://developer.valvesoftware.com/w/index.php?title=Lag_compensation&amp;printable=yes" rel="alternate" title="Printable version of this page [alt-shift-p]" accesskey="p">Printable version</a></li><li id="t-permalink"><a href="https://developer.valvesoftware.com/w/index.php?title=Lag_compensation&amp;oldid=216503" title="Permanent link to this revision of the page">Permanent link</a></li><li id="t-info"><a href="https://developer.valvesoftware.com/w/index.php?title=Lag_compensation&amp;action=info" title="More information about this page">Page information</a></li>					</ul>
+							</div>
+		</div>
+				</div>
+		</div>
+		<div id="footer" role="contentinfo">
+							<ul id="footer-info">
+											<li id="footer-info-lastmod"> This page was last modified on 2 August 2018, at 08:37.</li>
+									</ul>
+							<ul id="footer-places">
+											<li id="footer-places-about"><a href="https://developer.valvesoftware.com/wiki/Valve_Developer_Community:About" title="Valve Developer Community:About">About Valve Developer Community</a></li>
+											<li id="footer-places-disclaimer"><a href="https://developer.valvesoftware.com/wiki/Valve_Developer_Community:Terms_of_use" title="Valve Developer Community:Terms of use">Terms of Use</a></li>
+											<li id="footer-places-legalnotices"><a href="https://developer.valvesoftware.com/wiki/Valve_Developer_Community:Third_Party_Legal_Notices" title="Valve Developer Community:Third Party Legal Notices">Third Party Legal Notices</a></li>
+									</ul>
+										<ul id="footer-icons" class="noprint">
+											<li id="footer-poweredbyico">
+							<a href="https://www.mediawiki.org/"><img src="./Lag compensation - Valve Developer Community_files/poweredby_mediawiki_88x31.png" alt="Powered by MediaWiki" srcset="/w/resources/assets/poweredby_mediawiki_132x47.png 1.5x, /w/resources/assets/poweredby_mediawiki_176x62.png 2x" width="88" height="31"></a>						</li>
+									</ul>
+						<div style="clear:both"></div>
+		</div>
+		<script>(window.RLQ=window.RLQ||[]).push(function(){mw.loader.state({"user":"ready","user.groups":"ready"});mw.loader.load(["mediawiki.toc","mediawiki.action.view.postEdit","site","mediawiki.user","mediawiki.hidpi","mediawiki.page.ready","mediawiki.searchSuggest","mmv.bootstrap.autostart"]);});</script><script>(window.RLQ=window.RLQ||[]).push(function(){mw.config.set({"wgBackendResponseTime":73});});</script>
+	
+
+<div class="suggestions" style="display: none; font-size: 13px;"><div class="suggestions-results"></div><div class="suggestions-special"></div></div></body></html>
