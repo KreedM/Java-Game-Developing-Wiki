@@ -1,0 +1,967 @@
+<!DOCTYPE html>
+<!-- saved from url=(0100)https://bladecast.pro/unity-tutorial/how-to-procedurally-generate-a-dungeon-bsp-method-unity-tilemap -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+<script async="" src="./How to procedurally generate a dungeon using the BSP method on Unity _ Bladecast_files/js"></script>
+<script>
+    if (window.location.host==="bladecast.pro") {
+        window.dataLayer = window.dataLayer || [];
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+
+        gtag('js', new Date());
+
+        gtag('config', 'UA-15712194-8');
+    }
+</script>    
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+            <title>How to procedurally generate a dungeon using the BSP method on Unity | Bladecast</title>
+        <meta property="og:title" content="How to procedurally generate a dungeon using the BSP method on Unity | Bladecast">
+    <meta name="description" content="You&#39;ll learn how to create a dungeon generator tool using a classic method from PCG and how to apply it in practice using Unity&#39;s tilemap system.">
+    <meta property="og:description" content="You&#39;ll learn how to create a dungeon generator tool using a classic method from PCG and how to apply it in practice using Unity&#39;s tilemap system.">
+    <meta property="og:image" content="https://bladecast.pro/images/bsp-dungen.png">
+    <meta property="og:url" content="http://bladecast.pro/unity-tutorial/how-to-procedurally-generate-a-dungeon-bsp-method-unity-tilemap">
+    <meta property="og:type" content="article">
+
+    <link rel="stylesheet" href="./How to procedurally generate a dungeon using the BSP method on Unity _ Bladecast_files/app.css">
+    <link rel="apple-touch-icon" sizes="180x180" href="https://bladecast.pro/images/favicon/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://bladecast.pro/images/favicon/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="https://bladecast.pro/images/favicon/favicon-16x16.png">
+<link rel="manifest" href="https://bladecast.pro/images/favicon/manifest.json">
+<link rel="mask-icon" href="https://bladecast.pro/images/favicon/safari-pinned-tab.svg" color="#5bbad5">
+<link rel="shortcut icon" href="https://bladecast.pro/images/favicon/favicon.ico">
+<meta name="msapplication-config" content="/images/favicon/browserconfig.xml">
+<meta name="theme-color" content="#ffffff">
+    <!-- START: Ad Sense -->
+    <script async="" src="./How to procedurally generate a dungeon using the BSP method on Unity _ Bladecast_files/f.txt"></script>
+    <script>
+        (adsbygoogle = window.adsbygoogle || []).push({
+            google_ad_client: "ca-pub-1501301727250797",
+            enable_page_level_ads: true
+        });
+    </script>
+    <!-- END: Ad Sense -->
+
+</head>
+<body class="d-flex flex-column vsc-initialized">
+
+<div class="container-fluid nav-container">
+    <div class="container">
+        <nav class="navbar navbar-expand-lg navbar-dark">
+            <a href="https://bladecast.pro/" class="brand"><img src="./How to procedurally generate a dungeon using the BSP method on Unity _ Bladecast_files/logo.png" class="logo">Bladecast</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link highlight" href="https://bladecast.pro/unity-tutorials">Unity</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link " href="https://bladecast.pro/3d-art">3D Art</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link " href="https://bladecast.pro/blog">Blog</a>
+                    </li>
+                    
+                        
+                    
+                    <li class="nav-item">
+                        <a class="nav-link " href="https://bladecast.pro/about">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link " href="https://bladecast.pro/contact">Contact Us</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </div>
+</div>
+
+<main class="d-flex flex-grow flex-column">
+        <link rel="stylesheet" href="./How to procedurally generate a dungeon using the BSP method on Unity _ Bladecast_files/highlight-androidstudio.css">
+    <div class="tutorial-article">
+        
+    <div class="container pt-4">
+        <h1>How to procedurally generate a dungeon using the BSP method on Unity</h1>
+    </div>
+
+    <div class="container-fluid">
+        <div class="img-with-caption big"><img src="./How to procedurally generate a dungeon using the BSP method on Unity _ Bladecast_files/bsp-dungen.png" class="img-fluid" alt="">
+            <div class="caption">
+                <p>
+                    An example of dungeon that can be generated with the tool you'll create.
+                </p>
+            </div>
+
+        </div>
+    </div>
+
+    <div class="container pb-5">
+        <hr class="mt-3 mb-3">
+<div class="author-and-date">
+    <a href="https://bladecast.pro/about#juliorodrigues">Júlio Rodrigues</a> ·
+    <time id="createdAt" datetime="2018-09-25">25 Sep 2018</time>
+    </div>
+<hr class="pb-0 mt-3 mb-3">        <p>
+            If you are new to the world of procedurally generation methods we
+            recommend you read our other article that <a href="https://bladecast.pro/unity-tutorial/dungeon-prcedural-generation-overview-unity-2018">introduces the subject in the
+                context of dungeon generation</a>.
+        </p>
+
+        <p>
+            The method we're going to use in this tutorial is based on a procedure originally created to rapidly access 3d data
+            (vertices,
+            polygons, etc). As with most methods of PCG, we take an existing algorithm / data structure and repurpose it
+            with the objective of producing content taking advantage of the method's natural form.
+        </p>
+
+        <p>
+            Binary space partitioning accomplishes fast querying of data by subdividing a scene recursively in subplanes
+            and
+            storing these planes in an organized way on a tree data structure. So we instead of subdividing an existing
+            scene,
+            we generate this tree as if the data already exists using random data so we can have our beautiful planes
+            ready
+            to be used as rooms. Later we connect this rooms using a strategy, we'll mention two but will exemplify only
+            one.
+        </p>
+
+        <p>
+            After the tree has been constructed we'll use this data to create a tilemap, but keep in mind that you're
+            not
+            limited to use tilemaps, you could also create a 3d room (or any other type of room) but the process would be more complicated.
+        </p>
+        
+        <p>A sample project with the end result of this tutorial can be obtained at <a href="https://github.com/juliomarcos/dungen-bsp-unity-sample">github</a>.</p>
+
+        <h2>What we'll build</h2>
+
+        <p>
+            The end result of this tutorial is a tool that can be used inside Unity containing parameters of the dungeon
+            generation and a button to clear the dungeon and generate a new one.
+        </p>
+
+        <p>
+            We're not aiming to produce something that can be used to generate dungeons after the game has been built,
+            although this definitely serves as a good starting point.
+        </p>
+
+        <!-- Start In-Article AdSense -->
+
+
+     
+     
+     
+     
+     
+
+    
+
+<!-- END ADSENSE -->
+        <h2>Prerequisites</h2>
+
+        <ul>
+            <li>Basic familiarity with tree data structures</li>
+            <li>Intermediary Unity C# scripting</li>
+            <li>Basic analytic geometry</li>
+        </ul>
+
+        <h2>Tree definition</h2>
+
+        <p>A binary tree defined recursively can be implemented in C# by using two references.</p>
+
+        <div class="file-tab">
+    <div class="file-name">
+        <code>BspTree.cs</code>
+    </div>
+    <pre><code class="cs hljs"><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title">BspTree</span> {
+    <span class="hljs-keyword">public</span> BspTree left;
+    <span class="hljs-keyword">public</span> BspTree right;
+}</code></pre>
+</div>
+        <div class="tip">
+            <p>Since the BSP method in the way we're using it will always produce <a href="https://www.ida.liu.se/opendsa/OpenDSA/Books/OpenDSA/html/CompleteTree.html">full binary
+                    trees</a>,
+                we could alternatively store the nodes of our tree using an array without wasting memory. This is better
+                for
+                cache locality, a key to optimal CPU usage.</p>
+        </div>
+
+        <p>
+            We also need to store where the container is as well as the room. We conclude our <code class="inline cs">BspTree</code> node
+            definition
+            with:
+        </p>
+
+        <div class="file-tab">
+    <div class="file-name">
+        <code>BspTree.cs</code>
+    </div>
+    <pre><code class="cs hljs"><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title">BspTree</span> {
+    <span class="hljs-keyword">public</span> RectInt container;
+    <span class="hljs-keyword">public</span> RectInt room;
+    <span class="hljs-keyword">public</span> BspTree left;
+    <span class="hljs-keyword">public</span> BspTree right;
+}</code></pre>
+</div>
+        <p>Only leaves will be used to represent rooms, the internal nodes will be used to connect their children.</p>
+
+        <h2>High-level method</h2>
+
+        <ol>
+            <li>Start with an initial dungeon size (e.g. 64x64 tiles), this is the current container.</li>
+            <li>Do step 3. a predefined number N of iterations.</li>
+            <li>For each leaf of the current container:
+                <ol>
+                    <li>Randomly choose a direction: vertical or horizontal</li>
+                    <li>Cut the current container in half in the selected direction. This cut, to be more interesting needs
+                        to
+                        have a margin of error, 1 to 7 percent is a good margin.</li>
+                </ol>
+
+            </li>
+            <li>For each leaf container, pick a smaller container with a random smaller area (2 to 10 percent is fine)
+                this
+                smaller area inside is a room.
+            </li>
+            <li>Connect the centers of the non-leaf containers.</li>
+            <li>Paint each tile according to its neighborhood.</li>
+        </ol>
+
+        <h2>Two iterations example</h2>
+
+        <div id="bspSlideShow" class="carousel slide" data-ride="carousel" data-interval="false">
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <img src="./How to procedurally generate a dungeon using the BSP method on Unity _ Bladecast_files/bsp-slideshow-0.png" class="d-block w-100">
+                </div>
+                <div class="carousel-item">
+                    <img src="./How to procedurally generate a dungeon using the BSP method on Unity _ Bladecast_files/bsp-slideshow-1.png" class="d-block w-100">
+                </div>
+                <div class="carousel-item">
+                    <img src="./How to procedurally generate a dungeon using the BSP method on Unity _ Bladecast_files/bsp-slideshow-2.png" class="d-block w-100">
+                </div>
+            </div>
+
+            <a class="carousel-control-prev" href="https://bladecast.pro/unity-tutorial/how-to-procedurally-generate-a-dungeon-bsp-method-unity-tilemap#bspSlideShow" role="button" data-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="sr-only">Previous</span>
+            </a>
+            <a class="carousel-control-next" href="https://bladecast.pro/unity-tutorial/how-to-procedurally-generate-a-dungeon-bsp-method-unity-tilemap#bspSlideShow" role="button" data-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="sr-only">Next</span>
+            </a>
+        </div>
+
+        <p>
+            See this slideshow to see an example of two iterations of the method being applied to a dungeon of size
+            64x64.
+            This encompasses steps <em>1.</em> through <em>4.</em>.
+        </p>
+
+        <h2>DungeonGenerator component</h2>
+
+        <p>
+            To get this process started on Unity you need a way to call the initial method. We'll do this by creating a
+            <code class="inline cs">MonoBehavior</code> called <code class="inline cs">DungeonGenerator</code>. This component will also be responsible for
+            painting the tilemap after the bsp method is finished.
+        </p>
+
+        <div class="file-tab">
+    <div class="file-name">
+        <code>DungeonGenerator.cs</code>
+    </div>
+    <pre><code class="cs hljs"><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title">DungeonGenerator</span> : <span class="hljs-title">MonoBehaviour</span> {
+
+    <span class="hljs-keyword">public</span> <span class="hljs-keyword">const</span> <span class="hljs-keyword">int</span> MIN_ROOM_DELTA = <span class="hljs-number">2</span>;
+
+    <span class="hljs-keyword">public</span> <span class="hljs-keyword">int</span> dungeonSize;
+
+    [<span class="hljs-meta">Range (1, 6)</span>]
+    <span class="hljs-keyword">public</span> <span class="hljs-keyword">int</span> numberOfIterations;
+
+    [<span class="hljs-meta">Range (1, 4)</span>]
+    <span class="hljs-keyword">public</span> <span class="hljs-keyword">int</span> corridorThickness;
+
+    <span class="hljs-keyword">public</span> <span class="hljs-keyword">bool</span> shouldDebugDrawBsp;
+
+    <span class="hljs-keyword">private</span> BspTree tree;
+
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">GenerateDungeon</span> (<span class="hljs-params"></span>) </span>{
+        ...
+    }
+
+}</code></pre>
+</div>
+        <p>
+            The <code class="inline cs">GenerateDungeon()</code> method is called using a custom inspector, a custom inspector allows us to
+            have more
+            flexibility when creating the layout for the input of tiles used during tile painting.
+        </p>
+
+        <div class="file-tab">
+    <div class="file-name">
+        <code>Editor/DungeonGeneratorEditor.cs</code>
+    </div>
+    <pre><code class="cs hljs">[<span class="hljs-meta">CustomEditor (typeof (DungeonGenerator))</span>]
+<span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title">DungeonGeneratorEditor</span> : <span class="hljs-title">Editor</span> {
+
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">override</span> <span class="hljs-keyword">void</span> <span class="hljs-title">OnInspectorGUI</span> (<span class="hljs-params"></span>) </span>{
+        <span class="hljs-comment">// let's leverage the default implementation for later tile assignment</span>
+        DrawDefaultInspector ();
+
+        DungeonGenerator myScript = (DungeonGenerator) target;
+        <span class="hljs-keyword">if</span> (GUILayout.Button (<span class="hljs-string">"Generate Dungeon"</span>)) {
+            myScript.GenerateDungeon ();
+        }
+    }
+
+}</code></pre>
+</div>
+        <div class="tip">
+            <p>The custom inspector is optional. If you also want to use a custom inspector remember to keep the file of
+                it in a directory called
+                <code class="inline cs">Editor</code>. See the <a href="https://docs.unity3d.com/Manual/editor-CustomEditors.html">official
+                    documentation</a> if you want to learn more about custom inspectors.</p>
+        </div>
+
+        <p>
+            Create a <code class="inline java">Grid</code> and <code class="inline java">Tilemap</code> by right-clicking in the <em>Hierarchy</em> window and choosing
+            <em>2D
+                Object -&gt; Tilemap</em>, now add the <code class="inline java">DungeonGenerator</code> script you just created to it.
+        </p>
+
+        <img class="" src="./How to procedurally generate a dungeon using the BSP method on Unity _ Bladecast_files/dungen-comp-inspector.png">
+
+        <p>
+            You should get something like that for the <code class="inline java">Grid</code> game object <code class="inline java">DungeonGenerator</code> component in
+            the
+            <em>Inspector</em> tab.
+        </p>
+
+        <h2>GenerateDungeon() method template</h2>
+
+        <p>
+            Each of the steps in the high-level method section will be called by this public method. This is what it
+            should
+            look like by the end of the implementation:
+        </p>
+
+        <div class="file-tab">
+    <div class="file-name">
+        <code>DungeonGenerator.cs</code>
+    </div>
+    <pre><code class="cs hljs"><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">GenerateDungeon</span> (<span class="hljs-params"></span>) </span>{
+    InitReferences ();
+    GenerateContainersUsingBsp ();
+    GenerateRoomsInsideContainers ();
+    GenerateCorridors ();
+    FillRoomsOnTilemap ();
+    PaintTilesAccordingToTheirNeighbors ();
+}</code></pre>
+</div>
+        <p>But there's no need to create all these methods right now. Keep all but the first two calls commented.</p>
+
+        <h2>References initialization and map clearing</h2>
+
+        <p>
+            Each time the <em>Generate Dungeon</em> button is pressed we want to clear the map, but it does no harm to
+            also
+            reset the reference since this is only done once for each generation.
+        </p>
+
+        <div class="file-tab">
+    <div class="file-name">
+        <code>DungeonGenerator.cs</code>
+    </div>
+    <pre><code class="cs hljs"><span class="hljs-function"><span class="hljs-keyword">private</span> <span class="hljs-keyword">void</span> <span class="hljs-title">InitReferences</span> (<span class="hljs-params"></span>) </span>{
+    map = GetComponentInChildren&lt;Tilemap&gt; ();
+    map.ClearAllTiles ();
+}</code></pre>
+</div>
+        <h2>Generating containers using the BSP method</h2>
+
+        <p>This is a naturally recursive process. The initial call will contain parameters borrowed by the public
+            interface
+            of the component.</p>
+
+        <div class="file-tab">
+    <div class="file-name">
+        <code>DungeonGenerator.cs</code>
+    </div>
+    <pre><code class="cs hljs"><span class="hljs-function"><span class="hljs-keyword">private</span> <span class="hljs-keyword">void</span> <span class="hljs-title">GenerateContainersUsingBsp</span> (<span class="hljs-params"></span>) </span>{
+    tree = BspTree.Split (numberOfIterations,
+        <span class="hljs-keyword">new</span> RectInt (<span class="hljs-number">0</span>, <span class="hljs-number">0</span>, dungeonSize, dungeonSize));
+}</code></pre>
+</div>
+        <div class="div">
+            <p>
+                I've chosen for simplicity's sake to not use an objected oriented approach, but you're free to do so if
+                you
+                want
+                to.
+            </p>
+        </div>
+
+        <p>
+            Our recursion termination condition is really simple, whenever <code class="inline java">numberOfIterations</code> equals <code class="inline java">0</code>
+            we
+            stop calling the method. The <code class="inline java">Split()</code> method will delegate the actual container splitting to the
+            <code class="inline cs">SplitContainer()</code>
+            method. Notice that although our tree definition uses <code class="inline cs">left</code> and <code class="inline cs">right</code> as the name
+            for
+            its nodes it can also contain vertically separated containers.
+        </p>
+
+        <div class="file-tab">
+    <div class="file-name">
+        <code>BspTree.cs</code>
+    </div>
+    <pre><code class="cs hljs"><span class="hljs-function"><span class="hljs-keyword">internal</span> <span class="hljs-keyword">static</span> BspTree <span class="hljs-title">Split</span> (<span class="hljs-params"><span class="hljs-keyword">int</span> numberOfIterations, RectInt container</span>) </span>{
+    <span class="hljs-keyword">var</span> node = <span class="hljs-keyword">new</span> BspTree (container);
+    <span class="hljs-keyword">if</span> (numberOfIterations == <span class="hljs-number">0</span>) <span class="hljs-keyword">return</span> node;
+
+    <span class="hljs-keyword">var</span> splittedContainers = SplitContainer (container);
+    node.left = Split (numberOfIterations - <span class="hljs-number">1</span>, splittedContainers[<span class="hljs-number">0</span>]);
+    node.right = Split (numberOfIterations - <span class="hljs-number">1</span>, splittedContainers[<span class="hljs-number">1</span>]);
+
+    <span class="hljs-keyword">return</span> node;
+}</code></pre>
+</div>
+        <p>And here's the heavy lifting:</p>
+
+        <div class="file-tab">
+    <div class="file-name">
+        <code>BspTree.cs</code>
+    </div>
+    <pre><code class="cs hljs"><span class="hljs-function"><span class="hljs-keyword">private</span> <span class="hljs-keyword">static</span> RectInt[] <span class="hljs-title">SplitContainer</span> (<span class="hljs-params">RectInt container</span>) </span>{
+    RectInt c1, c2;
+
+    <span class="hljs-keyword">if</span> (UnityEngine.Random.Range (<span class="hljs-number">0</span>f, <span class="hljs-number">1</span>f) &gt; <span class="hljs-number">0.5</span>f) {
+        <span class="hljs-comment">// vertical</span>
+        c1 = <span class="hljs-keyword">new</span> RectInt (container.x, container.y,
+            container.width, (<span class="hljs-keyword">int</span>) UnityEngine.Random.Range(container.height * <span class="hljs-number">0.3</span>f, container.height * <span class="hljs-number">0.5</span>f));
+        c2 = <span class="hljs-keyword">new</span> RectInt (container.x, container.y + c1.height,
+            container.width, container.height - c1.height);
+    } <span class="hljs-keyword">else</span> {
+        <span class="hljs-comment">// horizontal</span>
+        c1 = <span class="hljs-keyword">new</span> RectInt (container.x, container.y,
+            (<span class="hljs-keyword">int</span>) UnityEngine.Random.Range (container.width * <span class="hljs-number">0.3</span>f, container.width * <span class="hljs-number">0.5</span>f), container.height);
+        c2 = <span class="hljs-keyword">new</span> RectInt (container.x + c1.width, container.y,
+            container.width - c1.width, container.height);
+    }
+    <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> RectInt[] { c1, c2 };
+}</code></pre>
+</div>
+        <p>
+            The <a href="https://docs.unity3d.com/ScriptReference/RectInt.html">RectInt</a> is being used to
+            represent our containers and rooms instead of defining our own rectangle description class since it has
+            everything we need.
+        </p>
+
+        <p>
+            We start the method by picking a random number between <em>0</em> and <em>1</em> to choose a cut direction
+            with
+            equal probability. The cut is always done with a 40% margin but with at least 60% of the dimension
+            preserved,
+            this is done to prevent too thin containers from being generated.</p>
+
+        <p>Container Generation, done.</p>
+
+        <h2>Optional: Visualization of the containers for debugging</h2>
+
+        <p>
+            You shouldn't trust my code, use <a href="https://docs.unity3d.com/ScriptReference/Gizmos.html">Gizmos </a>
+            to visualize what you're building. To draw Gizmos you need to define
+            the
+            magic methods <code class="inline java">OnDrawGizmos</code> and <code class="inline cs">OnDrawGizmosSelected</code>.
+        </p>
+
+        <div class="file-tab">
+    <div class="file-name">
+        <code>DungeonGenerator.cs</code>
+    </div>
+    <pre><code class="cs hljs"><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">OnDrawGizmos</span> (<span class="hljs-params"></span>) </span>{
+    AttemptDebugDrawBsp ();
+}
+
+<span class="hljs-function"><span class="hljs-keyword">private</span> <span class="hljs-keyword">void</span> <span class="hljs-title">OnDrawGizmosSelected</span> (<span class="hljs-params"></span>) </span>{
+    AttemptDebugDrawBsp ();
+}
+
+<span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">AttemptDebugDrawBsp</span> (<span class="hljs-params"></span>) </span>{
+    <span class="hljs-keyword">if</span> (shouldDebugDrawBsp) {
+        DebugDrawBsp ();
+    }
+}
+
+<span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">DebugDrawBsp</span> (<span class="hljs-params"></span>) </span>{
+    <span class="hljs-keyword">if</span> (tree == <span class="hljs-literal">null</span>) <span class="hljs-keyword">return</span>; <span class="hljs-comment">// hasn't been generated yet</span>
+
+    DebugDrawBspNode (tree); <span class="hljs-comment">// recursive call</span>
+}
+
+<span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">DebugDrawBspNode</span> (<span class="hljs-params">BspTree node</span>) </span>{
+    <span class="hljs-comment">// Container</span>
+    Gizmos.color = Color.green;
+    <span class="hljs-comment">// top</span>
+    Gizmos.DrawLine (<span class="hljs-keyword">new</span> Vector3 (node.container.x, node.container.y, <span class="hljs-number">0</span>), <span class="hljs-keyword">new</span> Vector3Int (node.container.xMax, node.container.y, <span class="hljs-number">0</span>));
+    <span class="hljs-comment">// right</span>
+    Gizmos.DrawLine (<span class="hljs-keyword">new</span> Vector3 (node.container.xMax, node.container.y, <span class="hljs-number">0</span>), <span class="hljs-keyword">new</span> Vector3Int (node.container.xMax, node.container.yMax, <span class="hljs-number">0</span>));
+    <span class="hljs-comment">// bottom</span>
+    Gizmos.DrawLine (<span class="hljs-keyword">new</span> Vector3 (node.container.x, node.container.yMax, <span class="hljs-number">0</span>), <span class="hljs-keyword">new</span> Vector3Int (node.container.xMax, node.container.yMax, <span class="hljs-number">0</span>));
+    <span class="hljs-comment">// left</span>
+    Gizmos.DrawLine (<span class="hljs-keyword">new</span> Vector3 (node.container.x, node.container.y, <span class="hljs-number">0</span>), <span class="hljs-keyword">new</span> Vector3Int (node.container.x, node.container.yMax, <span class="hljs-number">0</span>));
+
+    <span class="hljs-comment">// children</span>
+    <span class="hljs-keyword">if</span> (node.left != <span class="hljs-literal">null</span>) DebugDrawBspNode (node.left);
+    <span class="hljs-keyword">if</span> (node.right != <span class="hljs-literal">null</span>) DebugDrawBspNode (node.right);
+}</code></pre>
+</div>
+        <p>
+            We're navigating in the tree graph using the <a href="https://en.wikipedia.org/wiki/Depth-first_search">DFS
+                order</a> since it's the easiest one to implement. There's nothing special in the <code class="inline java">DebugDrawBspNode</code> method,
+            just
+            a bunch of <code class="inline cs">DrawLine</code> calls, one for each edge of the rectangle.
+        </p>
+
+        <h2>Rooms inside containers</h2>
+
+        <p>
+            Our rooms shouldn't occupy the entire container. We need to draw smaller areas insides of our containers to
+            create the rooms of our dungeons.
+        </p>
+
+        <div class="file-tab">
+    <div class="file-name">
+        <code>DungeonGenerator.cs</code>
+    </div>
+    <pre><code class="cs hljs"><span class="hljs-function"><span class="hljs-keyword">private</span> <span class="hljs-keyword">void</span> <span class="hljs-title">GenerateRoomsInsideContainers</span> (<span class="hljs-params"></span>) </span>{
+    BspTree.GenerateRoomsInsideContainersNode (tree);
+}</code></pre>
+</div>
+        <p>Again we're using a DFS order to navigate our tree. The internal nodes aren't used in this step.</p>
+
+        <div class="file-tab">
+    <div class="file-name">
+        <code>BspTree.cs</code>
+    </div>
+    <pre><code class="cs hljs"><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">bool</span> <span class="hljs-title">IsLeaf</span> (<span class="hljs-params"></span>) </span>{
+    <span class="hljs-keyword">return</span> left == <span class="hljs-literal">null</span> &amp;&amp; right == <span class="hljs-literal">null</span>;
+}
+
+<span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">bool</span> <span class="hljs-title">IsInternal</span>(<span class="hljs-params"></span>) </span>{ <span class="hljs-comment">// de morgan's</span>
+    <span class="hljs-keyword">return</span> left != <span class="hljs-literal">null</span> || right != <span class="hljs-literal">null</span>;
+}
+
+<span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">GenerateRoomsInsideContainersNode</span>(<span class="hljs-params">BspTree node</span>) </span>{
+    <span class="hljs-comment">// should create rooms for leafs</span>
+    <span class="hljs-keyword">if</span> (node.left == <span class="hljs-literal">null</span> &amp;&amp; node.right == <span class="hljs-literal">null</span>) {
+        <span class="hljs-keyword">var</span> randomX = UnityEngine.Random.Range(DungeonGenerator.MIN_ROOM_DELTA, node.container.width / <span class="hljs-number">4</span>);
+        <span class="hljs-keyword">var</span> randomY = UnityEngine.Random.Range(DungeonGenerator.MIN_ROOM_DELTA, node.container.height / <span class="hljs-number">4</span>);
+        <span class="hljs-keyword">int</span> roomX = node.container.x + randomX;
+        <span class="hljs-keyword">int</span> roomY = node.container.y + randomY;
+        <span class="hljs-keyword">int</span> roomW = node.container.width - (<span class="hljs-keyword">int</span>) (randomX * UnityEngine.Random.Range(<span class="hljs-number">1</span>f, <span class="hljs-number">2</span>f));
+        <span class="hljs-keyword">int</span> roomH = node.container.height - (<span class="hljs-keyword">int</span>) (randomY * UnityEngine.Random.Range(<span class="hljs-number">1</span>f, <span class="hljs-number">2</span>f));
+        node.room = <span class="hljs-keyword">new</span> RectInt(roomX, roomY, roomW, roomH);
+    } <span class="hljs-keyword">else</span> {
+        <span class="hljs-keyword">if</span> (node.left != <span class="hljs-literal">null</span>) GenerateRoomsInsideContainersNode(node.left);
+        <span class="hljs-keyword">if</span> (node.right != <span class="hljs-literal">null</span>) GenerateRoomsInsideContainersNode(node.right);
+    }
+}</code></pre>
+</div>
+        <p>Nothing special here too, we just need to be careful with the parameters order.</p>
+
+        <h2>Corridors connecting containers</h2>
+
+        <p>
+            This part was especially lacking on the literature when I was doing my research on the topic. Basically, there
+            are
+            two methods by which this can be done.
+        </p>
+
+        <p>
+            The first one is to just connect the centers of the parent containers, it's simple and works, but can lead
+            to
+            some weird looking dungeon shapes, since we're not trying to generate dungeons in real-time that's not a
+            problem.
+        </p>
+
+        <p>
+            An alternative to connecting centers is to use a pathfinding algorithm. Doors are chosen, you could
+            randomly
+            pick a position for the walls in which in you want doors in and then run a pathfinding algorithm to connect
+            these doors. This is a more advanced approach that has a chance to deliver better results.
+        </p>
+
+        <div class="file-tab">
+    <div class="file-name">
+        <code>DungeonGenerator.cs</code>
+    </div>
+    <pre><code class="cs hljs"><span class="hljs-function"><span class="hljs-keyword">private</span> <span class="hljs-keyword">void</span> <span class="hljs-title">GenerateCorridors</span> (<span class="hljs-params"></span>) </span>{
+    <span class="hljs-comment">// for each parent</span>
+    <span class="hljs-comment">// find their center</span>
+    <span class="hljs-comment">// find a direction and connect these centers</span>
+    GenerateCorridorsNode (tree);
+}
+
+<span class="hljs-function"><span class="hljs-keyword">private</span> <span class="hljs-keyword">void</span> <span class="hljs-title">GenerateCorridorsNode</span> (<span class="hljs-params">BspTree node</span>) </span>{
+    <span class="hljs-keyword">if</span> (node.IsLeaf()) {
+        RectInt leftContainer = node.left.container;
+        RectInt rightContainer = node.right.container;
+        Vector2 leftCenter = leftContainer.center;
+        Vector2 rightCenter = rightContainer.center;
+        Vector2 direction = (rightCenter - leftCenter).normalized; <span class="hljs-comment">// arbitrarily choosing right as the target point</span>
+        <span class="hljs-keyword">while</span> (Vector2.Distance (leftCenter, rightCenter) &gt; <span class="hljs-number">1</span>) {
+            <span class="hljs-keyword">if</span> (direction.Equals (Vector2.right)) {
+                <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; corridorThickness; i++) {
+                    map.SetTile (<span class="hljs-keyword">new</span> Vector3Int ((<span class="hljs-keyword">int</span>) leftCenter.x, (<span class="hljs-keyword">int</span>) leftCenter.y + i, <span class="hljs-number">0</span>), mmTile);
+                }
+            } <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (direction.Equals (Vector2.up)) {
+                <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; corridorThickness; i++) {
+                    map.SetTile (<span class="hljs-keyword">new</span> Vector3Int ((<span class="hljs-keyword">int</span>) leftCenter.x + i, (<span class="hljs-keyword">int</span>) leftCenter.y, <span class="hljs-number">0</span>), mmTile);
+                }
+            }
+            leftCenter.x += direction.x;
+            leftCenter.y += direction.y;
+        }
+        <span class="hljs-keyword">if</span> (node.left != <span class="hljs-literal">null</span>) GenerateCorridorsNode (node.left);
+        <span class="hljs-keyword">if</span> (node.right != <span class="hljs-literal">null</span>) GenerateCorridorsNode (node.right);
+    }
+}</code></pre>
+</div>
+        <p>
+            <code class="inline java">RectInt</code> is showing its usefullness again by having a <code class="inline java">center()</code> method. The <code class="inline java">right</code>
+            reference
+            is arbitratily chosen, we then subtract <code class="inline cs">left</code> from it and compute the normalized vector.
+        </p>
+
+        <p>
+            <code class="inline cs">direction</code> will be our direction in which we'll paint tiles. As long as the distance from the left center
+            to
+            the right center is greater than <code class="inline cs">1</code> we keep painting tiles in the direction pointed
+            by <code class="inline cs">direction</code>.
+            We also cross paint it in the other direction to get some thickness.
+        </p>
+
+        <div class="img-box "><div class="img-container regular"><img class="regular" src="./How to procedurally generate a dungeon using the BSP method on Unity _ Bladecast_files/corridors-connecting-centers.png"></div><div class="legend">containers centered connected</div></div>
+
+        <h2>Getting references to tiles</h2>
+
+        <p>
+            If you read our first article what we have now are steps 1. and 2. of the general PCG process. It's finally
+            time
+            to use the Unity API to use the data we created and turn it into a game asset. For this, we'll need to
+            reference
+            9 tiles, one for each corner and middles of a dungeon floor tileset.
+        </p>
+
+        <p>
+            To aid our design process and make this tool easier to use we'll layout the tools public references on a 3x3
+            grid.
+        </p>
+
+        <p>
+            The terminology here is first the vertical description then the horizontality. So <code class="inline java">tl</code> stands
+            for
+            <em>top left</em> and <code class="inline cs">mr</code> stands for <em>middle right</em>.
+        </p>
+
+
+    <div class="file-tab">
+    <div class="file-name">
+        <code>Editor/DungeonGeneratorEditor.cs</code>
+    </div>
+    <pre><code class="cs hljs"><span class="hljs-keyword">using</span> UnityEditor;
+<span class="hljs-keyword">using</span> UnityEngine;
+
+[<span class="hljs-meta">CustomEditor (typeof (DungeonGenerator))</span>]
+<span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title">DungeonGeneratorEditor</span> : <span class="hljs-title">Editor</span> {
+
+    SerializedProperty tlTileProp;
+    SerializedProperty tmTileProp;
+    SerializedProperty trTileProp;
+    SerializedProperty mlTileProp;
+    SerializedProperty mmTileProp;
+    SerializedProperty mrTileProp;
+    SerializedProperty blTileProp;
+    SerializedProperty bmTileProp;
+    SerializedProperty brTileProp;
+    <span class="hljs-keyword">bool</span> showTiles = <span class="hljs-literal">true</span>;
+
+    <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">OnEnable</span> (<span class="hljs-params"></span>) </span>{
+        tlTileProp = serializedObject.FindProperty (<span class="hljs-string">"tlTile"</span>);
+        tmTileProp = serializedObject.FindProperty (<span class="hljs-string">"tmTile"</span>);
+        trTileProp = serializedObject.FindProperty (<span class="hljs-string">"trTile"</span>);
+        mlTileProp = serializedObject.FindProperty (<span class="hljs-string">"mlTile"</span>);
+        mmTileProp = serializedObject.FindProperty (<span class="hljs-string">"mmTile"</span>);
+        mrTileProp = serializedObject.FindProperty (<span class="hljs-string">"mrTile"</span>);
+        blTileProp = serializedObject.FindProperty (<span class="hljs-string">"blTile"</span>);
+        bmTileProp = serializedObject.FindProperty (<span class="hljs-string">"bmTile"</span>);
+        brTileProp = serializedObject.FindProperty (<span class="hljs-string">"brTile"</span>);
+    }
+
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">override</span> <span class="hljs-keyword">void</span> <span class="hljs-title">OnInspectorGUI</span> (<span class="hljs-params"></span>) </span>{
+        DrawDefaultInspector ();
+
+        showTiles = EditorGUILayout.Foldout (showTiles, <span class="hljs-string">"Tiles"</span>);
+        <span class="hljs-keyword">if</span> (showTiles) {
+            EditorGUILayout.BeginHorizontal ();
+            EditorGUILayout.LabelField(<span class="hljs-string">"T"</span>, GUILayout.Width(<span class="hljs-number">20</span>));
+            EditorGUILayout.PropertyField (tlTileProp, <span class="hljs-keyword">new</span> GUIContent (<span class="hljs-string">""</span>));
+            EditorGUILayout.PropertyField (tmTileProp, <span class="hljs-keyword">new</span> GUIContent (<span class="hljs-string">""</span>));
+            EditorGUILayout.PropertyField (trTileProp, <span class="hljs-keyword">new</span> GUIContent (<span class="hljs-string">""</span>));
+            EditorGUILayout.EndHorizontal ();
+
+            EditorGUILayout.BeginHorizontal ();
+            EditorGUILayout.LabelField(<span class="hljs-string">"M"</span>, GUILayout.Width(<span class="hljs-number">20</span>));
+            EditorGUILayout.PropertyField (mlTileProp, <span class="hljs-keyword">new</span> GUIContent (<span class="hljs-string">""</span>));
+            EditorGUILayout.PropertyField (mmTileProp, <span class="hljs-keyword">new</span> GUIContent (<span class="hljs-string">""</span>));
+            EditorGUILayout.PropertyField (mrTileProp, <span class="hljs-keyword">new</span> GUIContent (<span class="hljs-string">""</span>));
+            EditorGUILayout.EndHorizontal ();
+
+            EditorGUILayout.BeginHorizontal ();
+            EditorGUILayout.LabelField(<span class="hljs-string">"B"</span>, GUILayout.Width(<span class="hljs-number">20</span>));
+            EditorGUILayout.PropertyField (blTileProp, <span class="hljs-keyword">new</span> GUIContent (<span class="hljs-string">""</span>));
+            EditorGUILayout.PropertyField (bmTileProp, <span class="hljs-keyword">new</span> GUIContent (<span class="hljs-string">""</span>));
+            EditorGUILayout.PropertyField (brTileProp, <span class="hljs-keyword">new</span> GUIContent (<span class="hljs-string">""</span>));
+            EditorGUILayout.EndHorizontal ();
+
+            serializedObject.ApplyModifiedProperties();
+        }
+
+        DungeonGenerator myScript = (DungeonGenerator) target;
+        <span class="hljs-keyword">if</span> (GUILayout.Button (<span class="hljs-string">"Generate Dungeon"</span>)) {
+            myScript.GenerateDungeon ();
+        }
+    }
+
+}</code></pre>
+</div>
+        <div class="tip mb-4">
+            <p>If you aren't familiarized with <a href="https://docs.unity3d.com/2017.3/Documentation/ScriptReference/SerializedProperty.html">SerializedProperty</a>
+                take a look at the official documentation. Basically, if you don't use it you'll need to handle undo and
+                proper
+                communication with the target script yourself.</p>
+        </div>
+
+        <p>And of course, we also need to create these references in the main component script.</p>
+
+        <div class="file-tab">
+    <div class="file-name">
+        <code>DungeonGenerator.cs</code>
+    </div>
+    <pre><code class="cs hljs"><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title">DungeonGenerator</span> : <span class="hljs-title">MonoBehaviour</span> {
+
+    ...
+
+    [<span class="hljs-meta">HideInInspector</span>]
+    <span class="hljs-keyword">public</span> Tile tlTile;
+    [<span class="hljs-meta">HideInInspector</span>]
+    <span class="hljs-keyword">public</span> Tile tmTile;
+    [<span class="hljs-meta">HideInInspector</span>]
+    <span class="hljs-keyword">public</span> Tile trTile;
+    [<span class="hljs-meta">HideInInspector</span>]
+    <span class="hljs-keyword">public</span> Tile mlTile;
+    [<span class="hljs-meta">HideInInspector</span>]
+    <span class="hljs-keyword">public</span> Tile mmTile;
+    [<span class="hljs-meta">HideInInspector</span>]
+    <span class="hljs-keyword">public</span> Tile mrTile;
+    [<span class="hljs-meta">HideInInspector</span>]
+    <span class="hljs-keyword">public</span> Tile blTile;
+    [<span class="hljs-meta">HideInInspector</span>]
+    <span class="hljs-keyword">public</span> Tile bmTile;
+    [<span class="hljs-meta">HideInInspector</span>]
+    <span class="hljs-keyword">public</span> Tile brTile;
+
+    ...
+}</code></pre>
+</div>
+        <p>
+            You're now able to drag &amp; drop each of the tiles that are going to be used by the painting algorithm to
+            the
+            component.
+        </p>
+
+        <img class="" src="./How to procedurally generate a dungeon using the BSP method on Unity _ Bladecast_files/dungeon-comp-tiles.png">
+
+        <p></p>
+
+        <div class="img-box "><div class="img-container regular"><img class="regular" src="./How to procedurally generate a dungeon using the BSP method on Unity _ Bladecast_files/tileset-marked.png"></div><div class="legend">Use that image as your reference</div></div>
+
+        <h2>Painting the dungeon tilemap</h2>
+
+        <p>Everything is now connected. We'll do another DFS walk in the tree to paint the tilemap using our leaves.
+            Starting with a basic fill of all the rooms.</p>
+
+        <div class="file-tab">
+    <div class="file-name">
+        <code>DungeonGenerator.cs</code>
+    </div>
+    <pre><code class="cs hljs"><span class="hljs-function"><span class="hljs-keyword">private</span> <span class="hljs-keyword">void</span> <span class="hljs-title">FillRoomsOnTilemap</span> (<span class="hljs-params"></span>) </span>{
+    UpdateTilemapUsingTreeNode (tree);
+}
+
+<span class="hljs-function"><span class="hljs-keyword">private</span> <span class="hljs-keyword">void</span> <span class="hljs-title">UpdateTilemapUsingTreeNode</span> (<span class="hljs-params">BspTree node</span>) </span>{
+    <span class="hljs-keyword">if</span> (node.IsLeaf()) {
+        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = node.room.x; i &lt; node.room.xMax; i++) {
+            <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> j = node.room.y; j &lt; node.room.yMax; j++) {
+                map.SetTile (<span class="hljs-keyword">new</span> Vector3Int (i, j, <span class="hljs-number">0</span>), mmTile);
+            }
+        }
+    } <span class="hljs-keyword">else</span> {
+        <span class="hljs-keyword">if</span> (node.left != <span class="hljs-literal">null</span>) UpdateTilemapUsingTreeNode (node.left);
+        <span class="hljs-keyword">if</span> (node.right != <span class="hljs-literal">null</span>) UpdateTilemapUsingTreeNode (node.right);
+    }
+}</code></pre>
+</div>
+        <img class="regular" src="./How to procedurally generate a dungeon using the BSP method on Unity _ Bladecast_files/rooms-and-corridors.png">
+
+        <p>
+            At this point what we have is a functional dungeon, but we want to use our tiles to make it genuine and
+            beautiful. To choose the correct tile to apply we'll investigate the surrounds of each of the tiles
+            of
+            our tilemap and decide based on a rules system.
+        </p>
+
+        <img class="regular" src="./How to procedurally generate a dungeon using the BSP method on Unity _ Bladecast_files/grid-terminology.png">
+
+        <p></p>
+
+        <div class="file-tab">
+    <div class="file-name">
+        <code>DungeonGenerator.cs</code>
+    </div>
+    <pre><code class="cs hljs"><span class="hljs-function"><span class="hljs-keyword">private</span> Tile <span class="hljs-title">GetTileByNeihbors</span> (<span class="hljs-params"><span class="hljs-keyword">int</span> i, <span class="hljs-keyword">int</span> j</span>) </span>{
+    <span class="hljs-keyword">var</span> mmGridTile = map.GetTile (<span class="hljs-keyword">new</span> Vector3Int (i, j, <span class="hljs-number">0</span>));
+    <span class="hljs-keyword">if</span> (mmGridTile == <span class="hljs-literal">null</span>) <span class="hljs-keyword">return</span> <span class="hljs-literal">null</span>; <span class="hljs-comment">// you shouldn't repaint a n</span>
+
+    <span class="hljs-keyword">var</span> blGridTile = map.GetTile (<span class="hljs-keyword">new</span> Vector3Int (i<span class="hljs-number">-1</span>, j<span class="hljs-number">-1</span>, <span class="hljs-number">0</span>));
+    <span class="hljs-keyword">var</span> bmGridTile = map.GetTile (<span class="hljs-keyword">new</span> Vector3Int (i,   j<span class="hljs-number">-1</span>, <span class="hljs-number">0</span>));
+    <span class="hljs-keyword">var</span> brGridTile = map.GetTile (<span class="hljs-keyword">new</span> Vector3Int (i+<span class="hljs-number">1</span>, j<span class="hljs-number">-1</span>, <span class="hljs-number">0</span>));
+
+    <span class="hljs-keyword">var</span> mlGridTile = map.GetTile (<span class="hljs-keyword">new</span> Vector3Int (i<span class="hljs-number">-1</span>, j, <span class="hljs-number">0</span>));
+    <span class="hljs-keyword">var</span> mrGridTile = map.GetTile (<span class="hljs-keyword">new</span> Vector3Int (i+<span class="hljs-number">1</span>, j, <span class="hljs-number">0</span>));
+
+    <span class="hljs-keyword">var</span> tlGridTile = map.GetTile (<span class="hljs-keyword">new</span> Vector3Int (i<span class="hljs-number">-1</span>, j+<span class="hljs-number">1</span>, <span class="hljs-number">0</span>));
+    <span class="hljs-keyword">var</span> tmGridTile = map.GetTile (<span class="hljs-keyword">new</span> Vector3Int (i,   j+<span class="hljs-number">1</span>, <span class="hljs-number">0</span>));
+    <span class="hljs-keyword">var</span> trGridTile = map.GetTile (<span class="hljs-keyword">new</span> Vector3Int (i+<span class="hljs-number">1</span>, j+<span class="hljs-number">1</span>, <span class="hljs-number">0</span>));
+
+    <span class="hljs-comment">// we have 8 + 1 cases</span>
+
+    <span class="hljs-comment">// left</span>
+    <span class="hljs-keyword">if</span> (mlGridTile == <span class="hljs-literal">null</span> &amp;&amp; tmGridTile == <span class="hljs-literal">null</span>) <span class="hljs-keyword">return</span> tlTile;
+    <span class="hljs-keyword">if</span> (mlGridTile == <span class="hljs-literal">null</span> &amp;&amp; tmGridTile != <span class="hljs-literal">null</span> &amp;&amp; bmGridTile != <span class="hljs-literal">null</span>) <span class="hljs-keyword">return</span> mlTile;
+    <span class="hljs-keyword">if</span> (mlGridTile == <span class="hljs-literal">null</span> &amp;&amp; bmGridTile == <span class="hljs-literal">null</span> &amp;&amp; tmGridTile != <span class="hljs-literal">null</span>) <span class="hljs-keyword">return</span> blTile;
+
+    <span class="hljs-comment">// middle</span>
+    <span class="hljs-keyword">if</span> (mlGridTile != <span class="hljs-literal">null</span> &amp;&amp; tmGridTile == <span class="hljs-literal">null</span> &amp;&amp; mrGridTile != <span class="hljs-literal">null</span>) <span class="hljs-keyword">return</span> tmTile;
+    <span class="hljs-keyword">if</span> (mlGridTile != <span class="hljs-literal">null</span> &amp;&amp; bmGridTile == <span class="hljs-literal">null</span> &amp;&amp; mrGridTile != <span class="hljs-literal">null</span>) <span class="hljs-keyword">return</span> bmTile;
+
+    <span class="hljs-comment">// right</span>
+    <span class="hljs-keyword">if</span> (mlGridTile != <span class="hljs-literal">null</span> &amp;&amp; tmGridTile == <span class="hljs-literal">null</span> &amp;&amp; mrGridTile == <span class="hljs-literal">null</span>) <span class="hljs-keyword">return</span> trTile;
+    <span class="hljs-keyword">if</span> (tmGridTile != <span class="hljs-literal">null</span> &amp;&amp; bmGridTile != <span class="hljs-literal">null</span> &amp;&amp; mrGridTile == <span class="hljs-literal">null</span>) <span class="hljs-keyword">return</span> mrTile;
+    <span class="hljs-keyword">if</span> (tmGridTile != <span class="hljs-literal">null</span> &amp;&amp; bmGridTile == <span class="hljs-literal">null</span> &amp;&amp; mrGridTile == <span class="hljs-literal">null</span>) <span class="hljs-keyword">return</span> brTile;
+
+    <span class="hljs-keyword">return</span> mmTile; <span class="hljs-comment">// default case</span>
+    }
+
+    <span class="hljs-function"><span class="hljs-keyword">private</span> <span class="hljs-keyword">void</span> <span class="hljs-title">PaintTilesAccordingToTheirNeighbors</span> (<span class="hljs-params"></span>) </span>{
+    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = MIN_ROOM_DELTA; i &lt; dungeonSize; i++) {
+        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> j = MIN_ROOM_DELTA; j &lt; dungeonSize; j++) {
+            <span class="hljs-keyword">var</span> tile = GetTileByNeihbors (i, j);
+            <span class="hljs-keyword">if</span> (tile != <span class="hljs-literal">null</span>) {
+                map.SetTile(<span class="hljs-keyword">new</span> Vector3Int(i, j, <span class="hljs-number">0</span>), tile);
+            }
+        }
+    }
+}</code></pre>
+</div>
+        <p>What this method is doing is detailed but actually simple. For example, take a look at this line:</p>
+
+        <pre><code class="cs hljs"><span class="hljs-keyword">if</span> (mlGridTile != <span class="hljs-literal">null</span> &amp;&amp; bmGridTile == <span class="hljs-literal">null</span> &amp;&amp; mrGridTile != <span class="hljs-literal">null</span>) <span class="hljs-keyword">return</span> bmTile;</code></pre>
+
+        <p>
+            If both laterals of the middle line aren't nulls and the bottom middle is null that means we need a special
+            bottom middle tile. All the other checks follow a similar reasoning.
+        </p>
+
+        <div class="img-box "><div class="img-container regular"><img class="regular" src="./How to procedurally generate a dungeon using the BSP method on Unity _ Bladecast_files/final-dungeon.png"></div><div class="legend">correctly painted dungeon</div></div>
+
+        <h2>Refining this method for true glory</h2>
+
+        <p>
+            I know, it was a long and tough tutorial, but it's just the beginning! To further elaborate this I suggest
+            you do the
+            following
+            in any order:
+        </p>
+
+        <ol>
+            <li>Use a different strategy to connect corridors.</li>
+            <li>Place random treasures and enemies inside rooms according to some statistical distribution.</li>
+            <li>Add a Tilemap Collider 2D to your dungeons.</li>
+            <li>Use a <a href="https://docs.unity3d.com/ScriptReference/Random-state.html">fixed random state</a>
+                to create the possibility of saving dungeons.
+            </li>
+        </ol>
+
+        <h2>Subscribe for more</h2>
+
+        <p>I hope you liked learning how to procedurally generate dungeons using the bsp method! I really enjoyed it
+            when I
+            was first learning it during my research, their particular hierarchical nature is quite pleasing. </p>
+
+        <p>If you liked this tutorial be sure to subscribe to our email list, we won't ever spam you, we'll send you
+            only
+            the best tutorials and articles on game development we can produce.</p>
+
+        
+        <hr>
+        <div class="queries-relacionadas pv-2"><span>Classify in:</span>
+            <ul>
+                <li>pcg</li>
+                <li>bsp method</li>
+                <li>dungeon generation using tilemaps</li>
+            </ul>
+        </div>
+    </div>
+
+        <div class="container mb-4">
+                    </div>
+    </div>
+    <script src="./How to procedurally generate a dungeon using the BSP method on Unity _ Bladecast_files/highlight.pack.js.download"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+    
+        
+    
+</main>
+
+<div class="container-fluid" id="bottom">
+    <div class="container pt-4 pb-4 mb-5">
+        <div class="row justify-content-end">
+            <div class="col-md-6 col-sm-12">
+                <a href="https://bladecast.pro/contact" class="mr-4 ">Contact Us</a>
+                <a href="https://bladecast.pro/about" class="mr-4">About</a>
+                <a href="https://bladecast.pro/sitemap.xml">Site Map</a>
+            </div>
+            <div class="col-md-6 col-sm-12 text-right-md">
+                © Bladecast 2020. All rights reserved.
+            </div>
+        </div>
+        <div class="row">
+            <a href="https://www.youtube.com/channel/UC7bRc5eu0UKBs9_FYX8-9vQ" class="social social-youtube"></a>
+            <a href="https://www.facebook.com/Bladecast-374624213001970/" class="social social-facebook"></a>
+        </div>
+    </div>
+</div>
+
+<script src="./How to procedurally generate a dungeon using the BSP method on Unity _ Bladecast_files/app.js.download"></script>
+
+
+
+</body></html>
