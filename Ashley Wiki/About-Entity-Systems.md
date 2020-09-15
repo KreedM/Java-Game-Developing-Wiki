@@ -1,0 +1,1 @@
+Please read [this article](http://www.gamedev.net/page/resources/_/technical/game-programming/understanding-component-entity-systems-r3013) from [GameDev.net](http://www.gamedev.net/), it explains the theory very well.
